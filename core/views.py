@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from random import choice
 import string
+from random import choice
+from django.http import JsonResponse
+
 
 def home(request):
   return render(request,'core/home.html')
@@ -9,7 +11,6 @@ def home(request):
 def generator(request):
     return render(request,'core/generator.html')
 
-    
 def password(request):
     if request.method == 'POST':
         length = int(request.POST.get('length'))
@@ -26,4 +27,7 @@ def password(request):
         generated_PASS = ''
         for x in range(length):
             generated_PASS += choice(chars)
-        return render(request,'core/generator.html',{'password':generated_PASS})
+        return JsonResponse({'password': generated_PASS})
+
+
+

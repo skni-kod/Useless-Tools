@@ -5,23 +5,23 @@
     <meta charset='UTF-8'>
     <title>Password</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-
-
-    
 </head>
 
 <body>
-This is homep[age]
-    <form action='password' method="post">
-        {%csrf_token%}
-        <input type="range" name="length" min="4" max="32" step="1" value="8" oninput="lengthOutputId.value = length.value">
-        <output name="lengthOutputId" for="length">9</output> Length <br>
-        <label> <input type ='checkbox' name ='uppercase'> Uppercase </label>
-        <label> <input type ='checkbox' name = 'numbers'> Numbers </label>
-        <label> <input type ='checkbox' name = 'symbols'> Symbols </label>
-        <input type ='submit' value ='generate' class = 'btn btn-primary'>
-    </form>
-   haslo to -> {{password}}   
+  This is homepage
+  <form action='/generate-password' method="post" id="password-form">
+    {%csrf_token%}
+    <input type="range" name="length" min="4" max="32" step="1" value="8" oninput="lengthOutputId.value = length.value">
+    <output name="lengthOutputId" for="length">9</output> Length <br>
+    <label> <input type ='checkbox' name ='uppercase'> Uppercase </label>
+    <label> <input type ='checkbox' name = 'numbers'> Numbers </label>
+    <label> <input type ='checkbox' name = 'symbols'> Symbols </label>
+    <input type ='submit' value ='generate' class = 'btn btn-primary'>
+  </form>
+  haslo to -> <span id="password">{{password}}</span>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="{% static 'js/password.js'%}"></script>
+  
 
 
 </body>
