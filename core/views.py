@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from random import choice
+import string
 
 def home(request):
   return render(request,'core/home.html')
@@ -15,9 +16,9 @@ def password(request):
         uppercase = request.POST.get('uppercase')
         symbols = request.POST.get('symbols')
         numbers = request.POST.get('numbers')
-        chars = list('qwertyuiopasdfghjklzxcvbnm')
+        chars = list(string.ascii_lowercase)
         if(uppercase):
-            chars.extend('QWERTYUIOPASDFGHJKLZXCVBNM')
+            chars.extend(string.ascii_uppercase)
         if(symbols):
             chars.extend('!@#$%^&*')
         if(numbers):
