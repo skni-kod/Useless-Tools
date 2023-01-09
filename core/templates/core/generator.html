@@ -1,28 +1,93 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang='pl'>
-<head>
-    <meta charset='UTF-8'>
-    <title>Password</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-</head>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Password generator</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<script
+			src="https://kit.fontawesome.com/ba112db997.js"
+			crossorigin="anonymous"
+		></script>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="{% static 'css/style.css' %}"
+		/>
+	</head>
 
-<body>
-  This is homepage
-  <form action='/generate-password' method="post" id="password-form">
-    {%csrf_token%}
-    <input type="range" name="length" min="4" max="32" step="1" value="8" oninput="lengthOutputId.value = length.value">
-    <output name="lengthOutputId" for="length">9</output> Length <br>
-    <label> <input type ='checkbox' name ='uppercase'> Uppercase </label>
-    <label> <input type ='checkbox' name = 'numbers'> Numbers </label>
-    <label> <input type ='checkbox' name = 'symbols'> Symbols </label>
-    <input type ='submit' value ='generate' class = 'btn btn-primary'>
-  </form>
-  haslo to -> <span id="password">{{password}}</span>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="{% static 'js/password.js'%}"></script>
-  
+	<body>
+		<header>
+			<div class="nav"></div>
+		</header>
+		<main>
+			<div class="generator">
+				<h1>Generator haseł losowych</h1>
+				<h2>
+					Stwórz silne i niezawodne hasło, by mieć pewność, że jesteś bezpieczny
+				</h2>
+				<form action="/generate-password" method="post" id="password-form">
+					<div class="display-password-window">
+						<div class="display-password">
+							<div class="generated-password">
+								<span id="password">GENERUJ HASŁO</span>
+							</div>
+							<button type="submit" value="refresh" class="btn-primary">
+								<i class="fa-solid fa-repeat"></i>
+							</button>
+						</div>
 
+						<button type="button" value="copy" class="btn-copy">
+							<i class="ti ti-copy"></i>Kopiuj
+						</button>
+					</div>
 
-</body>
+					<div class="generator-settings-window">
+						{%csrf_token%}
+						<div class="rectangle">
+							<div class="description">
+								<p>Długość hasła: &nbsp;</p>
+
+								<output class="text-bold" name="lengthOutputId" for="length">9</output>
+							</div>
+							<div class="slider-container">
+								<div class="less circle"><i class="fa-solid fa-minus"></i></div>
+								<input
+									class="slider"
+									type="range"
+									name="length"
+									min="4"
+									max="32"
+									step="1"
+									value="8"
+									oninput="lengthOutputId.value = length.value"
+								/>
+								<div class="more circle"><i class="fa-solid fa-plus"></i></div>
+							</div>
+						</div>
+						<div class="rectangle">
+							<label>
+								<input class="pasek" type="checkbox" name="lowercase" checked />
+								abc
+							</label>
+							<label> <input type="checkbox" name="uppercase" /> ABC </label>
+							<label> <input type="checkbox" name="numbers" /> 123 </label>
+							<label> <input type="checkbox" name="symbols" /> !%& </label>
+						</div>
+					</div>
+				</form>
+			</div>
+
+			<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+			<script src="{% static 'js/password.js'%}"></script>
+		</main>
+		<footer></footer>
+	</body>
 </html>
