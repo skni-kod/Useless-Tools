@@ -17,16 +17,22 @@ def password(request):
         uppercase = request.POST.get('uppercase')
         symbols = request.POST.get('symbols')
         numbers = request.POST.get('numbers')
-        chars = list(string.ascii_lowercase)
+        lowercase = request.POST.get('lowercase')
+        chars = []
+        if(lowercase):
+            chars.extend(string.ascii_lowercase)
         if(uppercase):
             chars.extend(string.ascii_uppercase)
         if(symbols):
             chars.extend('!@#$%^&*')
         if(numbers):
-            chars.extend('123456789')
+            chars.extend('1234567890')
         generated_PASS = ''
-        for x in range(length):
-            generated_PASS += choice(chars)
+        if(numbers or lowercase or symbols or uppercase):
+            for x in range(length):
+                generated_PASS += choice(chars)
+        else:
+            generated_PASS = 'zaznacz cos wrr'
         return JsonResponse({'password': generated_PASS})
 
 
