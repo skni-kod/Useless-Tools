@@ -34,6 +34,13 @@ def password(request):
         else:
             generated_PASS = 'zaznacz cos wrr'
         return JsonResponse({'password': generated_PASS})
+def signup(request):
+    return render(request,'core/signup.html')
 
+def signin(request):
+    return render(request,'core/signin.html')
+
+def signout(request):
+    pass
 
 
