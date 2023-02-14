@@ -2,7 +2,9 @@ from django.shortcuts import render
 import string
 from random import choice
 from django.http import JsonResponse
-
+from django.contrib.auth.models import User
+from django.contrib import messages
+from django.shortcuts import render, redirect
 
 def home(request):
   return render(request,'core/home.html')
@@ -35,5 +37,26 @@ def password(request):
             generated_PASS = 'zaznacz cos wrr'
         return JsonResponse({'password': generated_PASS})
 
+
+def signup(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        password2 = request.POST.get('confirm_password')
+        myuser = User.objects.create_user(username,email,password)
+        myuser.save()
+
+        messages.success(request,'Twoje konto zostało utworzone!')
+
+        return redirect('signin')
+       
+    return render(request,'core/signup.html')
+
+def signin(request):
+    return render(request,'core/signin.html')
+
+def signout(request):
+    pass
 
 
