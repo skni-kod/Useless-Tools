@@ -68,7 +68,7 @@ def signin(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'Zalogowano pomyślnie!')
-            return render(request, 'core/home.html', {'user': user})
+            return redirect('home')
         else:
             messages.error(request, 'Błędny login lub hasło!')
             return redirect('signin')

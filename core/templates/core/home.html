@@ -15,22 +15,21 @@
 </head>
 <body>
     {% for message in messages %}
-    <div class="alert alert-{{ message.tags }} alert-dis">
     <strong>Wiadomość: </strong>{{ message }}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-    </button>
-    </div>
+    <br>
     {% endfor %}
-
+    
     <a href="{%url 'generator'%}">generator brzyki ten</a>
-    <a href="{%url 'signup'%}"><button>Zarejestruj</button></a>
-    <a href="{%url 'signin'%}"><button>Zaloguj</button></a>
-    <a href="{%url 'signout'%}"><button>Wyloguj</button></a>
+
+
 
     {% if user.is_authenticated %}
-    <h3>Witaj {{user}},zostałeś pomyślnie zalogowany! </h3>
+        <a href="{%url 'signout'%}"><button>Wyloguj</button></a>
+    {% else %}
+        <a href="{%url 'signup'%}"><button>Zarejestruj</button></a>
+        <a href="{%url 'signin'%}"><button>Zaloguj</button></a>
     {% endif %}
+
 
 
 </body>

@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/signup" method="post">
+    <form action="{% url 'signup' %}" method="post">
     {% csrf_token %}
         <label for="">Nazwa użytkownika</label>
         <input type="text" name="username" id="username" placeholder="Stwórz nazwe użytkownika" required>
