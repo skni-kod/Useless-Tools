@@ -39,8 +39,8 @@ def password(request):
         else:
             generated_PASS = 'zaznacz cos wrr'
         return JsonResponse({'password': generated_PASS})
-
-
+    
+    
 def signup(request):
     if request.method == 'POST':
         username = request.POST.get('username')
