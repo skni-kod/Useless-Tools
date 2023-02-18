@@ -14,7 +14,23 @@
     
 </head>
 <body>
+    {% for message in messages %}
+    <strong>Wiadomość: </strong>{{ message }}
+    <br>
+    {% endfor %}
+    
     <a href="{%url 'generator'%}">generator brzyki ten</a>
+
+
+
+    {% if user.is_authenticated %}
+        <a href="{%url 'signout'%}"><button>Wyloguj</button></a>
+    {% else %}
+        <a href="{%url 'signup'%}"><button>Zarejestruj</button></a>
+        <a href="{%url 'signin'%}"><button>Zaloguj</button></a>
+    {% endif %}
+
+
 
 </body>
 </html>
