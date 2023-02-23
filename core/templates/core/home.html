@@ -1,36 +1,160 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang='pl'>
+<html lang="pl">
 <head>
-    <meta charset='UTF-8'>
-    <title>Home</title>
-    <link
-			href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap"
-			rel="stylesheet"
-		/>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UselessTools</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/26271da042.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <link rel="stylesheet" href="{% static 'css_homepage/css/style.css' %}">
 
 
-    
 </head>
 <body>
-    {% for message in messages %}
-    <strong>Wiadomość: </strong>{{ message }}
-    <br>
-    {% endfor %}
+
+    <nav class="nav">
+        <div class="logo">
+            <img src="{% static './img/logo.png' %}" alt="Logo Useless tools">
+        </div>
+
+        <div class="main-nav">
+            <ul class="menu">
+                <li class="menu-item">
+                    narzędzia
+                    <ul class="dropdown">
+                        <li class="dropdown-item"><p>Generator haseł</p></li>
+                        <li class="dropdown-item"><p>link 1</p></li>
+                        <li class="dropdown-item"><p>link2</p></li>
+                        <li class="dropdown-item"><p>link 3</p></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    kalkulatory
+                    <ul class="dropdown">
+                        <li class="dropdown-item">Binarne</li>
+                        <li class="dropdown-item">link 1</li>
+                        <li class="dropdown-item">link 2</li>
+                        <li class="dropdown-item">link 3</li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    typing speed test
+                </li>
+                <li class="menu-item">
+                    więcej
+                    <ul class="dropdown">
+                        <li class="dropdown-item">link 1</li>
+                        <li class="dropdown-item">link 2</li>
+                        <li class="dropdown-item">o nas</li>
+                        <li class="dropdown-item">skni kod</li>
+                    </ul>
+                </li>
+            <ul/>
+        </div>
+
+        <div class="login">
+            <p>zaloguj <i class="fa-solid fa-right-to-bracket"></i></p>
+        </div>
+    </nav>
+
+    <header class="hero-img">
+        <div class="hero-shadow"></div>
+        <div class="hero-text">
+            <p>Jeśli czasem czujesz się bezużyteczny to sprawdź nasze narzędzia!</p>
+            <p><i class="fa-solid fa-angle-down"></i></p>
+        </div>
+    </header>
+
+    <main>
+        <section class="tools">
+            <div class="tool">
+                <a href="#">
+                    <div class="tool-img"><img src="#" alt="Generator haseł - UselessTools">
+                        <div class="text-hidden">
+                            <p>Tak, to jest właśnie ten generator!</p>
+                        </div>
+                    </div>
+                </a>
+                <div class="tool-text">
+                    <a href="#"><p class="tool-title">generator haseł</p></a>
+                    <p class="tool-desc">Narzędzie pozwalające wylosować skomplikowane hasło, idealne jeśli nie masz na nie pomysłu. Posiada możliwość wyboru długości, użytych znaków, wygenerowane hasło nie jest nigdzie zapisywane i tylko Ty masz do niego dostęp. Kod naszego generatora jest ukryty głęboko w odmętach backendu i tylko my wiemy jak on działa ;)</p>
+                </div>
+            </div>
     
-    <a href="{%url 'generator'%}">generator brzyki ten</a>
+            <div class="tool">
+                <div class="tool-text">
+                    <a href="#"><p class="tool-title">kalkulator binarny</p></a>
+                    <p class="tool-desc">Zestaw kalkulatorów pozwalających przeliczać liczby z systemu dziesiętnego na dwójkowy, ósemkowy oraz szesnastkowy oraz na odwrót! Po wprowadzeniu liczby konwerter sam uzupełni pozostałe tabelki, kalkulator działa tylko na liczbach całkowitych. </p>
+                </div>
+                <a href="#">
+                    <div class="tool-img"><img src="#" alt="Kalkulator systemów liczbowych - UselessTools">
+                        <div class="text-hidden">
+                            <p>Nasze narzędzie do przeliczania systemów liczbowych!</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+    
+            <div class="tool">
+                <a href="#">
+                    <div class="tool-img"><img src="#" alt="Typing speed test - UselessTools">
+                        <div class="text-hidden">
+                            <p>Sprawdź się!</p>
+                        </div>
+                    </div>
+                </a>
+                <div class="tool-text">
+                    <a href="#"><p class="tool-title">Typing speed test</p></a>
+                    <p class="tool-desc">Sprawdź się w szybkości pisania za pomocą naszego testu, do wyboru jest wiele ustawień tj. długość tekstu oraz język. W przyszłości planujemy rozwinąć to narzędzie o rankingi oraz wiele innych możliwości, <span class="orange-text">stay tuned!</span></p>
+                </div>
+            </div>
 
+            <div class="tool">
+                <div class="tool-text">
+                    <a href="#"><p class="tool-title">Lorem ipsum</p></a>
+                    <p class="tool-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis voluptates autem sit, non animi eos? Doloremque, quibusdam! Soluta praesentium, laborum temporibus commodi, eaque delectus quaerat consequatur adipisci quibusdam labore impedit!
+                    </div>
+                    <a href="#">
+                        <div class="tool-img"><img src="#" alt="lorem">
+                            <div class="text-hidden">
+                                <p>Lorem, ipsum.</p>
+                            </div>
+                        </div>
+                    </a>
+            </div>
+        </section>
 
+        <section class="more">
+            <p>W przyszłości planujemy rozwinąć naszą stronę o jeszcze więcej <span class="orange-text">useless</span> narzędzi!</p>
+            <p><span class="orange-text">stay tuned!</span></p>
+        </section>
 
-    {% if user.is_authenticated %}
-        <a href="{%url 'signout'%}"><button>Wyloguj</button></a>
-    {% else %}
-        <a href="{%url 'signup'%}"><button>Zarejestruj</button></a>
-        <a href="{%url 'signin'%}"><button>Zaloguj</button></a>
-    {% endif %}
+        <section class="about">
+            <div class="bg"></div>
+        </section>
 
+        <section class="useless">
+            <a href="#"><img src="{% static './img/logo.png' %}" alt="Logo UselessTools"></a>
+        </section>
+    </main>
 
+    <footer>
+        <p>&copy; 2023 UselessTools - Possibly useful tools </p>
+    </footer>
 
+    <!-- <div style="height: 100vh;"></div> -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
 </body>
 </html>
