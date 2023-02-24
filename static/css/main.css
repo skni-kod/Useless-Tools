@@ -4,6 +4,10 @@
   margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   background-color: #222;
@@ -364,4 +368,4 @@ footer {
   height: 10vh;
   background-color: #ff5700;
   font-size: 20px;
-}/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=main.css.map */

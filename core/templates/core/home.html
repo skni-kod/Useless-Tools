@@ -15,7 +15,7 @@
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-    <link rel="stylesheet" href="{% static 'css_homepage/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
 
 </head>
@@ -23,7 +23,7 @@
 
     <nav class="nav">
         <div class="logo">
-            <img src="{% static './img/logo.png' %}" alt="Logo Useless tools">
+            <a href="#"><img src="{% static './img/logo.png' %}" alt="Logo Useless tools"></a>
         </div>
 
         <div class="main-nav">
@@ -31,51 +31,53 @@
                 <li class="menu-item">
                     narzędzia
                     <ul class="dropdown">
-                        <li class="dropdown-item"><p>Generator haseł</p></li>
-                        <li class="dropdown-item"><p>link 1</p></li>
-                        <li class="dropdown-item"><p>link2</p></li>
-                        <li class="dropdown-item"><p>link 3</p></li>
+                        <a href="generator"><li class="dropdown-item"><p>Generator haseł</p></li></a>
+                        <a href="#"><li class="dropdown-item"><p>link 1</p></li></a>
+                        <a href="#"><li class="dropdown-item"><p>link2</p></li></a>
+                        <a href="#"><li class="dropdown-item"><p>link2</p></li></a>
                     </ul>
                 </li>
                 <li class="menu-item">
                     kalkulatory
                     <ul class="dropdown">
-                        <li class="dropdown-item">Binarne</li>
-                        <li class="dropdown-item">link 1</li>
-                        <li class="dropdown-item">link 2</li>
-                        <li class="dropdown-item">link 3</li>
+                        <a href="#"><li class="dropdown-item">Binarne</li></a>
+                        <a href="#"><li class="dropdown-item">link 1</li></a>
+                        <a href="#"><li class="dropdown-item">link 2</li></a>
+                        <a href="#"><li class="dropdown-item">link 3</li></a>
                     </ul>
                 </li>
                 <li class="menu-item">
-                    typing speed test
+                    <a href="#"><p>typing speed test</p></a>
                 </li>
                 <li class="menu-item">
                     więcej
                     <ul class="dropdown">
-                        <li class="dropdown-item">link 1</li>
-                        <li class="dropdown-item">link 2</li>
-                        <li class="dropdown-item">o nas</li>
-                        <li class="dropdown-item">skni kod</li>
+                        <a href="#"><li class="dropdown-item">link 1</li></a>
+                        <a href="#"><li class="dropdown-item">link 2</li></a>
+                        <a href="#about-us"><li class="dropdown-item">o nas</li></a>
+                        <a href="#"><li class="dropdown-item">skni kod</li></a>
                     </ul>
                 </li>
             <ul/>
         </div>
-
-        <div class="login">
-            <p>zaloguj <i class="fa-solid fa-right-to-bracket"></i></p>
-        </div>
+    
+        <a href="signin">
+            <div class="login">
+                <p>zaloguj <i class="fa-solid fa-right-to-bracket"></i></p>
+            </div>
+        </a>    
     </nav>
 
     <header class="hero-img">
         <div class="hero-shadow"></div>
         <div class="hero-text">
             <p>Jeśli czasem czujesz się bezużyteczny to sprawdź nasze narzędzia!</p>
-            <p><i class="fa-solid fa-angle-down"></i></p>
+            <a href="#tools"><p><i class="fa-solid fa-angle-down"></i></p></a>
         </div>
     </header>
 
     <main>
-        <section class="tools">
+        <section id="tools" class="tools">
             <div class="tool">
                 <a href="#">
                     <div class="tool-img"><img src="#" alt="Generator haseł - UselessTools">
@@ -138,7 +140,7 @@
             <p><span class="orange-text">stay tuned!</span></p>
         </section>
 
-        <section class="about">
+        <section id="about-us" class="about">
             <div class="bg"></div>
         </section>
 
