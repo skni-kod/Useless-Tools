@@ -3,7 +3,7 @@ import random
 symbole_terminalne = []
 Reguły_produkcji = []
 oznaczenia_symboli = []
-reguly = rules
+reguly = str(input())
 stan = str("początek")
 reguly.strip()
 reguly = reguly.replace(",", " ")
@@ -171,18 +171,10 @@ for u in range(0, len(symbole_bezużyteczne)):
             i = i - 1
         i = i + 1
 
-
-
-embed = nextcord.Embed(
-    title=f"Gramatyka Chomsky'ego",
-    color=nextcord.Color.yellow(),
-    description=""
-)
-
 for i in range(0, len(Reguły_produkcji)):
-    print(oznaczenia_symboli[i]"->")
+    print(oznaczenia_symboli[i],"->")
     for x in range(0, len(Reguły_produkcji[i]) - 1):
-        print(Reguły_produkcji[i][x]} "|")
+        print(Reguły_produkcji[i][x], "|")
     print(Reguły_produkcji[i][-1])
 
 
