@@ -1,15 +1,15 @@
 (function() {
     $(document).ready(function() {
-      $('#greibach-form').submit(function(event) {
+      $('#chomsky-form').submit(function(event) {
         event.preventDefault();
         var formData = $(this).serialize();
   
         $.ajax({
-          url: '/greibach-convert',
+          url: '/chomsky-convert',
           type: 'POST',
           data: formData,
           success: function(response) {
-            $('#wynikGreibach').text(response.wynikGreibach);
+            $('#wynikChomsky').text(response.wynikChomsky);
           }
         });
       });
