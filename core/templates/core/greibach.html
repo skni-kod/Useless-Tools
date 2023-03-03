@@ -7,19 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-          #wynik {
+          #wynikGreibach {
             white-space: pre-line; /* wez dodaj to do css potem. Wazne to jest bo jak przychodza dane przez jsona to korzysta z tych \n*/
+        }
+        .regula-greibach {
+            width: 66%;
+            height: 100%;
         }
     </style>
 
 </head>
 <body>
+    <h3>przyklad: x,y,z;S>YS,Yx,X;Y>Yx;X>xy,XZ;Z>Zz,x </h3>
     <form id ="greibach-form" action="/greibach-convert" method="post">
         {% csrf_token %}
-        <input type="text" name="reguly" id="reguly">
+        <input class = "regula-greibach" type="text" name="regulyGreibach" id="reguly">
     <input type="submit" value="Konwertuj">
     </form>
-    <p id ="wynik">{{wynik}}</p>
+    <p id ="wynikGreibach"></p>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{% static 'js/greibach.js'%}"></script>
 </body>
