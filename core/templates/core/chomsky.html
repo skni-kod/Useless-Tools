@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #chomsky-form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #chomsky-form input{
+            margin: 10px;
+        }
+        #wynikChomsky{
+            margin: 10px;
+            white-space: pre-line; /* wez dodaj to do css potem. Wazne to jest bo jak przychodza dane przez jsona to korzysta z tych \n*/
+
+        }
+    </style>
+
+</head>
+<body>
+    <form id ="chomsky-form" action="/chomsky-convert" method="post">
+        {% csrf_token %}
+        <input type="text" name="regulyChomsky">
+    <input type="submit" value="Konwertuj">
+    </form>
+    <p id ="wynikChomsky"></p>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/chomsky.js'%}"></script>
+</body>
+</html>
