@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pl">
 	<head>
@@ -15,7 +16,7 @@
 			src="https://kit.fontawesome.com/ba112db997.js"
 			crossorigin="anonymous"
 		></script>
-		<link rel="stylesheet" href="./css/style.css" />
+		<link rel="stylesheet" href="{% static 'css/genstyle.css' %}"/>
 	</head>
 	<body>
 		<main class="password-generator">
@@ -29,11 +30,12 @@
 						</p>
 					</header>
 
-					<form class="password-generator-form" action="password" method="post">
+					<form id = "password-form" class="password-generator-form" action="generate-password" method="post">
+						{% csrf_token %}
 						<div class="display-password-container">
 							<div class="password green">
 								<div class="display-password">
-									<p class="password-text">DSAKNDAdfsfdfdsfd1ds</p>
+									<p id ="password" class="password-text"></p>
 								</div>
 
 								<button class="generate-btn" type="submit" value="generate">
@@ -60,7 +62,6 @@
 										<i class="fa-solid fa-minus"></i>
 									</button>
 									<input
-										id="suwak"
 										class="range-slider"
 										type="range"
 										name="length"
@@ -82,7 +83,6 @@
 									<div class="pass-item">
 										<input
 											checked
-											disabled
 											class="pass-checkbox"
 											type="checkbox"
 											name="lowercase"
@@ -180,6 +180,8 @@
 			</section>
 		</main>
 		<div id="myMessage" class="message dnone"><button>dsa</button></div>
-		<script src="./js/script.js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="{% static 'js/password.js' %}"></script>
+		<script src="{% static 'js/genpage.js' %}"></script>
 	</body>
 </html>
