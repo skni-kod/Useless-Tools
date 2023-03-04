@@ -6,14 +6,12 @@ let lengthInput = document.querySelector('.range-slider');
 let length = document.querySelector('.choosed-length');
 let password = document.querySelector('.password-text');
 
-var messageElement = document.getElementById('myMessage');
+
 
 const passwordStrengthElement = document.querySelector('.password');
 
 //clipboard
-const textItem = new ClipboardItem({
-	'text/plain': new Blob([password.textContent], { type: 'text/plain' }),
-});
+
 
 function add() {
 	lengthInput.stepUp(1);
@@ -27,15 +25,7 @@ function subtraction() {
 	length.textContent = lengthInput.value;
 	passwordStrength();
 }
-function copyPassword() {
-	navigator.clipboard.write([textItem]);
-	messageElement.innerHTML = 'Skopiowano hasło do schowka';
-	messageElement.classList.remove('dnone');
 
-	setTimeout(function () {
-		messageElement.classList.add('dnone');
-	}, 1500);
-}
 function passwordStrength() {
 	if (lengthInput.value < 7) {
 		passwordStrengthElement.classList.remove('yellow');
@@ -54,6 +44,6 @@ function passwordStrength() {
 
 plusBtn.addEventListener('click', add);
 minusBtn.addEventListener('click', subtraction);
-copyBtn.addEventListener('click', copyPassword);
+
 
 lengthInput.addEventListener('input', passwordStrength);
