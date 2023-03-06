@@ -9,8 +9,8 @@ class User(AbstractUser):
 class stats(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="stats")
     score = models.IntegerField(default=0)
-    time = models.IntegerField(default=0)
-    date = models.DateTimeField(auto_now_add=True)
+    timeSpent = models.TimeField(default="00:00:00")
+    dataHistory = models.TextField(default="")
 
     def __str__(self):
-        return f"{self.user} {self.score} {self.time}"
+        return f"{self.user}"
