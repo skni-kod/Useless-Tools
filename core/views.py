@@ -2,10 +2,10 @@ from django.shortcuts import render
 import string
 from random import choice
 from django.http import JsonResponse
-from django.contrib.auth.models import User
-from django.contrib import messages
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, reverse
+from .forms import CustomUserCreationForm
+from django.views.generic import CreateView
+
 
 
 def home(request):
@@ -39,5 +39,11 @@ def password(request):
         else:
             generated_PASS = 'zaznacz cos wrr'
         return JsonResponse({'password': generated_PASS})
-  
-    
+
+
+class signup(CreateView):
+    form_class = CustomUserCreationForm
+    template_name = 'registration/signup.html'
+
+    def get_success_url(self):
+        return reverse('signin')
