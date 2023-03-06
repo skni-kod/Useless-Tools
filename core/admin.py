@@ -1,6 +1,4 @@
 from django.contrib import admin
+from .models import Stats
 
-from .models import User, stats
-
-admin.site.register(User)
-admin.site.register(stats)
+admin.site.register(Stats)

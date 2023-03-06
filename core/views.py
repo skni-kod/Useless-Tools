@@ -1,8 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import reverse, render
 import string
 from random import choice
 from django.http import JsonResponse
-from django.shortcuts import render, reverse
 from .forms import CustomUserCreationForm
 from django.views.generic import CreateView
 
@@ -22,7 +21,7 @@ def password(request):
         uppercase = request.POST.get('uppercase')
         symbols = request.POST.get('symbols')
         numbers = request.POST.get('numbers')
-        lowercase = request.POST.get('lowercase')
+        lowercase = request.POST.get('lowercase') 
         chars = []
         if (lowercase):
             chars.extend(string.ascii_lowercase)
@@ -41,7 +40,7 @@ def password(request):
         return JsonResponse({'password': generated_PASS})
 
 
-class signup(CreateView):
+class Signup(CreateView):
     form_class = CustomUserCreationForm
     template_name = 'registration/signup.html'
 
