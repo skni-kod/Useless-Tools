@@ -399,13 +399,13 @@ def chomsky(request):
                 i = i + 1
         wynikChomsky = ""
         for i in range(0, len(Reguły_produkcji)):
-            wynik += oznaczenia_symboli[i] + "->"
+            wynikChomsky += oznaczenia_symboli[i] + "->"
             for x in range(0, len(Reguły_produkcji[i]) - 1):
-                wynik += Reguły_produkcji[i][x] + "|"
-            print(Reguły_produkcji[i][-1])
+                wynikChomsky += Reguły_produkcji[i][x] + "|"
+            wynikChomsky += (Reguły_produkcji[i][-1])
         
-        return JsonResponse({'wynikCh': wynikChomsky}, safe=False)
-    return request(request, 'chomsky.html')
+        return JsonResponse({'wynikChomsky': wynikChomsky})
+    return render(request, 'core/chomsky.html')
 
 
 

@@ -7,19 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-          #wynik {
+        .MaciekPL{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #greibach-form input{
+            margin: 1px;
+        }
+        #wynikGreibach{
+            margin: 10px;
             white-space: pre-line; /* wez dodaj to do css potem. Wazne to jest bo jak przychodza dane przez jsona to korzysta z tych \n*/
+
         }
     </style>
 
 </head>
 <body>
-    <form id ="greibach-form" action="/greibach-convert" method="post">
-        {% csrf_token %}
-        <input type="text" name="reguly" id="reguly">
-    <input type="submit" value="Konwertuj">
-    </form>
-    <p id ="wynik">{{wynik}}</p>
+    <div class="MaciekPL">
+        <form id ="greibach-form" action="/greibach-convert" method="post">
+            {% csrf_token %}
+            <input type="text" name="regulyGreibach">
+        <input type="submit" value="Konwertuj">
+        </form>
+        <p id ="wynikGreibach"></p>
+    </div>
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{% static 'js/greibach.js'%}"></script>
 </body>
