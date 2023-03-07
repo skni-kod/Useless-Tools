@@ -230,7 +230,9 @@ def chomsky(request):
         symbole_terminalne = []
         Reguły_produkcji = []
         oznaczenia_symboli = []
-        reguly = request.POST.get('regulyChomsky')
+        reguly_1 = request.POST.get('terminalne')
+        reguly_2 = request.POST.get('regulyChomsky')
+        reguly = reguly_1 + ";" + reguly_2
         stan = str("początek")
         reguly.strip()
         reguly = reguly.replace(",", " ")
@@ -399,10 +401,10 @@ def chomsky(request):
                 i = i + 1
         wynikChomsky = ""
         for i in range(0, len(Reguły_produkcji)):
-            wynikChomsky += oznaczenia_symboli[i] + "->"
+            wynikChomsky += oznaczenia_symboli[i] + " -> "
             for x in range(0, len(Reguły_produkcji[i]) - 1):
-                wynikChomsky += Reguły_produkcji[i][x] + "|"
-            wynikChomsky += (Reguły_produkcji[i][-1])
+                wynikChomsky += Reguły_produkcji[i][x] + " | "
+            wynikChomsky += (Reguły_produkcji[i][-1]) + "\n"
         
         return JsonResponse({'wynikChomsky': wynikChomsky})
     return render(request, 'core/chomsky.html')

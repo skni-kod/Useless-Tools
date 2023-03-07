@@ -20,16 +20,33 @@
             white-space: pre-line; /* wez dodaj to do css potem. Wazne to jest bo jak przychodza dane przez jsona to korzysta z tych \n*/
 
         }
+
+        .dajdwazlote{
+            width: 100%;
+        }
+        .maciekPL{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
     </style>
 
 </head>
 <body>
-    <form id ="chomsky-form" action="/chomsky-convert" method="post">
-        {% csrf_token %}
-        <input type="text" name="regulyChomsky">
-    <input type="submit" value="Konwertuj">
-    </form>
-    <p id ="wynikChomsky"></p>
+    <div class ="maciekPL">
+        <form id ="chomsky-form" action="/chomsky-convert" method="post">
+            {% csrf_token %}
+            <label for="terminalne">Symbole terminalne:</label>
+            <input label ="symbole terminalne" type="text" name="terminalne">
+            <br>
+            <label for="reguly">Wprowadź reguły</label>
+            <textarea class ="dajdwazlote" name="regulyChomsky" rows="2" cols="4"></textarea>
+        <input type="submit" value="Konwertuj">
+        </form>
+        <p id ="wynikChomsky"></p>
+    </div>
+    
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{% static 'js/chomsky.js'%}"></script>
 </body>
