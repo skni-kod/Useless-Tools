@@ -4,23 +4,22 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('core', '0001_initial'),
+        ("core", "0001_initial"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='stats',
-            old_name='dataHistory',
-            new_name='data_history',
+            model_name="stats",
+            old_name="dataHistory",
+            new_name="data_history",
         ),
         migrations.RenameField(
-            model_name='stats',
-            old_name='timeSpent',
-            new_name='time_spent',
+            model_name="stats",
+            old_name="timeSpent",
+            new_name="time_spent",
         ),
         migrations.DeleteModel(
-            name='User',
+            name="User",
         ),
     ]
