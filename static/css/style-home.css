@@ -372,14 +372,11 @@ a {
 .nav-burger .menu .menu-item:hover .button-burger {
   color: #ff5700;
 }
+.nav-burger .menu .menu-item:hover .button-burger p {
+  color: #ff5700;
+}
 .nav-burger .menu .menu-item:hover::before {
   transform: scale(1);
-}
-.nav-burger .menu .transform {
-  transform: translateX(13px);
-}
-.nav-burger .menu .transform .button-burger {
-  color: #ff5700;
 }
 .nav-burger .menu .button-burger:focus ~ .dropdown {
   height: 200px;
