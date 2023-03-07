@@ -6,13 +6,12 @@ from .forms import CustomUserCreationForm
 from django.views.generic import CreateView
 
 
-
 def home(request):
-    return render(request, 'core/home.html')
+    return render(request, "core/home.html")
 
 
 def generator(request):
-    return render(request, 'core/generator.html')
+    return render(request, "core/generator.html")
 
 
 def password(request):
@@ -23,16 +22,16 @@ def password(request):
         numbers = request.POST.get('numbers')
         lowercase = request.POST.get('lowercase') 
         chars = []
-        if (lowercase):
+        if lowercase:
             chars.extend(string.ascii_lowercase)
-        if (uppercase):
+        if uppercase:
             chars.extend(string.ascii_uppercase)
-        if (symbols):
-            chars.extend('!@#$%^&*')
-        if (numbers):
-            chars.extend('1234567890')
-        generated_PASS = ''
-        if (numbers or lowercase or symbols or uppercase):
+        if symbols:
+            chars.extend("!@#$%^&*")
+        if numbers:
+            chars.extend("1234567890")
+        generated_PASS = ""
+        if numbers or lowercase or symbols or uppercase:
             for x in range(length):
                 generated_PASS += choice(chars)
         else:
@@ -46,4 +45,4 @@ class Signup(CreateView):
 
     def get_success_url(self):
         return reverse('signin')
-    
+        
