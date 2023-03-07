@@ -96,7 +96,9 @@ def greibach(request):
         terminalne = []
         reguly_prod = []
         symbole_pocz = []
-        reguly = request.POST.get('regulyGreibach')
+        reguly_1 = request.POST.get('terminalne')
+        reguly_2 = request.POST.get('reguly')
+        reguly = reguly_1 + ";" + reguly_2
         stan = str("początek")
         reguly.strip()
         reguly = reguly.replace(",", " ")
@@ -211,8 +213,6 @@ def greibach(request):
 
         usuwanie_regul_bezuzytecznych(reguly_prod, symbole_pocz, terminalne)
 
-        print(reguly_prod)
-        print(symbole_pocz)
 
         wynikGr  = ""
         for i in range(len(symbole_pocz)):

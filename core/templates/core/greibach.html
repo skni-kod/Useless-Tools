@@ -20,6 +20,9 @@
             white-space: pre-line; /* wez dodaj to do css potem. Wazne to jest bo jak przychodza dane przez jsona to korzysta z tych \n*/
 
         }
+        .dajdwazlote{
+            width: 110%;
+        }
     </style>
 
 </head>
@@ -27,7 +30,11 @@
     <div class="MaciekPL">
         <form id ="greibach-form" action="/greibach-convert" method="post">
             {% csrf_token %}
-            <input type="text" name="regulyGreibach">
+            <label for="terminalne">Symbole terminalne:</label>
+            <input label ="symbole terminalne" type="text" name="terminalne">
+            <br>
+            <label for="reguly">Wprowadź reguły</label>
+            <textarea class ="dajdwazlote" name="reguly" rows="4" cols="10"></textarea>
         <input type="submit" value="Konwertuj">
         </form>
         <p id ="wynikGreibach"></p>
