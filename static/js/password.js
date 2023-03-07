@@ -1,23 +1,25 @@
-(function() {
-  $(document).ready(function() {
-    $('#password-form').submit(function(event) {
-      event.preventDefault();
-      var formData = $(this).serialize();
+(function () {
+	$(document).ready(function () {
+		$('#password-form').submit(function (event) {
+			event.preventDefault();
+			var formData = $(this).serialize();
 
-      $.ajax({
-        url: '/generate-password',
-        type: 'POST',
-        data: formData,
-        success: function(response) {
-          $('#password').text(response.password);
-          let passwordd = response.password
-          const copyBtn = document.querySelector('.copy-btn')
-          function copyPassword(){
-            navigator.clipboard.writeText(passwordd);
-          }
-          copyBtn.addEventListener('click',copyPassword);
-        }
-      });
-    });
-  });
+			$.ajax({
+				url: '/generate-password',
+				type: 'POST',
+				data: formData,
+				success: function (response) {
+					$('#password').text(response.password);
+
+					//KOPIOWANIE HASLA DO SCHOWKA
+					const copyBtn = document.querySelector('.copy-btn');
+					function copyPassword() {
+						navigator.clipboard.writeText(response.password);
+					}
+					copyBtn.addEventListener('click', copyPassword);
+					//---------------------------
+				},
+			});
+		});
+	});
 })();

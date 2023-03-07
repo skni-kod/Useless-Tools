@@ -34,6 +34,7 @@ body {
 }
 
 .container {
+  margin: 0 auto;
   width: 100%;
   max-width: 1400px;
 }
@@ -317,7 +318,99 @@ header p.generator-text {
 .password-generator .password-strength-section .cards .card-text {
   font-size: 1.1rem;
 }
+.password-generator .questions-section {
+  margin-bottom: 50px;
+  padding: 40px 10px;
+}
+.password-generator .questions-section .accordion {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 80%;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border: 2px solid white;
+  box-shadow: 0 0 15px 0 rgb(0, 0, 0);
+  color: white;
+  overflow: hidden;
+}
+.password-generator .questions-section .accordion .accordion-item {
+  border-bottom: 2px solid white;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.password-generator .questions-section .accordion .accordion-item:last-child {
+  border-bottom: none;
+}
+.password-generator .questions-section .accordion .accordion-btn {
+  display: block;
+  width: 100%;
+  padding: 40px 20px;
+  background-color: #222;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.password-generator .questions-section .accordion .probe {
+  color: #f57000;
+}
+.password-generator .questions-section .accordion .accordion-text {
+  display: block;
+  width: 100%;
+  height: 350px;
+  padding: 10px 10px;
+  text-align: center;
+  font-size: 1rem;
+  background-color: #222;
+  transition: transform 0.3s, height 0.3s;
+  transform-origin: top;
+}
+.password-generator .questions-section .accordion .accordion-text-d-none {
+  height: 0px;
+  padding: 0;
+}
+.password-generator .questions-section .accordion .accordion-btn:hover {
+  background-color: #333;
+  color: #f57000;
+}
 
+@media (min-width: 320px) {
+  .password-generator .questions-section .accordion .accordion-text {
+    height: 300px;
+  }
+  .password-generator .questions-section .accordion .accordion-text-d-none {
+    height: 0px;
+  }
+  .password-generator .questions-section .accordion .accordion-btn {
+    padding: 40px 20px;
+  }
+}
+@media (min-width: 375px) {
+  .password-generator .questions-section .accordion .accordion-text {
+    height: 250px;
+  }
+  .password-generator .questions-section .accordion .accordion-text-d-none {
+    height: 0px;
+  }
+  .password-generator .questions-section .accordion .accordion-btn {
+    padding: 40px 20px;
+  }
+}
+@media (min-width: 420px) {
+  .password-generator .questions-section .accordion .accordion-text {
+    height: 200px;
+  }
+  .password-generator .questions-section .accordion .accordion-text-d-none {
+    height: 0px;
+  }
+  .password-generator .questions-section .accordion .accordion-btn {
+    padding: 40px 20px;
+  }
+}
 @media (min-width: 576px) {
   header {
     margin-bottom: 60px;
@@ -331,9 +424,24 @@ header p.generator-text {
   .password-generator .password-generator-section {
     padding: 100px 20px;
   }
+  .password-generator .questions-section .accordion .accordion-text {
+    height: 160px;
+  }
+  .password-generator .questions-section .accordion .accordion-text-d-none {
+    height: 0px;
+  }
+  .password-generator .questions-section .accordion .accordion-btn {
+    padding: 35px 20px;
+  }
 }
 @media (min-width: 992px) {
   .password-generator-section header {
     margin-bottom: 100px;
+  }
+  .password-generator .questions-section .accordion .accordion-text {
+    height: 100px;
+  }
+  .password-generator .questions-section .accordion .accordion-text-d-none {
+    height: 0px;
   }
 }/*# sourceMappingURL=main.css.map */

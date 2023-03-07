@@ -34,18 +34,17 @@ body {
 }
 
 .container {
+	margin: 0 auto;
 	width: 100%;
 	max-width: 1400px;
 }
-
-
 
 // PASSWORD_GENERATOR_SECTION --- HEADER
 header {
 	text-align: center;
 	margin-bottom: 40px;
 
-	hr{
+	hr {
 		margin: 30px auto;
 		width: 70%;
 	}
@@ -99,13 +98,13 @@ header {
 					overflow: hidden;
 					transition: 0.5s;
 				}
-				.red{
+				.red {
 					border-bottom: 2px solid red;
 				}
-				.yellow{
+				.yellow {
 					border-bottom: 2px solid yellow;
 				}
-				.green{
+				.green {
 					border-bottom: 2px solid green;
 				}
 
@@ -125,11 +124,11 @@ header {
 					transition: transform 0.3s;
 					cursor: pointer;
 				}
-				
-				.generate-btn:hover{
+
+				.generate-btn:hover {
 					transform: scale(1.1);
 				}
-				
+
 				.password-text {
 					font-size: 1rem;
 					margin: auto 10px;
@@ -267,7 +266,7 @@ header {
 							transition: scale 0.3s;
 						}
 
-						.pass-checkbox:checked{
+						.pass-checkbox:checked {
 							box-shadow: 0 0 4px #f57000;
 						}
 
@@ -322,19 +321,19 @@ header {
 		//------------FORM --- END --------------
 	}
 
-	//PASSWORD_STRENGTH_SECTION	
-	.password-strength-section{
+	//PASSWORD_STRENGTH_SECTION
+	.password-strength-section {
 		margin: 0 auto 100px;
 		padding: 40px 10px;
 		// background-color: #333333;
-		
-		.cards{
+
+		.cards {
 			display: flex;
 			gap: 25px;
 			flex-wrap: wrap;
 			justify-content: center;
 			align-items: baseline;
-			.card{
+			.card {
 				width: 100%;
 				max-width: 270px;
 				padding: 20px 10px;
@@ -344,22 +343,22 @@ header {
 				transition: transform 0.3s;
 			}
 
-			.card:hover{
+			.card:hover {
 				transform: scale(1.1);
 			}
 
-			.card-icon{
+			.card-icon {
 				font-size: 2rem;
 				margin-bottom: 20px;
 				text-shadow: 0 0 4px #f57000;
 			}
 
-			.card-title{
+			.card-title {
 				font-size: 1.8rem;
 				margin-bottom: 10px;
 			}
 
-			.card-text{
+			.card-text {
 				font-size: 1.1rem;
 			}
 		}
@@ -367,34 +366,183 @@ header {
 
 	//QUESTIONS_SECTION
 
+	.questions-section {
+		margin-bottom: 50px;
+		padding: 40px 10px;
+
+		.accordion {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			margin: 0 auto;
+			width: 80%;
+			border-top-right-radius: 25px;
+			border-bottom-left-radius: 25px;
+			border: 2px solid white;
+			box-shadow: 0 0 15px 0 rgba(0, 0, 0, 1);
+			color: white;
+			overflow: hidden;
+
+			.accordion-item {
+				border-bottom: 2px solid white;
+				height: fit-content;
+			}
+
+			.accordion-item:last-child {
+				border-bottom: none;
+			}
+
+			.accordion-btn {
+				display: block;
+				width: 100%;
+				padding: 40px 20px;
+				background-color: #222;
+				border: none;
+				color: white;
+				text-transform: uppercase;
+				font-size: 1.2rem;
+				cursor: pointer;
+			}
+			.probe {
+				color: #f57000;
+			}
+
+			.accordion-text {
+				display: block;
+				width: 100%;
+				height: 350px;
+				padding: 10px 10px;
+				text-align: center;
+				font-size: 1rem;
+				background-color: #222;
+				transition: transform 0.3s, height 0.3s;
+				transform-origin: top;
+			}
+
+			.accordion-text-d-none {
+				height: 0px;
+				padding: 0;
+			}
+
+			.accordion-btn:hover {
+				background-color: #333;
+				color: #f57000;
+			}
+		}
+	}
+}
+
+@media (min-width: 320px) {
+	.password-generator {
+		.questions-section {
+			.accordion {
+				.accordion-text {
+					height: 300px;
+				}
+
+				.accordion-text-d-none {
+					height: 0px;
+				}
+
+				.accordion-btn {
+					padding: 40px 20px;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 375px) {
+	.password-generator {
+		.questions-section {
+			.accordion {
+				.accordion-text {
+					height: 250px;
+				}
+
+				.accordion-text-d-none {
+					height: 0px;
+				}
+
+				.accordion-btn {
+					padding: 40px 20px;
+				}
+			}
+		}
+	}
+}
+@media (min-width: 420px) {
+	.password-generator {
+		.questions-section {
+			.accordion {
+				.accordion-text {
+					height: 200px;
+				}
+
+				.accordion-text-d-none {
+					height: 0px;
+				}
+
+				.accordion-btn {
+					padding: 40px 20px;
+				}
+			}
+		}
+	}
 }
 
 @media (min-width: 576px) {
 	header {
 		margin-bottom: 60px;
-	
+
 		.section-title {
 			font-size: 2.5rem;
 		}
-	
+
 		p.generator-text {
 			font-size: 1.3rem;
 		}
 	}
 
 	.password-generator {
-
 		.password-generator-section {
 			padding: 100px 20px;
+		}
+
+		.questions-section {
+			.accordion {
+				.accordion-text {
+					height: 160px;
+				}
+				.accordion-text-d-none {
+					height: 0px;
+				}
+
+				.accordion-btn {
+					padding: 35px 20px;
+				}
+			}
 		}
 	}
 }
 
 @media (min-width: 992px) {
-	.password-generator-section{
-		
+	.password-generator-section {
 		header {
 			margin-bottom: 100px;
+		}
+	}
+	.password-generator {
+		.questions-section {
+			.accordion {
+				.accordion-text {
+					height: 100px;
+				}
+				.accordion-text-d-none {
+					height: 0px;
+				}
+			}
 		}
 	}
 }
