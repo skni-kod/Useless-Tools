@@ -1,18 +1,18 @@
 from django.urls import path
-from . import views
+from .views import home, generator, password, greibach, chomsky
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 
 
 urlpatterns = [
-    path('',views.home,name='home'),
-    path('generator',views.generator,name='generator'),
-    path('generate-password',views.password, name = 'password'),
-    path('greibach',views.greibach,name='greibach'),
-    path('greibach-convert',views.greibach, name = 'greibach-convert'),
-    path('chomsky',views.chomsky,name='chomsky'),
-    path('chomsky-convert',views.chomsky, name = 'chomsky-convert'), 
+    path('',home,name='home'),
+    path('generator',generator,name='generator'),
+    path('generate-password',password, name = 'password'),
+    path('greibach',greibach,name='greibach'),
+    path('greibach-convert',greibach, name = 'greibach-convert'),
+    path('chomsky',chomsky,name='chomsky'),
+    path('chomsky-convert',chomsky, name = 'chomsky-convert'), 
 
 ]
 urlpatterns += staticfiles_urlpatterns()
