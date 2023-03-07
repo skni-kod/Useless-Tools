@@ -1,11 +1,9 @@
+from django.shortcuts import reverse, render
 import string
 from random import choice
-
-from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
 from django.http import JsonResponse
-from django.shortcuts import redirect, render
+from .forms import CustomUserCreationForm
+from django.views.generic import CreateView
 
 
 def home(request):
@@ -17,12 +15,12 @@ def generator(request):
 
 
 def password(request):
-    if request.method == "POST":
-        length = int(request.POST.get("length"))
-        uppercase = request.POST.get("uppercase")
-        symbols = request.POST.get("symbols")
-        numbers = request.POST.get("numbers")
-        lowercase = request.POST.get("lowercase")
+    if request.method == 'POST':
+        length = int(request.POST.get('length'))
+        uppercase = request.POST.get('uppercase')
+        symbols = request.POST.get('symbols')
+        numbers = request.POST.get('numbers')
+        lowercase = request.POST.get('lowercase') 
         chars = []
         if lowercase:
             chars.extend(string.ascii_lowercase)
@@ -37,45 +35,14 @@ def password(request):
             for x in range(length):
                 generated_PASS += choice(chars)
         else:
-            generated_PASS = "zaznacz cos wrr"
-        return JsonResponse({"password": generated_PASS})
+            generated_PASS = 'zaznacz cos wrr'
+        return JsonResponse({'password': generated_PASS})
 
 
-def signup(request):
-    if request.method == "POST":
-        username = request.POST.get("username")
-        email = request.POST.get("email")
-        pass1 = request.POST.get("pass1")
-        request.POST.get("pass2")
-        myuser = User.objects.create_user(username, email, pass1)
-        myuser.save()
+class Signup(CreateView):
+    form_class = CustomUserCreationForm
+    template_name = 'registration/signup.html'
 
-        messages.success(request, "Twoje konto zostało utworzone!")
-
-        return redirect("signin")
-
-    return render(request, "core/signup.html")
-
-
-def signin(request):
-    if request.method == "POST":
-        username = request.POST.get("username")
-        pass1 = request.POST.get("pass1")
-
-        user = authenticate(username=username, password=pass1)
-
-        if user is not None:
-            login(request, user)
-            messages.success(request, "Zalogowano pomyślnie!")
-            return redirect("home")
-        else:
-            messages.error(request, "Błędny login lub hasło!")
-            return redirect("signin")
-
-    return render(request, "core/signin.html")
-
-
-def signout(request):
-    logout(request)
-    messages.success(request, "Wylogowano pomyślnie!")
-    return redirect("home")
+    def get_success_url(self):
+        return reverse('signin')
+        
