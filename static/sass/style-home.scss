@@ -313,7 +313,7 @@ a {
 	}
 
 	.burger-btn-click {
-		outline: 1px solid $main-theme;
+		// outline: 1px solid $main-theme;
 
 		.bar {
 			width: 0;
@@ -379,6 +379,11 @@ a {
 			transition: 0.3s;
 			cursor: pointer;
 
+			
+			.dropdown-burger{
+				height: 200px !important;
+			}
+
 			.dropdown {
 				height: 0px;
 				width: 250px;
@@ -386,8 +391,7 @@ a {
 
 				.dropdown-item {
 					display: none;
-					height: 50px;
-					transition: 3s;
+					height: 0px;
 					opacity: 0;
 
                     p{
@@ -405,13 +409,11 @@ a {
 
 			.button-burger {
 				width: 100%;
-				padding: 10px 0;
 				height: 100%;
 				font-size: 18px;
 				text-transform: uppercase;
 				letter-spacing: 1px;
 				color: $white;
-				font-family: "Montserrat", sans-serif;
 				cursor: pointer;
 				text-align: left;
 			}
@@ -432,27 +434,28 @@ a {
 			transform: scale(1);
 		}
 
-		.button-burger:focus ~ .dropdown {
-			height: 200px;
+		.dropdown-focused {
+			height: 200px !important;
 
 			.dropdown-item:nth-child(1) {
 				display: block;
-				animation: 0.25s 0.05s menu2 forwards;
+				animation: 0.25s 0.05s menu3 forwards;
+				transform-origin: bottom;
 			}
 
 			.dropdown-item:nth-child(2) {
 				display: block;
-				animation: 0.25s 0.1s menu2 forwards;
+				animation: 0.25s 0.1s menu3 forwards;
 			}
 
 			.dropdown-item:nth-child(3) {
 				display: block;
-				animation: 0.25s 0.15s menu2 forwards;
+				animation: 0.25s 0.15s menu3 forwards;
 			}
 
 			.dropdown-item:nth-child(4) {
 				display: block;
-				animation: 0.25s 0.2s menu2 forwards;
+				animation: 0.25s 0.2s menu3 forwards;
 			}
 		}   
 	}
@@ -462,12 +465,20 @@ a {
 	animation: 1.3s navAnimation both;
 }
 
-@keyframes menu1 {
+.burger-items-animation{
+	animation: .45s burgerItems both;
+}
+
+@keyframes menu3 {
 	from {
-		transform: translateY(-5px);
+		opacity: 0;
+		height: 0;
+		transform: translateY(-30px);
 	}
 
 	to {
+		opacity: 1;
+		height: 50px;
 		transform: translateY(0);
 	}
 }
