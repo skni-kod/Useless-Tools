@@ -1,20 +1,264 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang='pl'>
+<html lang="pl">
 <head>
-    <meta charset='UTF-8'>
-    <title>Home</title>
-    <link
-			href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap"
-			rel="stylesheet"
-		/>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UselessTools</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon7.png' %}">
 
 
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/26271da042.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'css/style-home.css' %}">
+
+
 </head>
 <body>
-    <a href="{%url 'generator'%}">generator brzyki ten</a>
 
+    <nav class="nav-bg">
+        <div class="nav">
+            <div class="logo">
+                <img src="{% static 'img/logo.png' %}" alt="Logo Useless tools">
+            </div>
+    
+            <div class="main-nav">
+                <ul class="menu">
+                    <li class="menu-item">
+                        <p>narzędzia</p>
+                        <ul class="dropdown">
+                            <li class="dropdown-item"><a href="generator"><p>Generator haseł</p></a></li>
+                            <li class="dropdown-item"><a href="#"><p>link 1</p></a></li>
+                            <li class="dropdown-item"><a href="#"><p>link2</p></a></li>
+                            <li class="dropdown-item"><a href="#"><p>link 3</p></a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <p>kalkulatory</p>
+                        <ul class="dropdown">
+                            <li class="dropdown-item"><a href="#"><p>Binarne</p></a></li>
+                            <li class="dropdown-item"><a href="#"><p>link 1</p></a></li>
+                            <li class="dropdown-item"><a href="#"><p>link 2</p></a></li>
+                            <li class="dropdown-item"><a href="#"><p>link 3</p></a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <p>typing speed test</p>
+                    </li>
+                    <li class="menu-item">
+                        <p>więcej</p>
+                        <ul class="dropdown">
+                            <li class="dropdown-item"><a href="#"><p>link 1</p></a></li>
+                            <li class="dropdown-item"><a href="#"><p>link 2</p></a></li>
+                            <li class="dropdown-item"><a href="#"><p>link 2</p></a></li>
+                            <li class="dropdown-item"><a href="#"><p>skni kod</p></a></li>
+                        </ul>
+                    </li>
+                <ul/>
+            </div>
+    
+            <div class="login">
+                <p>zaloguj <i class="fa-solid fa-right-to-bracket"></i></p>
+            </div>
+        </div>
+
+        <div class="burger">
+            <div class="logo">
+                <img src="{% static 'img/logo.png' %}" alt="Logo Useless tools">
+            </div>
+            <button class="burger-btn" tabindex="0">
+                <div class="bar"></div>
+            </button>
+        </div>
+
+        <div class="nav-burger">
+            <ul class="menu">
+                <li class="menu-item burger-item">
+                    <div class="button-burger"><p>narzędzia</p></div>
+                    <ul class="dropdown">
+                        <li class="dropdown-item"><a href="generator"><p>Generator haseł</p></a></li>
+                        <li class="dropdown-item"><a href="#"><p>link 1</p></a></li>
+                        <li class="dropdown-item"><a href="#"><p>link2</p></a></li>
+                        <li class="dropdown-item"><a href="#"><p>link 3</p></a></li>
+                    </ul>
+                </li>
+                <li class="menu-item burger-item">
+                    <div class="button-burger"><p>kalkulatory</p></div>
+                    <ul class="dropdown">
+                        <li class="dropdown-item"><a href="#"><p>Binarne</p></a></li>
+                        <li class="dropdown-item"><a href="#"><p>link 1</p></a></li>
+                        <li class="dropdown-item"><a href="#"><p>link 2</p></a></li>
+                        <li class="dropdown-item"><a href="#"><p>link 3</p></a></li>
+                    </ul>
+                </li>
+                <li class="menu-item burger-item">
+                    <div class="button-burger"><p>typing speed test</p></div>
+                </li>
+                <li class="menu-item burger-item">
+                    <div class="button-burger"><p>więcej</p></div>
+                    <ul class="dropdown">
+                        <li class="dropdown-item"><a href="#"><p>link 1</p></a></li>
+                        <li class="dropdown-item"><a href="#"><p>link 2</p></a></li>
+                        <li class="dropdown-item"><a href="#"><p>link 2</p></a></li>
+                        <li class="dropdown-item"><a href="#"><p>skni kod</p></a></li>
+                    </ul>
+                </li>
+            <ul/>
+        </div>
+    </nav>
+
+    <header class="hero-img">
+        <div class="hero-shadow"></div>
+        <div class="hero-text">
+            <p>Jeśli czasem czujesz się bezużyteczny to sprawdź nasze narzędzia!</p>
+            <a href="#tools"><p><i class="fa-solid fa-angle-down"></i></p></a>
+        </div>
+    </header>
+
+    <main>
+        <section id="tools" class="tools">
+            <div class="area" >
+                <ul class="circles">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                </ul>
+            </div >
+
+            <div class="tool">
+                <a href="generator">
+                    <div class="card">
+                        <div class="tool-img"></div>
+                        <div class="card-back">
+                            <p class="card-header">Generator haseł losowych</p>
+                            <p class="card-text">Narzędzie pozwalające wylosować skomplikowane hasło, idealne jeśli nie masz na nie pomysłu. Posiada możliwość wyboru długości, użytych znaków, wygenerowane hasło nie jest nigdzie zapisywane i tylko Ty masz do niego dostęp. Kod naszego generatora jest ukryty głęboko w odmętach backendu i tylko my wiemy jak on działa ;)</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+    
+            <div class="tool">
+                <a href="#">
+                    <div class="card">
+                        <div class="tool-img"></div>
+                        <div class="card-back">
+                            <p class="card-header">Kalkulator systemów liczbowych</p>
+                            <p class="card-text">Zestaw kalkulatorów pozwalających przeliczać liczby z systemu dziesiętnego na dwójkowy, ósemkowy oraz szesnastkowy oraz na odwrót! Po wprowadzeniu liczby konwerter sam uzupełni pozostałe tabelki, kalkulator działa tylko na liczbach całkowitych.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="tool">
+                <a href="#">
+                    <div class="card">
+                        <div class="tool-img"></div>
+                        <div class="card-back">
+                            <p class="card-header">Typing speed test</p>
+                            <p class="card-text">Sprawdź się w szybkości pisania za pomocą naszego testu, do wyboru jest wiele ustawień tj. długość tekstu oraz język. W przyszłości planujemy rozwinąć to narzędzie o rankingi oraz wiele innych możliwości, <span class="orange-text">stay tuned!</span></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="tool">
+                <a href="#">
+                    <div class="card">
+                        <div class="tool-img"></div>
+                        <div class="card-back">
+                            <p class="card-header">Lorem ipsum</p>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis voluptates autem sit, non animi eos? Doloremque, quibusdam! Soluta praesentium, laborum temporibus commodi, eaque delectus quaerat consequatur adipisci quibusdam labore impedit!</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="tool">
+                <a href="#">
+                    <div class="card">
+                        <div class="tool-img"></div>
+                        <div class="card-back">
+                            <p class="card-header">Lorem ipsum</p>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis voluptates autem sit, non animi eos? Doloremque, quibusdam! Soluta praesentium, laborum temporibus commodi, eaque delectus quaerat consequatur adipisci quibusdam labore impedit!</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="tool">
+                <a href="#">
+                    <div class="card">
+                        <div class="tool-img"></div>
+                        <div class="card-back">
+                            <p class="card-header">Lorem ipsum</p>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis voluptates autem sit, non animi eos? Doloremque, quibusdam! Soluta praesentium, laborum temporibus commodi, eaque delectus quaerat consequatur adipisci quibusdam labore impedit!</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="tool">
+                <a href="#">
+                    <div class="card">
+                        <div class="tool-img"></div>
+                        <div class="card-back">
+                            <p class="card-header">Lorem ipsum</p>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis voluptates autem sit, non animi eos? Doloremque, quibusdam! Soluta praesentium, laborum temporibus commodi, eaque delectus quaerat consequatur adipisci quibusdam labore impedit!</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="tool">
+                <a href="#">
+                    <div class="card">
+                        <div class="tool-img"></div>
+                        <div class="card-back">
+                            <p class="card-header">Lorem ipsum</p>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis voluptates autem sit, non animi eos? Doloremque, quibusdam! Soluta praesentium, laborum temporibus commodi, eaque delectus quaerat consequatur adipisci quibusdam labore impedit!</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="more">
+            <p>W przyszłości planujemy rozwinąć naszą stronę o jeszcze więcej <span class="orange-text">useless</span> narzędzi!</p>
+            <p><span class="orange-text">stay tuned!</span></p>
+        </section>
+
+        <section class="about">
+            <div class="bg"></div>
+        </section>
+
+        <section class="useless">
+            <a href="#"><img src="{% static 'img/logo.png' %}" alt="Logo UselessTools"></a>
+        </section>
+    </main>
+
+    <footer>
+        <p class="footer-text">&copy; 2023 UselessTools - Possibly useful tools </p>
+    </footer>
+
+    <!-- <div style="height: 100vh;"></div> -->
+
+    <script src="{% static 'js/script-burger.js' %}"></script>
 </body>
 </html>
