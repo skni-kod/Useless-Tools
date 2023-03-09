@@ -2,8 +2,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
-from .views import home, generator, password, greibach, chomsky, Signup
 
+from .views import Signup, chomsky, generator, greibach, home, password
 
 urlpatterns = [
     path("", home, name="home"),
@@ -17,11 +17,10 @@ urlpatterns = [
         name="signin",
     ),
     path("logout", LogoutView.as_view(), name="logout"),
-    path('greibach',greibach,name='greibach'),
-    path('greibach-convert',greibach, name = 'greibach-convert'),
-    path('chomsky',chomsky,name='chomsky'),
-    path('chomsky-convert',chomsky, name = 'chomsky-convert'), 
-
+    path("greibach", greibach, name="greibach"),
+    path("greibach-convert", greibach, name="greibach-convert"),
+    path("chomsky", chomsky, name="chomsky"),
+    path("chomsky-convert", chomsky, name="chomsky-convert"),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
