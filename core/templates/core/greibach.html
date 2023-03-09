@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .MaciekPL{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #greibach-form input{
+            margin: 1px;
+        }
+        #wynikGreibach{
+            margin: 10px;
+            white-space: pre-line; /* wez dodaj to do css potem. Wazne to jest bo jak przychodza dane przez jsona to korzysta z tych \n*/
+
+        }
+        .dajdwazlote{
+            width: 110%;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="MaciekPL">
+        <form id ="greibach-form" action="/greibach-convert" method="post">
+            {% csrf_token %}
+            <label for="terminalne">Symbole terminalne:</label>
+            <input label ="symbole terminalne" type="text" name="terminalne">
+            <br>
+            <label for="reguly">Wprowadź reguły</label>
+            <textarea class ="dajdwazlote" name="reguly" rows="4" cols="10"></textarea>
+        <input type="submit" value="Konwertuj">
+        </form>
+        <p id ="wynikGreibach"></p>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/greibach.js'%}"></script>
+</body>
+</html>
