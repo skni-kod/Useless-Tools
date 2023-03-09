@@ -347,6 +347,7 @@ a {
   opacity: 0;
 }
 .nav-burger .menu .menu-item .dropdown .dropdown-item p {
+  font-size: 18px;
   transition: color 0.3s, font-size 0.3s;
 }
 .nav-burger .menu .menu-item .dropdown .dropdown-item:hover p {
@@ -362,6 +363,9 @@ a {
   color: #ffffff;
   cursor: pointer;
   text-align: left;
+}
+.nav-burger .menu .menu-item .orange p {
+  color: #ff5700;
 }
 .nav-burger .menu .menu-item:hover {
   transform: translateX(13px);
@@ -868,7 +872,7 @@ footer .footer-text {
   }
   .nav-burger .menu .menu-item .dropdown .dropdown-item:hover p {
     color: #ff5700;
-    font-size: 23px;
+    font-size: 19px;
   }
 }
 @media (min-width: 815px) {
