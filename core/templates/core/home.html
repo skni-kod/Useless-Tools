@@ -32,9 +32,9 @@
                     <li class="menu-item">
                         <p>narzędzia</p>
                         <ul class="dropdown">
-                            <li class="dropdown-item"><a href="generator"><p>Generator haseł</p></a></li>
-                            <li class="dropdown-item"><a href="#"><p>link 1</p></a></li>
-                            <li class="dropdown-item"><a href="#"><p>link2</p></a></li>
+                            <li class="dropdown-item"><a href="{% url 'generator' %}"><p>Generator haseł</p></a></li>
+                            <li class="dropdown-item"><a href="{% url 'greibach' %}"><p>Greibach</p></a></li>
+                            <li class="dropdown-item"><a href="{% url 'chomsky' %}"><p>Chomsky</p></a></li>
                             <li class="dropdown-item"><a href="#"><p>link 3</p></a></li>
                         </ul>
                     </li>
@@ -63,7 +63,7 @@
             </div>
     
             <div class="login">
-                <p>zaloguj <i class="fa-solid fa-right-to-bracket"></i></p>
+                <a href="{% url 'signin' %}"><p>zaloguj <i class="fa-solid fa-right-to-bracket"></i></p></a>
             </div>
         </div>
 
@@ -81,9 +81,9 @@
                 <li class="menu-item burger-item">
                     <div class="button-burger"><p>narzędzia</p></div>
                     <ul class="dropdown">
-                        <li class="dropdown-item"><a href="generator"><p>Generator haseł</p></a></li>
-                        <li class="dropdown-item"><a href="#"><p>link 1</p></a></li>
-                        <li class="dropdown-item"><a href="#"><p>link2</p></a></li>
+                        <li class="dropdown-item"><a href="{% url 'generator' %}"><p>Generator haseł</p></a></li>
+                        <li class="dropdown-item"><a href="{% url 'greibach' %}"><p>Greibach</p></a></li>
+                        <li class="dropdown-item"><a href="{% url 'chomsky' %}"><p>Chomsky</p></a></li>
                         <li class="dropdown-item"><a href="#"><p>link 3</p></a></li>
                     </ul>
                 </li>
