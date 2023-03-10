@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}UselessTools{% endblock %}</title> 
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon7.png' %}">
+    {% block head %}
+    {% endblock %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/26271da042.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'css/style-base.css' %}">
+
+
+</head>
+<body>
+
+    <nav class="nav-bg">
+        <div class="nav">
+            <div class="logo">
+                <a href="#"><img src="{% static 'img/logo.png' %}" alt="Logo Useless tools"></a>
+            </div>
+    
+            <div class="main-nav">
+                <ul class="menu">
+                    <li class="menu-item">
+                        <p>narzędzia</p>
+                        <ul class="dropdown">
+                            <li class="dropdown-item"><a href="{% url 'generator' %}"><p>Generator haseł</p></a></li>
+                            <li class="dropdown-item"><a href="{% url 'greibach' %}"><p>Greibach</p></a></li>
+                            <li class="dropdown-item"><a href="{% url 'chomsky' %}"><p>Chomsky</p></a></li>
+                            <li class="dropdown-item"><a href="#"><p>link 3</p></a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <p>kalkulatory</p>
+                        <ul class="dropdown">
+                            <li class="dropdown-item"><a href="#"><p>Binarne</p></a></li>
+                            <li class="dropdown-item"><a href="#"><p>link 1</p></a></li>
+                            <li class="dropdown-item"><a href="#"><p>link 2</p></a></li>
+                            <li class="dropdown-item"><a href="#"><p>link 3</p></a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <p>typing speed test</p>
+                    </li>
+                    <li class="menu-item">
+                        <p>więcej</p>
+                        <ul class="dropdown">
+                            <li class="dropdown-item"><a href="#"><p>link 1</p></a></li>
+                            <li class="dropdown-item"><a href="#"><p>link 2</p></a></li>
+                            <li class="dropdown-item"><a href="#"><p>link 2</p></a></li>
+                            <li class="dropdown-item"><a href="#"><p>skni kod</p></a></li>
+                        </ul>
+                    </li>
+                <ul/>
+            </div>
+    
+            <div class="login">
+                <a href="{% url 'signin' %}"><p>zaloguj <i class="fa-solid fa-right-to-bracket"></i></p></a>
+            </div>
+        </div>
+
+        <div class="burger">
+            <div class="logo">
+                <img src="{% static 'img/logo.png' %}" alt="Logo Useless tools">
+            </div>
+            <button class="burger-btn" tabindex="0">
+                <div class="bar"></div>
+            </button>
+        </div>
+
+        <div class="nav-burger">
+            <ul class="menu">
+                <li class="menu-item burger-item">
+                    <div class="button-burger"><p>narzędzia</p></div>
+                    <ul class="dropdown">
+                        <li class="dropdown-item"><a href="{% url 'generator' %}"><p>Generator haseł</p></a></li>
+                        <li class="dropdown-item"><a href="{% url 'greibach' %}"><p>Greibach</p></a></li>
+                        <li class="dropdown-item"><a href="{% url 'chomsky' %}"><p>Chomsky</p></a></li>
+                        <li class="dropdown-item"><a href="#"><p>link 3</p></a></li>
+                    </ul>
+                </li>
+                <li class="menu-item burger-item">
+                    <div class="button-burger"><p>kalkulatory</p></div>
+                    <ul class="dropdown">
+                        <li class="dropdown-item"><a href="#"><p>Binarne</p></a></li>
+                        <li class="dropdown-item"><a href="#"><p>link 1</p></a></li>
+                        <li class="dropdown-item"><a href="#"><p>link 2</p></a></li>
+                        <li class="dropdown-item"><a href="#"><p>link 3</p></a></li>
+                    </ul>
+                </li>
+                <li class="menu-item burger-item">
+                    <div class="button-burger"><p>typing speed test</p></div>
+                </li>
+                <li class="menu-item burger-item">
+                    <div class="button-burger"><p>więcej</p></div>
+                    <ul class="dropdown">
+                        <li class="dropdown-item"><a href="#"><p>link 1</p></a></li>
+                        <li class="dropdown-item"><a href="#"><p>link 2</p></a></li>
+                        <li class="dropdown-item"><a href="#"><p>link 2</p></a></li>
+                        <li class="dropdown-item"><a href="#"><p>skni kod</p></a></li>
+                    </ul>
+                </li>
+            <ul/>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+
+    <footer>
+        <p class="footer-text">&copy; 2023 UselessTools - Possibly useful tools </p>
+    </footer>
+
+    <!-- <div style="height: 100vh;"></div> -->
+
+    <script src="{% static 'js/script-burger.js' %}"></script>
+</body>
+</html>
