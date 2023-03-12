@@ -18,7 +18,7 @@ body {
   justify-content: center;
   align-items: center;
   left: 50%;
-  top: 100px;
+  top: 320px;
   transform: translate(-50%, -50%);
   padding: 15px;
   font-size: 0.8rem;
@@ -63,7 +63,7 @@ header p.generator-text {
   margin: 0 auto;
 }
 .password-generator .password-generator-section {
-  padding: 30px 10px;
+  padding: 120px 30px 30px 30px;
 }
 .password-generator .password-generator-section .password-generator-form {
   display: flex;
@@ -284,7 +284,7 @@ header p.generator-text {
   font-size: 1.1rem;
 }
 .password-generator .password-strength-section {
-  margin: 0 auto 100px;
+  margin: 0 auto;
   padding: 40px 10px;
 }
 .password-generator .password-strength-section .cards {
@@ -422,7 +422,7 @@ header p.generator-text {
     font-size: 1.3rem;
   }
   .password-generator .password-generator-section {
-    padding: 100px 20px;
+    padding: 170px 30px 30px 30px;
   }
   .password-generator .questions-section .accordion .accordion-text {
     height: 160px;
@@ -444,4 +444,4 @@ header p.generator-text {
   .password-generator .questions-section .accordion .accordion-text-d-none {
     height: 0px;
   }
-}/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=style-generator.css.map */

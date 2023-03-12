@@ -1,0 +1,24 @@
+@use 'colors' as *;
+
+footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 10vh;
+	background-color: $main-theme;
+	font-size: 20px;
+
+	.footer-text{
+		font-size: 12px;
+		text-align: center;
+	}
+}
+
+@media (min-width: 315px){
+    footer{
+		.footer-text{
+			font-size: 14px;
+		}
+	}
+}

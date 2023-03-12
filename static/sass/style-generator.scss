@@ -18,7 +18,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	left: 50%;
-	top: 100px;
+	top: 320px;
 	transform: translate(-50%, -50%);
 	padding: 15px;
 	font-size: 0.8rem;
@@ -27,6 +27,7 @@ body {
 	box-shadow: 0 0 3px #fff;
 	border-radius: 25px;
 	background-color: #222;
+	// z-index: 10000;
 }
 
 .dnone {
@@ -68,7 +69,7 @@ header {
 	margin: 0 auto;
 
 	.password-generator-section {
-		padding: 30px 10px;
+		padding: 120px 30px 30px 30px;
 
 		//PASSWORD_GENERATOR  --- FORM
 		.password-generator-form {
@@ -323,7 +324,7 @@ header {
 
 	//PASSWORD_STRENGTH_SECTION
 	.password-strength-section {
-		margin: 0 auto 100px;
+		margin: 0 auto;
 		padding: 40px 10px;
 		// background-color: #333333;
 
@@ -507,7 +508,7 @@ header {
 
 	.password-generator {
 		.password-generator-section {
-			padding: 100px 20px;
+			padding: 170px 30px 30px 30px;
 		}
 
 		.questions-section {
