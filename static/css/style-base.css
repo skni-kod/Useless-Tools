@@ -201,15 +201,17 @@ a {
   text-transform: uppercase;
   padding: 20px;
   letter-spacing: 1px;
-  transition: 0.3s;
   cursor: pointer;
 }
-.login i {
+.login a p {
+  transition: transform 0.3s, color 0.3s;
+}
+.login a p i {
   font-size: 14px;
   margin-left: 3px;
 }
 
-.login:hover {
+.login:hover a p {
   transform: scale(0.95);
   color: #ff5700;
 }
@@ -476,7 +478,7 @@ footer {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 10vh;
+  height: 70px;
   background-color: #ff5700;
   font-size: 20px;
 }
