@@ -1,5 +1,4 @@
-@use 'colors' as *;
-
+@use "colors" as *;
 
 * {
 	box-sizing: border-box;
@@ -9,14 +8,18 @@
 
 body {
 	font-family: "Montserrat", sans-serif;
-	background: rgb(48,48,48);
-	background: linear-gradient(90deg, rgb(37, 37, 37) 0%, rgba(34,34,34,1) 100%);
+	background: rgb(48, 48, 48);
+	background: linear-gradient(
+		90deg,
+		rgb(37, 37, 37) 0%,
+		rgba(34, 34, 34, 1) 100%
+	);
 	margin: 0 auto;
 	color: $white;
 	font-size: 62.5%;
 }
 
-html{
+html {
 	scroll-behavior: smooth;
 }
 
@@ -44,13 +47,13 @@ a {
 ::-webkit-scrollbar {
 	background-color: $bgc;
 	width: 9px;
-  }
-  
+}
+
 ::-webkit-scrollbar-thumb {
 	background-color: $main-theme;
 	border-radius: 50px;
 }
-  
+
 // NAV------------------------------------------------------------------------------------------------------------
 
 .nav {
@@ -125,7 +128,6 @@ a {
 			width: 0;
 			border: 0px solid $main-theme;
 			transition: 0.5s;
-
 		}
 
 		.menu-item::after {
@@ -230,18 +232,27 @@ a {
 	text-transform: uppercase;
 	padding: 20px;
 	letter-spacing: 1px;
-	transition: 0.3s;
 	cursor: pointer;
 
-	i {
-		font-size: 14px;
-		margin-left: 3px;
+	a{
+		p{
+			transition: transform .3s, color .3s;
+			
+			i {
+				font-size: 14px;
+				margin-left: 3px;
+			}
+		}
 	}
 }
 
 .login:hover {
-	transform: scale(0.95);
-	color: $main-theme;
+	a {
+		p {
+			transform: scale(0.95);
+			color: $main-theme;
+		}
+	}
 }
 
 @keyframes menu2 {
@@ -333,7 +344,7 @@ a {
 	}
 }
 
-.nav--active{
+.nav--active {
 	transform: translateX(0) !important;
 }
 
@@ -351,7 +362,7 @@ a {
 	font-size: 18px;
 	z-index: 0;
 	transform: translateX(110%);
-	transition: transform .5s;
+	transition: transform 0.5s;
 	border-left: 2px solid $main-theme;
 
 	.menu {
@@ -372,7 +383,7 @@ a {
 			transform: scale(0);
 		}
 
-		.burger-item{
+		.burger-item {
 			opacity: 0;
 		}
 
@@ -380,8 +391,7 @@ a {
 			transition: 0.3s;
 			cursor: pointer;
 
-			
-			.dropdown-burger{
+			.dropdown-burger {
 				height: 200px !important;
 			}
 
@@ -395,17 +405,17 @@ a {
 					height: 0px;
 					opacity: 0;
 
-                    p{
-                        transition: color .3s, font-size .3s;
-                    }
+					p {
+						transition: color 0.3s, font-size 0.3s;
+					}
 				}
 
-                .dropdown-item:hover{
-                    p{
-                        color: $main-theme;
-                        font-size: 19px;
-                    }
-                }
+				.dropdown-item:hover {
+					p {
+						color: $main-theme;
+						font-size: 19px;
+					}
+				}
 			}
 
 			.button-burger {
@@ -425,7 +435,7 @@ a {
 
 			.button-burger {
 				color: $main-theme;
-					p{
+				p {
 					color: $main-theme;
 				}
 			}
@@ -458,16 +468,16 @@ a {
 				display: block;
 				animation: 0.25s 0.2s menu3 forwards;
 			}
-		}   
+		}
 	}
 }
 
-.nav-animation{
+.nav-animation {
 	animation: 1.3s navAnimation both;
 }
 
-.burger-items-animation{
-	animation: .45s burgerItems both;
+.burger-items-animation {
+	animation: 0.45s burgerItems both;
 }
 
 @keyframes menu3 {
@@ -485,48 +495,47 @@ a {
 }
 
 @keyframes navAnimation {
-	0%{
+	0% {
 		opacity: 0;
 	}
 
-	100%{
+	100% {
 		opacity: 1;
 	}
 }
 
-@media (min-width: 576px){
-    .nav-burger{
+@media (min-width: 576px) {
+	.nav-burger {
 		width: 320px;
 	}
 }
 
-@media (min-width: 576px){
-    footer{
-		.footer-text{
+@media (min-width: 576px) {
+	footer {
+		.footer-text {
 			font-size: 18px;
 		}
 	}
 }
 
-@media (min-width: 768px){
-	.button-burger{
-		p{
+@media (min-width: 768px) {
+	.button-burger {
+		p {
 			font-size: 22px;
 			color: white;
 		}
 	}
 
-	.nav-burger{
+	.nav-burger {
 		font-size: 22px;
-
 	}
 
-	.nav-burger{
-		.menu{
-			.menu-item{
-				.dropdown{
-					.dropdown-item:hover{
-						p{
+	.nav-burger {
+		.menu {
+			.menu-item {
+				.dropdown {
+					.dropdown-item:hover {
+						p {
 							color: $main-theme;
 							font-size: 23px;
 						}
@@ -537,7 +546,7 @@ a {
 	}
 }
 
-@media (min-width: 815px){
+@media (min-width: 815px) {
 	.burger {
 		justify-content: center;
 
@@ -546,7 +555,6 @@ a {
 		}
 	}
 }
-
 
 @media (min-width: 992px) {
 	.burger {
@@ -562,7 +570,7 @@ a {
 		height: 70px;
 	}
 
-	.nav-burger{
+	.nav-burger {
 		display: none;
 	}
 }
