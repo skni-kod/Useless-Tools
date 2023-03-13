@@ -1,3 +1,4 @@
+@import 'colors';
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -7,10 +8,11 @@
 body {
 	margin: 0 auto;
 	font-size: 10px;
-	color: #fff;
+	color: $white;
 	font-family: 'Montserrat', sans-serif;
-	background-color: #222222;
+	// background-color: white;
 }
+
 
 .message {
 	position: absolute;
@@ -24,7 +26,7 @@ body {
 	font-size: 0.8rem;
 	text-align: center;
 	text-transform: uppercase;
-	box-shadow: 0 0 3px #fff;
+	box-shadow: 0 0 3px $white;
 	border-radius: 25px;
 	background-color: #222;
 	// z-index: 10000;
@@ -36,9 +38,15 @@ body {
 
 .container {
 	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 	width: 100%;
 	max-width: 1400px;
 }
+
+
 
 // PASSWORD_GENERATOR_SECTION --- HEADER
 header {
@@ -54,9 +62,10 @@ header {
 		margin-bottom: 15px;
 		font-size: 1.8rem;
 		font-weight: bold;
-		color: #f57000;
+		color: $main-theme;
 		text-transform: uppercase;
 		letter-spacing: 2px;
+		// text-shadow: 0 0 1px black;
 	}
 
 	p.generator-text {
@@ -66,10 +75,14 @@ header {
 //-------------------------------------------------
 
 .password-generator {
+	position: relative;
 	margin: 0 auto;
+	height: 100%;
+
 
 	.password-generator-section {
 		padding: 120px 30px 30px 30px;
+		
 
 		//PASSWORD_GENERATOR  --- FORM
 		.password-generator-form {
@@ -94,7 +107,7 @@ header {
 					width: 100%;
 					max-width: 536px;
 					height: 50px;
-					border: 2px solid #fff;
+					border: 2px solid $white;
 					border-radius: 15px;
 					overflow: hidden;
 					transition: 0.5s;
@@ -119,7 +132,7 @@ header {
 					font-size: 1.4rem;
 					text-align: center;
 					padding-right: 10px;
-					color: #fff;
+					color: $white;
 					background: none;
 					border: none;
 					transition: transform 0.3s;
@@ -140,13 +153,13 @@ header {
 					padding: 12px 24px;
 					text-align: center;
 					font-size: 0.8rem;
-					color: #fff;
+					color: $white;
 					text-transform: uppercase;
 					border-radius: 25px;
 					border: none;
-					background-color: #f57000;
-					box-shadow: 0 0 3px #f57000;
-					border: 1px solid #fff;
+					background-color: $main-theme;
+					box-shadow: 0 0 3px $main-theme;
+					border: 1px solid $white;
 					transition: transform 0.3s;
 				}
 
@@ -197,9 +210,9 @@ header {
 						text-align: center;
 						line-height: 40px;
 						border-radius: 50%;
-						background-color: #f57000;
-						color: #fff;
-						border: 1px solid #fff;
+						background-color: $main-theme;
+						color: $white;
+						border: 1px solid $white;
 						cursor: pointer;
 						transition: transform 0.3s;
 					}
@@ -223,8 +236,8 @@ header {
 						width: 40px;
 						height: 40px;
 						border-radius: 50%;
-						border: 2px solid #fff;
-						background-color: #f57000;
+						border: 2px solid $white;
+						background-color: $main-theme;
 						cursor: pointer;
 						transition: transform 0.3s;
 					}
@@ -262,13 +275,13 @@ header {
 							height: 20px;
 							cursor: pointer;
 							appearance: none;
-							border: 2px solid #fff;
+							border: 2px solid $white;
 							border-radius: 5px;
 							transition: scale 0.3s;
 						}
 
 						.pass-checkbox:checked {
-							box-shadow: 0 0 4px #f57000;
+							box-shadow: 0 0 4px $main-theme;
 						}
 
 						.pass-checkbox:hover {
@@ -287,8 +300,8 @@ header {
 								80% 0%,
 								43% 62%
 							);
-							background-color: #f57000;
-							color: #fff;
+							background-color: $main-theme;
+							color: $white;
 							width: 14px;
 							height: 14px;
 							font-size: 0.2rem;
@@ -326,7 +339,9 @@ header {
 	.password-strength-section {
 		margin: 0 auto;
 		padding: 40px 10px;
-		// background-color: #333333;
+		color: #333;
+		background-color: $white;
+		box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 
 		.cards {
 			display: flex;
@@ -351,7 +366,7 @@ header {
 			.card-icon {
 				font-size: 2rem;
 				margin-bottom: 20px;
-				text-shadow: 0 0 4px #f57000;
+				// text-shadow: 0 0 4px $main-theme;
 			}
 
 			.card-title {
@@ -368,8 +383,13 @@ header {
 	//QUESTIONS_SECTION
 
 	.questions-section {
-		margin-bottom: 50px;
-		padding: 40px 10px;
+		padding: 60px 10px;
+
+
+		.section-title{
+			color:$white;
+		}
+		
 
 		.accordion {
 			display: flex;
@@ -406,7 +426,7 @@ header {
 				cursor: pointer;
 			}
 			.probe {
-				color: #f57000;
+				color: $main-theme;
 			}
 
 			.accordion-text {
@@ -428,7 +448,7 @@ header {
 
 			.accordion-btn:hover {
 				background-color: #333;
-				color: #f57000;
+				color: $main-theme;
 			}
 		}
 	}
@@ -508,10 +528,11 @@ header {
 
 	.password-generator {
 		.password-generator-section {
-			padding: 170px 30px 30px 30px;
+			padding: 170px 30px 100px 30px;
 		}
 
 		.questions-section {
+			padding: 90px 30px 160px 30px;
 			.accordion {
 				.accordion-text {
 					height: 160px;
@@ -535,7 +556,193 @@ header {
 		}
 	}
 	.password-generator {
+		.background-repair-kit{
+			padding: 70px 50px 50px;
+			border: 1px solid $white;
+			border-radius: 15px;
+			background-color: $bgc;
+			box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 1);
+		}
+
+		.circles{
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			z-index: -150;
+		
+			li{
+				position: absolute;
+				display: block;
+				list-style: none;
+				width: 20px;
+				height: 20px;
+				background: $main-theme;
+				animation: animate 60s linear infinite;
+				bottom: -150px;
+				opacity: 0;
+			}
+	
+			li:nth-child(1){
+				left: 25%;
+				bottom: 50%;
+				width: 60px;
+				height: 60px;
+				animation-delay: 0s;
+			}
+			
+			
+			li:nth-child(2){
+				left: 10%;
+				bottom: 30%;
+				width: 20px;
+				height: 20px;
+				animation-delay: 2s;
+				animation-duration: 35s;
+			}
+			
+			li:nth-child(3){
+				left: 70%;
+				bottom: 70%;
+				width: 20px;
+				height: 20px;
+				animation-delay: 34s;
+			}
+			
+			li:nth-child(4){
+				left: 40%;
+				bottom: 60%;
+				width: 60px;
+				height: 60px;
+				animation-delay: 0s;
+				animation-duration: 28s;
+			}
+			
+			li:nth-child(5){
+				left: 65%;
+				bottom: 20%;
+				width: 20px;
+				height: 20px;
+				animation-delay: 0s;
+			}
+			
+			li:nth-child(6){
+				left: 75%;
+				bottom: 40%;
+				width: 110px;
+				height: 110px;
+				animation-delay: 3s;
+			}
+			
+			li:nth-child(7){
+				left: 35%;
+				bottom: 10%;
+				width: 150px;
+				height: 150px;
+				animation-delay: 7s;
+			}
+			
+			li:nth-child(8){
+				left: 50%;
+				width: 25px;
+				height: 25px;
+				animation-delay: 15s;
+				animation-duration: 45s;
+			}
+			
+			li:nth-child(9){
+				left: 20%;
+				width: 15px;
+				height: 15px;
+				animation-delay: 2s;
+				animation-duration: 35s;
+			}
+			
+			li:nth-child(10){
+				left: 85%;
+				width: 150px;
+				height: 150px;
+				animation-delay: 0s;
+				animation-duration: 51s;
+			}
+	
+			li:nth-child(11){
+				left: 80%;
+				bottom: 70%;
+				width: 50px;
+				height: 50px;
+				animation-delay: 3s;
+				animation-duration: 49s;
+			}
+	
+			li:nth-child(12){
+				left: 65%;
+				bottom: 50%;
+				width: 30px;
+				height: 30px;
+				animation-delay: 0s;
+				animation-duration: 42s;
+			}
+	
+			li:nth-child(13){
+				left: 25%;
+				bottom: 75%;
+				width: 50px;
+				height: 50px;
+				animation-delay: 6s;
+				animation-duration: 31s;
+			}
+	
+			li:nth-child(14){
+				left: 15%;
+				bottom: 40%;
+				width: 20px;
+				height: 20px;
+				animation-delay: 0s;
+				animation-duration: 59s;
+			}
+	
+			li:nth-child(15){
+				left: 10%;
+				bottom: 30%;
+				width: 45px;
+				height: 45px;
+				animation-delay: 12s;
+				animation-duration: 55s;
+			}
+		}
+		@keyframes animate {
+	
+			0%{
+				transform: translateY(0) rotate(0deg);
+				opacity: 0;
+				border-radius: 0;
+			}
+		
+			15%{
+				opacity: 1;
+			}
+		
+			50%{
+				transform: translateY(-500px) rotate(360deg);
+				border-radius: 25%;
+			}
+		
+			100%{
+				transform: translateY(-1000px) rotate(720deg);
+				opacity: 0;
+				border-radius: 50%;
+			}
+		
+		}
+		.password-strength-section{
+			padding: 70px 10px 50px;
+		}
+
 		.questions-section {
+			padding: 100px 30px 170px 30px;
 			.accordion {
 				.accordion-text {
 					height: 100px;

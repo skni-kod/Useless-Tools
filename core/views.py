@@ -256,7 +256,7 @@ def greibach(request):
                 wynikGr += "\n"
             return JsonResponse({"wynikGreibach": wynikGr})
         except:
-            return JsonResponse({"wynikGreibach": "wproawdzono niepoprawne dane"})
+            return JsonResponse({"wynikGreibach": "wprowadzono niepoprawne dane"})
     return render(request, "core/greibach.html")
 
 

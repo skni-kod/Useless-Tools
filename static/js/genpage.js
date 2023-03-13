@@ -1,6 +1,7 @@
 const plusBtn = document.querySelector('.plus');
 const minusBtn = document.querySelector('.minus');
 const copyBtn = document.querySelector('.copy-btn');
+const generateBtn = document.querySelector('generate-btn');
 let lengthInput = document.querySelector('.range-slider');
 let length = document.querySelector('.choosed-length');
 let password = document.querySelector('.password-text');
@@ -62,6 +63,7 @@ plusBtn.addEventListener('click', add);
 minusBtn.addEventListener('click', subtraction);
 lengthInput.addEventListener('input', passwordStrength);
 copyBtn.addEventListener('click', passwordCopyMessage);
+
 
 for (let i = 0; i < questionBtns.length; i++) {
 	questionBtns[i].addEventListener('click', removeQuestionsClass);

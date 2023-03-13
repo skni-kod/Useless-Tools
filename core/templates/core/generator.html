@@ -1,134 +1,152 @@
-{% extends 'core/base.html' %}
-{% load static %}
-{% block title %} Generator haseł {% endblock %}
-{% block head %}
+{% extends 'core/base.html' %} {% load static %} {% block title %} Generator
+haseł {% endblock %} {% block head %}
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
 	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
 	rel="stylesheet"
 />
-<link rel="stylesheet" href="{% static 'css/style-generator.css' %}".>
+<link rel="stylesheet" href="{% static 'css/style-generator.css' %}" . />
 <script
 	src="https://kit.fontawesome.com/ba112db997.js"
 	crossorigin="anonymous"
 ></script>
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 
 <main class="password-generator">
+	<div class="area">
+		<ul class="circles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
 	<section class="password-generator-section">
 		<div class="container">
-			<header>
-				<h2 class="section-title">Generator haseł losowych</h2>
-				<p class="generator-text">
-					Stwórz silne i niezawodne hasło, by mieć pewność, że jesteś
-					bezpieczny!
-				</p>
-			</header>
+			<div class="background-repair-kit">
+				<header>
+					<h2 class="section-title">Generator haseł losowych</h2>
+					<p class="generator-text">
+						Stwórz silne i niezawodne hasło, by mieć pewność, że jesteś
+						bezpieczny!
+					</p>
+				</header>
 
-			<form
-				id="password-form"
-				class="password-generator-form"
-				action="generate-password"
-				method="post"
-			>
-				{% csrf_token %}
-				<div class="display-password-container">
-					<div class="password green">
-						<div class="display-password">
-							<p id="password" class="password-text">Generuj hasło</p>
+				<form
+					id="password-form"
+					class="password-generator-form"
+					action="generate-password"
+					method="post"
+				>
+					{% csrf_token %}
+					<div class="display-password-container">
+						<div class="password green">
+							<div class="display-password">
+								<p id="password" class="password-text">Generuj hasło</p>
+							</div>
+
+							<button class="generate-btn" type="submit" value="generate">
+								<i class="fa-solid fa-rotate-right"></i>
+							</button>
 						</div>
-
-						<button class="generate-btn" type="submit" value="generate">
-							<i class="fa-solid fa-rotate-right"></i>
+						<button type="button" class="copy-btn">
+							<i class="fa-solid fa-copy"></i> Kopiuj
 						</button>
 					</div>
-					<button type="button" class="copy-btn">
-						<i class="fa-solid fa-copy"></i> Kopiuj
-					</button>
-				</div>
-				<div class="password-container">
-					<div class="password-settings-container">
-						<div class="password-length">
-							<p>Długość hasła:</p>
-							<output
-								class="choosed-length"
-								name="lengthOutputId"
-								for="length"
-								>12</output
-							>
+					<div class="password-container">
+						<div class="password-settings-container">
+							<div class="password-length">
+								<p>Długość hasła:</p>
+								<output
+									class="choosed-length"
+									name="lengthOutputId"
+									for="length"
+									>12</output
+								>
+							</div>
+							<div class="length-change-container">
+								<button type="button" class="length-change minus">
+									<i class="fa-solid fa-minus"></i>
+								</button>
+								<input
+									class="range-slider"
+									type="range"
+									name="length"
+									min="4"
+									max="50"
+									step="1"
+									value="12"
+									oninput="lengthOutputId.value = length.value"
+								/>
+								<button type="button" class="length-change plus">
+									<i class="fa-solid fa-plus"></i>
+								</button>
+							</div>
 						</div>
-						<div class="length-change-container">
-							<button type="button" class="length-change minus">
-								<i class="fa-solid fa-minus"></i>
-							</button>
-							<input
-								class="range-slider"
-								type="range"
-								name="length"
-								min="4"
-								max="50"
-								step="1"
-								value="12"
-								oninput="lengthOutputId.value = length.value"
-							/>
-							<button type="button" class="length-change plus">
-								<i class="fa-solid fa-plus"></i>
-							</button>
-						</div>
-					</div>
 
-					<div class="password-settings-container used-characters">
-						<p>Użyte znaki:</p>
-						<div class="password-characters">
-							<div class="pass-item">
-								<input
-									checked
-									class="pass-checkbox"
-									type="checkbox"
-									name="lowercase"
-								/><label class="settings-description" for="lowercase"
-									>abc</label
-								>
-							</div>
-							<div class="pass-item">
-								<input
-									class="pass-checkbox"
-									type="checkbox"
-									name="uppercase"
-								/><label class="settings-description" for="uppercase"
-									>ABC</label
-								>
-							</div>
-							<div class="pass-item">
-								<input
-									class="pass-checkbox"
-									type="checkbox"
-									name="numbers"
-								/><label class="settings-description" for="numbers"
-									>123</label
-								>
-							</div>
-							<div class="pass-item">
-								<input
-									class="pass-checkbox"
-									type="checkbox"
-									name="symbols"
-								/><label class="settings-description" for="symbols"
-									>#&$</label
-								>
+						<div class="password-settings-container used-characters">
+							<p>Użyte znaki:</p>
+							<div class="password-characters">
+								<div class="pass-item">
+									<input
+										checked
+										class="pass-checkbox"
+										type="checkbox"
+										name="lowercase"
+									/><label class="settings-description" for="lowercase"
+										>abc</label
+									>
+								</div>
+								<div class="pass-item">
+									<input
+										class="pass-checkbox"
+										type="checkbox"
+										name="uppercase"
+									/><label class="settings-description" for="uppercase"
+										>ABC</label
+									>
+								</div>
+								<div class="pass-item">
+									<input
+										class="pass-checkbox"
+										type="checkbox"
+										name="numbers"
+									/><label class="settings-description" for="numbers"
+										>123</label
+									>
+								</div>
+								<div class="pass-item">
+									<input
+										class="pass-checkbox"
+										type="checkbox"
+										name="symbols"
+									/><label class="settings-description" for="symbols"
+										>#&$</label
+									>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
 	</section>
 
 	<section class="password-strength-section">
 		<div class="container">
+			<div class="backgroun-repair-kit">
 			<header>
 				<h2 class="section-title">Jakie powinno być silne hasło?</h2>
 				<hr />
@@ -138,17 +156,17 @@
 					<p class="card-icon"><i class="fa-solid fa-feather"></i></p>
 					<p class="card-title">Długie</p>
 					<p class="card-text">
-						Im dłuższe jest hasło, tym większe zapewnia bezpieczeństwo.
-						Silne hasło powinno składać się z co najmniej 10 znaków.
+						Im dłuższe jest hasło, tym większe zapewnia bezpieczeństwo. Silne
+						hasło powinno składać się z co najmniej 10 znaków.
 					</p>
 				</div>
 				<div class="card">
 					<p class="card-icon"><i class="fa-solid fa-gears"></i></p>
 					<p class="card-title">Złożone</p>
 					<p class="card-text">
-						Silne hasła łączą w sobie duże i małe litery oraz cyfry i
-						symbole, które tworzą trudne do odgadnięcia łańcuchy znaków
-						nieprzypominające słów ani imion.
+						Silne hasła łączą w sobie duże i małe litery oraz cyfry i symbole,
+						które tworzą trudne do odgadnięcia łańcuchy znaków nieprzypominające
+						słów ani imion.
 					</p>
 				</div>
 				<div class="card">
@@ -156,19 +174,19 @@
 					<p class="card-title">Unikalne</p>
 					<p class="card-text">
 						Aby hasła były silne, powinny być inne dla każdego konta — takie
-						rozwiązanie pozwala zminimalizować ryzyko w przypadku ataku
-						hakera.
+						rozwiązanie pozwala zminimalizować ryzyko w przypadku ataku hakera.
 					</p>
 				</div>
 				<div class="card">
 					<p class="card-icon"><i class="fa-solid fa-lock"></i></p>
 					<p class="card-title">Tajne</p>
 					<p class="card-text">
-						Nigdy nie udostępniaj nigdzie swoich haseł i nie dopuszczaj do
-						ich wycieku, my również nie zapisujemy wygenerowanych haseł.
+						Nigdy nie udostępniaj nigdzie swoich haseł i nie dopuszczaj do ich
+						wycieku, my również nie zapisujemy wygenerowanych haseł.
 					</p>
 				</div>
 			</div>
+		</div>
 		</div>
 	</section>
 
@@ -186,11 +204,10 @@
 
 					<p class="accordion-text accordion-text-d-none">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Perspiciatis, modi debitis repellendus quidem impedit, dolores
-						quia repellat suscipit illum reiciendis accusantium ratione
-						eaque earum quis quaerat maiores nam nobis sint voluptates culpa
-						consectetur temporibus quae hic. Distinctio nobis nostrum
-						itaque!
+						Perspiciatis, modi debitis repellendus quidem impedit, dolores quia
+						repellat suscipit illum reiciendis accusantium ratione eaque earum
+						quis quaerat maiores nam nobis sint voluptates culpa consectetur
+						temporibus quae hic. Distinctio nobis nostrum itaque!
 					</p>
 				</div>
 				<div class="accordion-item">
@@ -200,11 +217,10 @@
 
 					<p class="accordion-text accordion-text-d-none">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Perspiciatis, modi debitis repellendus quidem impedit, dolores
-						quia repellat suscipit illum reiciendis accusantium ratione
-						eaque earum quis quaerat maiores nam nobis sint voluptates culpa
-						consectetur temporibus quae hic. Distinctio nobis nostrum
-						itaque!
+						Perspiciatis, modi debitis repellendus quidem impedit, dolores quia
+						repellat suscipit illum reiciendis accusantium ratione eaque earum
+						quis quaerat maiores nam nobis sint voluptates culpa consectetur
+						temporibus quae hic. Distinctio nobis nostrum itaque!
 					</p>
 				</div>
 				<div class="accordion-item">
@@ -214,11 +230,10 @@
 
 					<p class="accordion-text accordion-text-d-none">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Perspiciatis, modi debitis repellendus quidem impedit, dolores
-						quia repellat suscipit illum reiciendis accusantium ratione
-						eaque earum quis quaerat maiores nam nobis sint voluptates culpa
-						consectetur temporibus quae hic. Distinctio nobis nostrum
-						itaque!
+						Perspiciatis, modi debitis repellendus quidem impedit, dolores quia
+						repellat suscipit illum reiciendis accusantium ratione eaque earum
+						quis quaerat maiores nam nobis sint voluptates culpa consectetur
+						temporibus quae hic. Distinctio nobis nostrum itaque!
 					</p>
 				</div>
 				<div class="accordion-item">
@@ -228,11 +243,10 @@
 
 					<p class="accordion-text accordion-text-d-none">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Perspiciatis, modi debitis repellendus quidem impedit, dolores
-						quia repellat suscipit illum reiciendis accusantium ratione
-						eaque earum quis quaerat maiores nam nobis sint voluptates culpa
-						consectetur temporibus quae hic. Distinctio nobis nostrum
-						itaque!
+						Perspiciatis, modi debitis repellendus quidem impedit, dolores quia
+						repellat suscipit illum reiciendis accusantium ratione eaque earum
+						quis quaerat maiores nam nobis sint voluptates culpa consectetur
+						temporibus quae hic. Distinctio nobis nostrum itaque!
 					</p>
 				</div>
 			</div>
