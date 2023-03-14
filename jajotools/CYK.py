@@ -34,7 +34,7 @@ slowo = str(input())
 tabela = []
 for i in range(len(slowo)):
     tabela.append([])
-    for x in range(len(slowo)-i):
+    for x in range(len(slowo) - i):
         tabela[i].append([])
 
 
@@ -51,10 +51,13 @@ for i in range(1, len(tabela)):
     for x in range(len(tabela[i])):
         for a in range(i):
             for b in range(len(tabela[a][x])):
-                for c in range(len(tabela[i-(a+1)][x+a+1])):
+                for c in range(len(tabela[i - (a + 1)][x + a + 1])):
                     for y in range(len(reguly_prod)):
                         for z in range(len(reguly_prod[y])):
-                            if tabela[a][x][b] + tabela[i-(a+1)][x+(a+1)][c] == reguly_prod[y][z]:
+                            if (
+                                tabela[a][x][b] + tabela[i - (a + 1)][x + (a + 1)][c]
+                                == reguly_prod[y][z]
+                            ):
                                 if symbole_pocz[y] not in tabela[i][x]:
                                     tabela[i][x].append(symbole_pocz[y])
 
