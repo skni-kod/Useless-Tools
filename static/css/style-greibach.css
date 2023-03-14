@@ -1,7 +1,79 @@
-body {
-  min-height: 100vh;
+.container {
+  width: 100%;
+  max-width: 1400px;
 }
 
-#wynikGreibach {
-  white-space: pre-line;
+.grammar .grammar-form-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 140px 30px 130px;
+}
+.grammar .grammar-form-section .grammar-title {
+  text-align: center;
+  color: #ff5700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+.grammar .grammar-form-section .grammar-form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+.grammar .grammar-form-section .text-area-label {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+.grammar .grammar-form-section .text-area {
+  width: 100%;
+  margin-bottom: 35px;
+  color: #ffffff;
+  font-size: 16px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: #222;
+  border: 1px solid white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 0 black;
+}
+.grammar .grammar-form-section .terminals {
+  padding: 5px 5px;
+}
+.grammar .grammar-form-section .rules {
+  padding: 5px 5px;
+  height: 150px;
+  min-height: 50px;
+  max-height: 250px;
+  resize: vertical;
+}
+.grammar .grammar-form-section .submit-btn {
+  align-self: center;
+  padding: 12px 24px;
+  margin-bottom: 35px;
+  font-size: 14px;
+  color: white;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: #ff5700;
+  border: none;
+  border-radius: 5px;
+  transition: transform 0.3s;
+}
+.grammar .grammar-form-section .submit-btn:hover {
+  transform: scale(0.96);
+  cursor: pointer;
+}
+.grammar .grammar-form-section .grammar-result {
+  align-self: center;
+  text-align: center;
+  font-size: 16px;
 }

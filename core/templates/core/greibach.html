@@ -1,25 +1,32 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% block title %} Greibach {% endblock %}  
-<link rel="stylesheet" href="{% static 'css/style-greibach.css' %}"> 
+{% block title %} Greibach {% endblock %}   
 {% block head%}
+<link rel="stylesheet" href="{% static 'css/style-greibach.css' %}" . />
 {% endblock %}
 {%block content%}
 
-<div class="MaciekPL">
-    <div class="container"></div>
-        <form id ="greibach-form" action="/greibach-convert" method="post">
-            {% csrf_token %}
-            <label for="terminalne">Symbole terminalne:</label>
-            <input label ="symbole terminalne" type="text" name="terminalne">
-            <br>
-            <label for="reguly">Wprowadź reguły</label>
-            <textarea class ="dajdwazlote" name="reguly" rows="4" cols="10"></textarea>
-        <input type="submit" value="Konwertuj">
-        </form>
-        <p id ="wynikGreibach"></p>
+
+<main class="grammar">
+    <div class="container">
+        <section class="grammar-form-section">
+            <header>
+                <h1 class="grammar-title">Greibach</h1>
+            </header>
+
+            <form class="grammar-form" id ="greibach-form" action="/greibach-convert" method="post">
+                {% csrf_token %}
+                <label class="text-area-label" for="terminalne">Symbole terminalne:</label>
+                <input class="text-area terminals" label ="symbole terminalne" type="text" name="terminalne">
+                <label class="text-area-label" for="reguly">Reguły produkcji:</label>
+                <textarea class="text-area rules" type="text" class ="dajdwazlote" name="reguly"></textarea>
+                <input class="submit-btn" type="submit" value="Konwertuj">
+                <p class="grammar-result" id ="wynikGreibach">Wpisz dane</p>
+            </form>
+            
+        </section>
     </div>
-</div>
+</main>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{% static 'js/greibach.js'%}"></script>

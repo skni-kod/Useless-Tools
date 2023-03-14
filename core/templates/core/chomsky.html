@@ -9,10 +9,10 @@
         <form id ="chomsky-form" action="/chomsky-convert" method="post">
             {% csrf_token %}
             <label for="terminalne">Symbole terminalne:</label>
-            <input label ="symbole terminalne" type="text" name="terminalne">
+            <input label ="symbole terminalne" type="text" name="terminals">
             <br>
             <label for="reguly">Wprowadź reguły</label>
-            <textarea class ="dajdwazlote" name="regulyChomsky" rows="2" cols="4"></textarea>
+            <textarea class ="dajdwazlote" name="rules" rows="2" cols="4"></textarea>
         <input type="submit" value="Konwertuj">
         </form>
         <p id ="wynikChomsky"></p>

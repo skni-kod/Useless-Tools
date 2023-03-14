@@ -11,7 +11,7 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-.message {
+::-webkit-scrollbar-track .message {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -88,8 +88,9 @@ header p.generator-text {
   display: flex;
   justify-content: space-between;
   position: relative;
-  width: 100%;
+  width: 10%;
   max-width: 536px;
+  min-width: none;
   height: 50px;
   border: 2px solid #ffffff;
   border-radius: 15px;
@@ -125,7 +126,7 @@ header p.generator-text {
 }
 .password-generator .password-generator-section .password-generator-form .display-password-container .password-text {
   font-size: 1rem;
-  margin: auto 10px;
+  margin: auto;
   overflow-x: auto;
 }
 .password-generator .password-generator-section .password-generator-form .display-password-container .copy-btn {

@@ -53,7 +53,7 @@ class Signup(CreateView):
 
 def greibach(request):
     if request.method == "POST":
-        try:
+        
 
             def usuwanie_regul_bezuzytecznych(zmienna1, zmienna2, zmienna3):
                 """
@@ -112,8 +112,8 @@ def greibach(request):
             terminalne = []
             reguly_prod = []
             symbole_pocz = []
-            reguly_1 = request.POST.get("terminalne")
-            reguly_2 = request.POST.get("reguly")
+            reguly_1 = str(request.POST.get("terminals"))
+            reguly_2 = str(request.POST.get("rules"))
             reguly = reguly_1 + ";" + reguly_2
             stan = str("początek")
             reguly.strip()
@@ -255,19 +255,19 @@ def greibach(request):
                         wynikGr += " | "
                 wynikGr += "\n"
             return JsonResponse({"wynikGreibach": wynikGr})
-        except:
-            return JsonResponse({"wynikGreibach": "wprowadzono niepoprawne dane"})
+        
+        
     return render(request, "core/greibach.html")
 
 
 def chomsky(request):
     if request.method == "POST":
-        try:
+        
             symbole_terminalne = []
             Reguły_produkcji = []
             oznaczenia_symboli = []
-            reguly_1 = request.POST.get("terminalne")
-            reguly_2 = request.POST.get("regulyChomsky")
+            reguly_1 = request.POST.get("terminals")
+            reguly_2 = request.POST.get("rules")
             reguly = reguly_1 + ";" + reguly_2
             stan = str("początek")
             reguly.strip()
@@ -464,6 +464,6 @@ def chomsky(request):
                 wynikChomsky += (Reguły_produkcji[i][-1]) + "\n"
 
             return JsonResponse({"wynikChomsky": wynikChomsky})
-        except:
-            return JsonResponse({"wynikChomsky": "Wprowadzono niepoprawnie dane"})
+        
+            
     return render(request, "core/chomsky.html")

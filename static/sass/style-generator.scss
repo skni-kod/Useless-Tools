@@ -12,7 +12,7 @@ body {
 	font-family: 'Montserrat', sans-serif;
 	// background-color: white;
 }
-
+::-webkit-scrollbar-track
 
 .message {
 	position: absolute;
@@ -104,8 +104,9 @@ header {
 					display: flex;
 					justify-content: space-between;
 					position: relative;
-					width: 100%;
+					width: 10%;
 					max-width: 536px;
+					min-width: none;
 					height: 50px;
 					border: 2px solid $white;
 					border-radius: 15px;
@@ -145,7 +146,7 @@ header {
 
 				.password-text {
 					font-size: 1rem;
-					margin: auto 10px;
+					margin: auto;
 					overflow-x: auto;
 				}
 
