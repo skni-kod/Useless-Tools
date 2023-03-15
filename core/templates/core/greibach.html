@@ -46,11 +46,11 @@
                     {% csrf_token %}
                     <div class="label-text-container">
                         <label class="text-area-label" for="terminalne">Symbole terminalne:</label>
-                        <input class="text-area terminals" label ="symbole terminalne" type="text" name="terminalne" placeholder="x, y, z">
+                        <input class="text-area terminals" label ="symbole terminalne" type="text" name="terminals" placeholder="x, y, z">
                     </div>
                     <div class="label-text-container">
                         <label class="text-area-label" for="reguly">Reguły produkcji:</label>
-                        <textarea class="text-area rules" type="text" name="reguly"  placeholder="S > Xx, y, z; &#10;X > x, y, z;"></textarea>
+                        <textarea class="text-area rules" type="text" name="rules"  placeholder="S > Xx, y, z; &#10;X > x, y, z;"></textarea>
                     </div>
                     <button class="submit-btn" type="submit" >Konwertuj</button>
                     <p class="grammar-result" id ="wynikGreibach">Wpisz dane</p>
