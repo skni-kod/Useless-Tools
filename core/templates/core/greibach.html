@@ -8,22 +8,55 @@
 
 
 <main class="grammar">
+    <div class="area">
+		<ul class="circles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
     <div class="container">
         <section class="grammar-form-section">
-            <header>
-                <h1 class="grammar-title">Greibach</h1>
-            </header>
-
-            <form class="grammar-form" id ="greibach-form" action="/greibach-convert" method="post">
-                {% csrf_token %}
-                <label class="text-area-label" for="terminalne">Symbole terminalne:</label>
-                <input class="text-area terminals" label ="symbole terminalne" type="text" name="terminalne">
-                <label class="text-area-label" for="reguly">Reguły produkcji:</label>
-                <textarea class="text-area rules" type="text" class ="dajdwazlote" name="reguly"></textarea>
-                <input class="submit-btn" type="submit" value="Konwertuj">
-                <p class="grammar-result" id ="wynikGreibach">Wpisz dane</p>
-            </form>
-            
+            <div class="form-card">
+                <header>
+                    <h1 class="grammar-title">Greibach</h1>
+                    
+                    <h2 class="how-it-works-title">Jak to działa?</h2>
+                <ul class="how-it-works-text">
+                    <li>W pierwszym oknie wpisz symbole terminalne,</li>
+                    <li>Następnie wpisz produkcje, jak w przykładzie ('>' to jest strzałka),</li>
+                    <li>Kliknij "Konwertuj" i zobacz co się stanie</li>
+                </ul>
+                    
+                </header>
+    
+                <form class="grammar-form" id ="greibach-form" action="/greibach-convert" method="post">
+                    {% csrf_token %}
+                    <div class="label-text-container">
+                        <label class="text-area-label" for="terminalne">Symbole terminalne:</label>
+                        <input class="text-area terminals" label ="symbole terminalne" type="text" name="terminalne" placeholder="x, y, z">
+                    </div>
+                    <div class="label-text-container">
+                        <label class="text-area-label" for="reguly">Reguły produkcji:</label>
+                        <textarea class="text-area rules" type="text" name="reguly"  placeholder="S > Xx, y, z; &#10;X > x, y, z;"></textarea>
+                    </div>
+                    <button class="submit-btn" type="submit" >Konwertuj</button>
+                    <p class="grammar-result" id ="wynikGreibach">Wpisz dane</p>
+                </form>
+    
+            </div>            
         </section>
     </div>
 </main>

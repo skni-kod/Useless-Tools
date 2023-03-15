@@ -1,10 +1,16 @@
+@import 'colors';
+
 .container{
     width: 100%;
     max-width: 1400px;
+	margin: 0 auto;
 }
 
 .grammar {
-
+	header{
+		margin: 0 auto;
+		width: 100%;
+	}
 	.grammar-form-section {
 		display: flex;
 		align-items: center;
@@ -12,7 +18,12 @@
 		flex-direction: column;
         padding: 140px 30px 130px;
 
+		.form-card{
+			width: clamp(200px,80%,800px)
+		}
+
 		.grammar-title{
+			
 			text-align: center;
 			color: $main-theme;
 			text-transform: uppercase;
@@ -21,29 +32,79 @@
 			margin-bottom: 40px;
 		}
 
+		.how-it-works-title{
+			text-align: center;
+			margin-bottom: 20px;
+			font-size: 20px;
+		}
+		
+		.how-it-works-text{
+			position: relative;
+			// margin-bottom: 40px;
+			margin: 0 auto 40px;
+			width: clamp(200px,80%,800px);
+			font-size: 14px;
+			list-style-type: disc;
+			list-style: inside;
+
+
+			li{
+				margin-bottom: 10px;
+			
+			}
+
+
+			 li::after{
+				content: "";
+				position: absolute;
+				left: -20px;	
+				width: 20px;
+				height: 20px;
+				background-size: cover;
+
+			 }
+		}
+
 		.grammar-form{
 			display: flex;
-			justify-content: flex-start;
-			align-items: flex-start;
+			align-items: center;
 			flex-direction: column;
 			width: 100%;
 		}
 
+		.label-text-container{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			// width: 100%;
+			width: clamp(200px, 90%, 800px);
+		}
+
 		.text-area-label{
+			align-self: flex-start;
 			margin-bottom: 15px;
 			font-size: 16px;
 		}
 
 		.text-area{
 			width: 100%;
+			// margin: 0 auto 35px;
+			// width: 10%;
 			margin-bottom: 35px;
 			color: $white;
 			font-size: 16px;
 			appearance: none;
-			background-color:  #222;
-			border: 1px solid white;
+			background-color:  $bgc;
+			border: 1px solid $white;
 			border-radius: 5px;
 			box-shadow: 0 0 10px 0 black;
+			transition: border-color 0.3s;
+			
+		}
+		.text-area:focus{
+			outline: none;
+			border-color: $main-theme;
+			background-color: $bgc !important;
 		}
 
 		.terminals{
@@ -59,23 +120,66 @@
 		}
 
 		.submit-btn{
+			position: relative;
 			align-self: center;
 			padding: 12px 24px;
 			margin-bottom: 35px;
 			font-size: 14px;
-			color: white;
 			letter-spacing: 1px;
+			color:$main-theme;
 			text-transform: uppercase;
 			appearance: none;
-			background-color: $main-theme;
-			border: none;
+			transition:  0.3s;
+			border: 2px solid $main-theme;
 			border-radius: 5px;
-			transition: transform 0.3s;
+			transform-origin: right;
+			z-index: 2;
+			overflow: hidden;
 		}
 
+		.submit-btn::before {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			transform: scaleX(0);
+			color: white;
+			background-color: $main-theme;
+			transition: transform 0.3s;
+			transform-origin: left;
+			z-index: -1;
+		}
+
+		.submit-btn::after {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			transform: scaleX(1);
+			color: white;
+			background-color: $bgc;
+			transition: transform 0.3s;
+			transform-origin: right;
+			z-index: -1;
+			
+		}
+
+		
+
 		.submit-btn:hover{
-			transform: scale(0.96);
 			cursor: pointer;
+			color: black;
+		}
+		.submit-btn:hover::before{
+			transform: scaleX(1);
+			
+		}
+		.submit-btn:hover::after{
+			transform: scaleX(0);
 		}
 
 		.grammar-result{
@@ -87,4 +191,208 @@
 		
         
 	}
+}
+
+
+
+@media (min-width: 992px){
+	.grammar-form-section{
+		.form-card{
+			padding: 40px 20px;
+			width: 300px;
+			background-color: $bgc;
+			// border: 1px solid $white;
+			border-radius: 15px;
+			box-shadow: 0 0 10px 0 black;
+
+			
+		}
+		
+	}
+	.area{
+		z-index: 2;
+		padding: 0;
+		margin: 0;
+		
+	}
+	.circles{
+		position: absolute;
+		left: 0;
+		bottom: 70px;
+		width: 100%;
+		height:135%;
+		z-index: -150;
+		overflow: hidden;
+		padding: 0;
+		margin: 0;
+		top: 0;
+
+		
+	
+		li{
+			position: absolute;
+			display: block;
+			list-style: none;
+			width: 20px;
+			height: 20px;
+			background: $main-theme;
+			animation: animate 60s linear infinite;
+			bottom: -150px;
+			opacity: 0;
+		}
+
+		li:nth-child(1){
+			left: 25%;
+			bottom: 50%;
+			width: 60px;
+			height: 60px;
+			animation-delay: 0s;
+		}
+		
+		
+		li:nth-child(2){
+			left: 10%;
+			bottom: 30%;
+			width: 20px;
+			height: 20px;
+			animation-delay: 2s;
+			animation-duration: 35s;
+		}
+		
+		li:nth-child(3){
+			left: 70%;
+			bottom: 70%;
+			width: 20px;
+			height: 20px;
+			animation-delay: 34s;
+		}
+		
+		li:nth-child(4){
+			left: 40%;
+			bottom: 60%;
+			width: 60px;
+			height: 60px;
+			animation-delay: 0s;
+			animation-duration: 28s;
+		}
+		
+		li:nth-child(5){
+			left: 65%;
+			bottom: 20%;
+			width: 20px;
+			height: 20px;
+			animation-delay: 0s;
+		}
+		
+		li:nth-child(6){
+			left: 75%;
+			bottom: 40%;
+			width: 110px;
+			height: 110px;
+			animation-delay: 3s;
+		}
+		
+		li:nth-child(7){
+			left: 35%;
+			bottom: 10%;
+			width: 150px;
+			height: 150px;
+			animation-delay: 7s;
+		}
+		
+		li:nth-child(8){
+			left: 50%;
+			width: 25px;
+			height: 25px;
+			animation-delay: 15s;
+			animation-duration: 45s;
+		}
+		
+		li:nth-child(9){
+			left: 20%;
+			width: 15px;
+			height: 15px;
+			animation-delay: 2s;
+			animation-duration: 35s;
+		}
+		
+		li:nth-child(10){
+			left: 85%;
+			width: 150px;
+			height: 150px;
+			animation-delay: 0s;
+			animation-duration: 51s;
+		}
+
+		li:nth-child(11){
+			left: 80%;
+			bottom: 70%;
+			width: 50px;
+			height: 50px;
+			animation-delay: 3s;
+			animation-duration: 49s;
+		}
+
+		li:nth-child(12){
+			left: 65%;
+			bottom: 50%;
+			width: 30px;
+			height: 30px;
+			animation-delay: 0s;
+			animation-duration: 42s;
+		}
+
+		li:nth-child(13){
+			left: 25%;
+			bottom: 75%;
+			width: 50px;
+			height: 50px;
+			animation-delay: 6s;
+			animation-duration: 31s;
+		}
+
+		li:nth-child(14){
+			left: 15%;
+			bottom: 40%;
+			width: 20px;
+			height: 20px;
+			animation-delay: 0s;
+			animation-duration: 59s;
+		}
+
+		li:nth-child(15){
+			left: 10%;
+			bottom: 30%;
+			width: 45px;
+			height: 45px;
+			animation-delay: 12s;
+			animation-duration: 55s;
+		}
+	}
+}
+
+
+@keyframes animate {
+
+	0%{
+		transform: translateY(0) rotate(0deg);
+		opacity: 0;
+		border-radius: 0;
+	}
+
+	15%{
+		opacity: 1;
+	}
+
+	50%{
+		transform: translateY(-500px) rotate(360deg);
+		border-radius: 25%;
+	}
+
+	100%{
+		transform: translateY(-1000px) rotate(720deg);
+		opacity: 0;
+		border-radius: 50%;
+	}
+
 }

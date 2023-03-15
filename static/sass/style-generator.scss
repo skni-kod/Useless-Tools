@@ -12,7 +12,7 @@ body {
 	font-family: 'Montserrat', sans-serif;
 	// background-color: white;
 }
-::-webkit-scrollbar-track
+
 
 .message {
 	position: absolute;
@@ -28,7 +28,7 @@ body {
 	text-transform: uppercase;
 	box-shadow: 0 0 3px $white;
 	border-radius: 25px;
-	background-color: #222;
+	background-color: $bgc;
 	// z-index: 10000;
 }
 
@@ -79,6 +79,17 @@ header {
 	margin: 0 auto;
 	height: 100%;
 
+	::-webkit-scrollbar {
+		background-color: $bgc;
+		height: 5px;
+	}
+	
+	::-webkit-scrollbar-thumb {
+		background-color: $main-theme;
+		border-radius: 50px;
+		width: 10px;
+	}
+
 
 	.password-generator-section {
 		padding: 120px 30px 30px 30px;
@@ -104,9 +115,8 @@ header {
 					display: flex;
 					justify-content: space-between;
 					position: relative;
-					width: 10%;
-					max-width: 536px;
-					min-width: none;
+					width: 280px;
+					
 					height: 50px;
 					border: 2px solid $white;
 					border-radius: 15px;
@@ -125,6 +135,7 @@ header {
 
 				.display-password {
 					display: flex;
+					align-items: center;
 					width: 90%;
 					padding: 0;
 				}
@@ -138,36 +149,63 @@ header {
 					border: none;
 					transition: transform 0.3s;
 					cursor: pointer;
+					
+					i{
+						transition: transform 0.3s;
+					}
 				}
 
-				.generate-btn:hover {
-					transform: scale(1.1);
+				.generate-btn:hover  {
+					i{
+						transform: rotate(360deg) scale(.90);
+					}
 				}
 
 				.password-text {
 					font-size: 1rem;
-					margin: auto;
+					margin-left: 15px;
 					overflow-x: auto;
 				}
 
-				.copy-btn {
+				.copy-btn{
+					display: block;
+					position: relative;
 					padding: 12px 24px;
-					text-align: center;
-					font-size: 0.8rem;
-					color: $white;
+					font-size: 14px;
+					letter-spacing: 1px;
+					color:$main-theme;
 					text-transform: uppercase;
-					border-radius: 25px;
-					border: none;
-					background-color: $main-theme;
-					box-shadow: 0 0 3px $main-theme;
-					border: 1px solid $white;
-					transition: transform 0.3s;
+					appearance: none;
+					border-radius: 5px;
+					transition:  0.3s;
+					border: 2px solid $main-theme;
+					background: none;
+					z-index: 5;
 				}
-
-				.copy-btn:hover {
-					color: #ededed;
-					transform: scale(0.95);
+		
+				.copy-btn::before {
+					content: '';
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					top: 0;
+					left: 0;
+					transform: scaleX(0);
+					color: white;
+					background-color: $main-theme;
+					transition: transform 0.3s;
+					transform-origin: right;
+					z-index: -1;
+				}
+		
+				.copy-btn:hover{
 					cursor: pointer;
+					color: black;
+				}
+					
+				.copy-btn:hover::before{
+					transform: scaleX(1);
+					transform-origin: left;
 				}
 			}
 			//PASSWORD_SETTINGS_CONTAINER
@@ -229,7 +267,7 @@ header {
 						border-radius: 25px;
 						border: 1px solid black;
 						appearance: none;
-						background-color: #ededed;
+						background-color: $light-gray;
 					}
 
 					.range-slider::-webkit-slider-thumb {
@@ -313,7 +351,7 @@ header {
 						}
 
 						.pass-checkbox:disabled {
-							background-color: #999999;
+							background-color: $gray;
 							box-shadow: none;
 						}
 
@@ -322,7 +360,7 @@ header {
 						}
 
 						.pass-checkbox:disabled::before {
-							background-color: #333;
+							background-color: $bgc;
 						}
 
 						.settings-description {
@@ -340,7 +378,7 @@ header {
 	.password-strength-section {
 		margin: 0 auto;
 		padding: 40px 10px;
-		color: #333;
+		color: $bgc;
 		background-color: $white;
 		box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 
@@ -401,13 +439,13 @@ header {
 			width: 80%;
 			border-top-right-radius: 25px;
 			border-bottom-left-radius: 25px;
-			border: 2px solid white;
+			border: 2px solid $white;
 			box-shadow: 0 0 15px 0 rgba(0, 0, 0, 1);
-			color: white;
+			color: $white;
 			overflow: hidden;
 
 			.accordion-item {
-				border-bottom: 2px solid white;
+				border-bottom: 2px solid $white;
 				height: fit-content;
 			}
 
@@ -419,9 +457,9 @@ header {
 				display: block;
 				width: 100%;
 				padding: 40px 20px;
-				background-color: #222;
+				background-color: $bgc;
 				border: none;
-				color: white;
+				color: $white;
 				text-transform: uppercase;
 				font-size: 1.2rem;
 				cursor: pointer;
@@ -437,7 +475,7 @@ header {
 				padding: 10px 10px;
 				text-align: center;
 				font-size: 1rem;
-				background-color: #222;
+				background-color: $bgc;
 				transition: transform 0.3s, height 0.3s;
 				transform-origin: top;
 			}
@@ -448,7 +486,7 @@ header {
 			}
 
 			.accordion-btn:hover {
-				background-color: #333;
+				background-color: $bgc;
 				color: $main-theme;
 			}
 		}
@@ -496,6 +534,17 @@ header {
 }
 @media (min-width: 420px) {
 	.password-generator {
+
+		.password-generator-section{
+			.password-generator-form{
+				.display-password-container{
+
+					.password{
+						width: 380px;
+					}
+				}
+			}
+		}
 		.questions-section {
 			.accordion {
 				.accordion-text {
@@ -530,6 +579,16 @@ header {
 	.password-generator {
 		.password-generator-section {
 			padding: 170px 30px 100px 30px;
+			
+				.password-generator-form{
+					.display-password-container{
+	
+						.password{
+							width: clamp(380px,90%,576px)
+						}
+					}
+				}
+			
 		}
 
 		.questions-section {
@@ -559,7 +618,7 @@ header {
 	.password-generator {
 		.background-repair-kit{
 			padding: 70px 50px 50px;
-			border: 1px solid $white;
+			// border: 1px solid $white;
 			border-radius: 15px;
 			background-color: $bgc;
 			box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 1);
