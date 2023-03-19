@@ -7,7 +7,6 @@ from django.http import JsonResponse
 from django.shortcuts import render, reverse
 from django.views.generic import CreateView
 
-
 from .forms import CustomUserCreationForm
 
 
@@ -469,7 +468,10 @@ def chomsky(request):
             return JsonResponse({"wynikChomsky": "Wprowadzono niepoprawnie dane"})
     return render(request, "core/chomsky.html")
 
-def cyk(request,):
+
+def cyk(
+    request,
+):
     if request.method == "POST":
         try:
             """
@@ -511,14 +513,16 @@ def cyk(request,):
                 for x in range(len(slowo) - i):
                     tabela[i].append([])
 
-
             """
                 Wypełnienie pierwszego wiersza
             """
             for i in range(len(tabela[0])):
                 for x in range(len(reguly_prod)):
                     for y in range(len(reguly_prod[x])):
-                        if slowo[i] == reguly_prod[x][y] and symbole_pocz[x] not in tabela[0][i]:
+                        if (
+                            slowo[i] == reguly_prod[x][y]
+                            and symbole_pocz[x] not in tabela[0][i]
+                        ):
                             tabela[0][i].append(symbole_pocz[x])
 
             for i in range(1, len(tabela)):
@@ -529,17 +533,17 @@ def cyk(request,):
                                 for y in range(len(reguly_prod)):
                                     for z in range(len(reguly_prod[y])):
                                         if (
-                                            tabela[a][x][b] + tabela[i - (a + 1)][x + (a + 1)][c]
+                                            tabela[a][x][b]
+                                            + tabela[i - (a + 1)][x + (a + 1)][c]
                                             == reguly_prod[y][z]
                                         ):
                                             if symbole_pocz[y] not in tabela[i][x]:
                                                 tabela[i][x].append(symbole_pocz[y])
 
-
-            
-
             return render(request, "core/cyk.html", {"resultCyk": tabela})
 
         except:
-            return render(request,"core/cyk.html",{"resultCyk": "Wprowadzono niepoprawnie dane"})
+            return render(
+                request, "core/cyk.html", {"resultCyk": "Wprowadzono niepoprawnie dane"}
+            )
     return render(request, "core/cyk.html")

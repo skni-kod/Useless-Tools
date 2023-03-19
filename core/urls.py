@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 
-from .views import Signup, chomsky, generator, greibach, home, password, cyk
+from .views import Signup, chomsky, cyk, generator, greibach, home, password
 
 urlpatterns = [
     path("", home, name="home"),
