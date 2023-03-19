@@ -5,7 +5,7 @@
         var formData = $(this).serialize();
   
         $.ajax({
-          url: '/chomsky-convert',
+          url: '/chomsky',
           type: 'POST',
           data: formData,
           success: function(response) {

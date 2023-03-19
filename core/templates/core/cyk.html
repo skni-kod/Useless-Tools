@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .MaciekPL{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #greibach-form input{
+            margin: 1px;
+        }
+        #wynikGreibach{
+            margin: 10px;
+            white-space: pre-line; /* wez dodaj to do css potem. Wazne to jest bo jak przychodza dane przez jsona to korzysta z tych \n*/
+
+        }
+        .dajdwazlote{
+            width: 110%;
+        }
+        tr{
+            display: table-row;
+            vertical-align: inherit;
+            border-color: inherit;
+        }
+        td {
+            font-size: 10px;
+            border: 1px solid black;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+
+
+</head>
+<body>
+  <form id ="cyk-form" action="{% url 'cyk' %}" method="post" name="cyk">
+      {% csrf_token %}
+      <label for="reguly">Wprowadź reguły</label>
+      <textarea class ="dajdwazlote" value ="" name="rules" rows="4" cols="10"></textarea>
+      <input type="text" name="word" value ="">
+      <input id="submit-btn" type="submit" value="Konwertuj">
+  </form>
+  <table id="cyk-table">
+      {% for row in resultCyk %}
+          <tr>
+          {% for col in row %}
+              <td>
+              {% for i in col %}
+                  {{i}}
+              {% endfor %}
+              </td>
+          {% endfor %}
+          </tr>
+      {% endfor %}
+  </table>
+  <script src="{% static 'js/cyk.js' %}"></script>
+</body>
+
+
+</html>
