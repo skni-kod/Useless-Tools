@@ -23,8 +23,12 @@ function subtraction() {
 	length.textContent = lengthInput.value;
 	passwordStrength();
 }
+
+
 //FUNKCJA SILY HASLA
 function passwordStrength() {
+	$('#password-form').submit();
+
 	if (lengthInput.value < 7) {
 		passwordStrengthElement.classList.remove('yellow');
 		passwordStrengthElement.classList.add('red');
@@ -62,6 +66,7 @@ function addQuestionsTitleColor() {
 plusBtn.addEventListener('click', add);
 minusBtn.addEventListener('click', subtraction);
 lengthInput.addEventListener('input', passwordStrength);
+lengthInput.addEventListener('change', passwordStrength);
 copyBtn.addEventListener('click', passwordCopyMessage);
 
 

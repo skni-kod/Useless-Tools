@@ -49,6 +49,7 @@ haseł {% endblock %} {% block head %}
 					class="password-generator-form"
 					action="generate-password"
 					method="post"
+					name="pawel"
 				>
 					{% csrf_token %}
 					<div class="display-password-container">
@@ -81,6 +82,7 @@ haseł {% endblock %} {% block head %}
 									<i class="fa-solid fa-minus"></i>
 								</button>
 								<input
+								id="range-slider"
 									class="range-slider"
 									type="range"
 									name="length"
@@ -89,6 +91,7 @@ haseł {% endblock %} {% block head %}
 									step="1"
 									value="12"
 									oninput="lengthOutputId.value = length.value"
+									
 								/>
 								<button type="button" class="length-change plus">
 									<i class="fa-solid fa-plus"></i>

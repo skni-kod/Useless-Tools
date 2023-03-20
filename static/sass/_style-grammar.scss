@@ -16,10 +16,11 @@
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
-        padding: 140px 30px 130px;
+        padding: 140px 10px 130px;
+
 
 		.form-card{
-			width: clamp(200px,80%,800px)
+			width: clamp(200px,100%,800px)
 		}
 
 		.grammar-title{
@@ -42,7 +43,7 @@
 			position: relative;
 			// margin-bottom: 40px;
 			margin: 0 auto 40px;
-			width: clamp(200px,80%,800px);
+			width: clamp(200px,90%,800px);
 			font-size: 14px;
 			list-style-type: disc;
 			list-style: inside;
@@ -50,7 +51,7 @@
 
 			li{
 				margin-bottom: 10px;
-			
+
 			}
 
 

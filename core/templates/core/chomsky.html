@@ -1,10 +1,72 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% block title %} ZROBILEM BEZ BOTA W PRZECIWIENSTWIE DO PAWLA {% endblock %}   
+{% block title %} Greibach {% endblock %}   
 {% block head%}
+<link rel="stylesheet" href="{% static 'css/style-greibach.css' %}" . />
 {% endblock %}
 {%block content%}
-<body>
+
+
+<main class="grammar">
+    <div class="area">
+		<ul class="circles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+    <div class="container">
+        <section class="grammar-form-section">
+            <div class="form-card">
+                <header>
+                    <h1 class="grammar-title">Chomsky</h1>
+                    
+                    <h2 class="how-it-works-title">Jak to działa?</h2>
+                <ul class="how-it-works-text">
+                    <li>W pierwszym oknie wpisz symbole terminalne,</li>
+                    <li>Następnie wpisz produkcje, jak w przykładzie ('>' to jest strzałka),</li>
+                    <li>Kliknij "Konwertuj" i zobacz co się stanie</li>
+                </ul>
+                    
+                </header>
+    
+                <form class="grammar-form" id ="chomsky-form" action="/chomsky-convert" method="post">
+                    {% csrf_token %}
+                    <div class="label-text-container">
+                        <label class="text-area-label" for="terminalne">Symbole terminalne:</label>
+                        <input class="text-area terminals" label ="symbole terminalne" type="text" name="terminals" placeholder="x, y, z">
+                    </div>
+                    <div class="label-text-container">
+                        <label class="text-area-label" for="reguly">Reguły produkcji:</label>
+                        <textarea class="text-area rules" type="text" name="rules"  placeholder="S > Xx, y, z; &#10;X > x, y, z;"></textarea>
+                    </div>
+                    <button class="submit-btn" type="submit" >Konwertuj</button>
+                    <p class="grammar-result" id ="wynikChomsky">Wpisz dane</p>
+                </form>
+    
+            </div>            
+        </section>
+    </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'js/chomsky.js'%}"></script>
+
+{% endblock %}
+
+<!-- <body>
     <div class ="maciekPL">
         <form id ="chomsky-form" action="/chomsky-convert" method="post">
             {% csrf_token %}
@@ -21,6 +83,4 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{% static 'js/chomsky.js'%}"></script>
-</body>
-{% endblock %}
-</html>
+</body> -->
