@@ -1,19 +1,19 @@
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LogoutView
 from django.urls import path
 
-from .views import Signup, chomsky, generator, greibach, home, password
+from .views import SignUp, SignIn, chomsky, generator, greibach, home, password
 
 urlpatterns = [
     path("", home, name="home"),
     path("home", home, name="home"),
     path("generator", generator, name="generator"),
     path("generate-password", password, name="password"),
-    path("signup", Signup.as_view(), name="signup"),
+    path("signup", SignUp.as_view(), name="signup"),
     path(
         "signin",
-        LoginView.as_view(template_name="registration/signin.html"),
+        SignIn.as_view(),
         name="signin",
     ),
     path("logout", LogoutView.as_view(), name="logout"),
