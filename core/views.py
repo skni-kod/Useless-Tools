@@ -3,13 +3,12 @@ import random
 import string
 from random import choice
 
+from django.contrib.auth.views import LoginView
 from django.http import JsonResponse
 from django.shortcuts import render, reverse
 from django.views.generic import CreateView
-from django.contrib.auth.views import LoginView
 
-
-from .forms import CustomUserCreationForm, CustomAuthenticationForm
+from .forms import CustomAuthenticationForm, CustomUserCreationForm
 
 
 def home(request):
