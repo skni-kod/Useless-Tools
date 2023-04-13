@@ -1,6 +1,7 @@
 const plusBtn = document.querySelector('.plus');
 const minusBtn = document.querySelector('.minus');
 const copyBtn = document.querySelector('.copy-btn');
+const generateBtn = document.querySelector('generate-btn');
 let lengthInput = document.querySelector('.range-slider');
 let length = document.querySelector('.choosed-length');
 let password = document.querySelector('.password-text');
@@ -22,8 +23,12 @@ function subtraction() {
 	length.textContent = lengthInput.value;
 	passwordStrength();
 }
+
+
 //FUNKCJA SILY HASLA
 function passwordStrength() {
+	$('#password-form').submit();
+
 	if (lengthInput.value < 7) {
 		passwordStrengthElement.classList.remove('yellow');
 		passwordStrengthElement.classList.add('red');
@@ -61,7 +66,9 @@ function addQuestionsTitleColor() {
 plusBtn.addEventListener('click', add);
 minusBtn.addEventListener('click', subtraction);
 lengthInput.addEventListener('input', passwordStrength);
+lengthInput.addEventListener('change', passwordStrength);
 copyBtn.addEventListener('click', passwordCopyMessage);
+
 
 for (let i = 0; i < questionBtns.length; i++) {
 	questionBtns[i].addEventListener('click', removeQuestionsClass);

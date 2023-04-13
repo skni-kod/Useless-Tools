@@ -1,249 +1,263 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pl">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Password Generator</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-			rel="stylesheet"
-		/>
-		<script
-			src="https://kit.fontawesome.com/ba112db997.js"
-			crossorigin="anonymous"
-		></script>
-		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
-	</head>
-	<body>
-		<main class="password-generator">
-			<section class="password-generator-section">
-				<div class="container">
-					<header>
-						<h2 class="section-title">Generator haseł losowych</h2>
-						<p class="generator-text">
-							Stwórz silne i niezawodne hasło, by mieć pewność, że jesteś
-							bezpieczny!
-						</p>
-					</header>
+{% extends 'core/base.html' %} {% load static %} {% block title %} Generator
+haseł {% endblock %} {% block head %}
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+	rel="stylesheet"
+/>
+<link rel="stylesheet" href="{% static 'css/style-generator.css' %}" . />
+<script
+	src="https://kit.fontawesome.com/ba112db997.js"
+	crossorigin="anonymous"
+></script>
+{% endblock %} {% block content %}
 
-					<form
-						id="password-form"
-						class="password-generator-form"
-						action="generate-password"
-						method="post"
-					>
-						{% csrf_token %}
-						<div class="display-password-container">
-							<div class="password green">
-								<div class="display-password">
-									<p id="password" class="password-text">Generuj hasło</p>
-								</div>
+<main class="password-generator">
+	<div class="area">
+		<ul class="circles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<section class="password-generator-section">
+		<div class="container">
+			<div class="background-repair-kit">
+				<header>
+					<h2 class="section-title">Generator haseł losowych</h2>
+					<p class="generator-text">
+						Stwórz silne i niezawodne hasło, by mieć pewność, że jesteś
+						bezpieczny!
+					</p>
+				</header>
 
-								<button class="generate-btn" type="submit" value="generate">
-									<i class="fa-solid fa-rotate-right"></i>
+				<form
+					id="password-form"
+					class="password-generator-form"
+					action="generate-password"
+					method="post"
+					name="pawel"
+				>
+					{% csrf_token %}
+					<div class="display-password-container">
+						<div class="password green">
+							<div class="display-password">
+								<p id="password" class="password-text">Generuj hasło</p>
+							</div>
+
+							<button class="generate-btn" type="submit" value="generate">
+								<i class="fa-solid fa-rotate-right"></i>
+							</button>
+						</div>
+						<button type="button" class="copy-btn">
+							<i class="fa-solid fa-copy"></i> Kopiuj
+						</button>
+					</div>
+					<div class="password-container">
+						<div class="password-settings-container">
+							<div class="password-length">
+								<p>Długość hasła:</p>
+								<output
+									class="choosed-length"
+									name="lengthOutputId"
+									for="length"
+									>12</output
+								>
+							</div>
+							<div class="length-change-container">
+								<button type="button" class="length-change minus">
+									<i class="fa-solid fa-minus"></i>
+								</button>
+								<input
+								id="range-slider"
+									class="range-slider"
+									type="range"
+									name="length"
+									min="4"
+									max="50"
+									step="1"
+									value="12"
+									oninput="lengthOutputId.value = length.value"
+									
+								/>
+								<button type="button" class="length-change plus">
+									<i class="fa-solid fa-plus"></i>
 								</button>
 							</div>
-							<button type="button" class="copy-btn">
-								<i class="fa-solid fa-copy"></i> Kopiuj
-							</button>
 						</div>
-						<div class="password-container">
-							<div class="password-settings-container">
-								<div class="password-length">
-									<p>Długość hasła:</p>
-									<output
-										class="choosed-length"
-										name="lengthOutputId"
-										for="length"
-										>12</output
+
+						<div class="password-settings-container used-characters">
+							<p>Użyte znaki:</p>
+							<div class="password-characters">
+								<div class="pass-item">
+									<input
+										checked
+										class="pass-checkbox"
+										type="checkbox"
+										name="lowercase"
+									/><label class="settings-description" for="lowercase"
+										>abc</label
 									>
 								</div>
-								<div class="length-change-container">
-									<button type="button" class="length-change minus">
-										<i class="fa-solid fa-minus"></i>
-									</button>
+								<div class="pass-item">
 									<input
-										class="range-slider"
-										type="range"
-										name="length"
-										min="4"
-										max="50"
-										step="1"
-										value="12"
-										oninput="lengthOutputId.value = length.value"
-									/>
-									<button type="button" class="length-change plus">
-										<i class="fa-solid fa-plus"></i>
-									</button>
+										class="pass-checkbox"
+										type="checkbox"
+										name="uppercase"
+									/><label class="settings-description" for="uppercase"
+										>ABC</label
+									>
 								</div>
-							</div>
-
-							<div class="password-settings-container used-characters">
-								<p>Użyte znaki:</p>
-								<div class="password-characters">
-									<div class="pass-item">
-										<input
-											checked
-											class="pass-checkbox"
-											type="checkbox"
-											name="lowercase"
-										/><label class="settings-description" for="lowercase"
-											>abc</label
-										>
-									</div>
-									<div class="pass-item">
-										<input
-											class="pass-checkbox"
-											type="checkbox"
-											name="uppercase"
-										/><label class="settings-description" for="uppercase"
-											>ABC</label
-										>
-									</div>
-									<div class="pass-item">
-										<input
-											class="pass-checkbox"
-											type="checkbox"
-											name="numbers"
-										/><label class="settings-description" for="numbers"
-											>123</label
-										>
-									</div>
-									<div class="pass-item">
-										<input
-											class="pass-checkbox"
-											type="checkbox"
-											name="symbols"
-										/><label class="settings-description" for="symbols"
-											>#&$</label
-										>
-									</div>
+								<div class="pass-item">
+									<input
+										class="pass-checkbox"
+										type="checkbox"
+										name="numbers"
+									/><label class="settings-description" for="numbers"
+										>123</label
+									>
+								</div>
+								<div class="pass-item">
+									<input
+										class="pass-checkbox"
+										type="checkbox"
+										name="symbols"
+									/><label class="settings-description" for="symbols"
+										>#&$</label
+									>
 								</div>
 							</div>
 						</div>
-					</form>
-				</div>
-			</section>
-
-			<section class="password-strength-section">
-				<div class="container">
-					<header>
-						<h2 class="section-title">Jakie powinno być silne hasło?</h2>
-						<hr />
-					</header>
-					<div class="cards">
-						<div class="card">
-							<p class="card-icon"><i class="fa-solid fa-feather"></i></p>
-							<p class="card-title">Długie</p>
-							<p class="card-text">
-								Im dłuższe jest hasło, tym większe zapewnia bezpieczeństwo.
-								Silne hasło powinno składać się z co najmniej 10 znaków.
-							</p>
-						</div>
-						<div class="card">
-							<p class="card-icon"><i class="fa-solid fa-gears"></i></p>
-							<p class="card-title">Złożone</p>
-							<p class="card-text">
-								Silne hasła łączą w sobie duże i małe litery oraz cyfry i
-								symbole, które tworzą trudne do odgadnięcia łańcuchy znaków
-								nieprzypominające słów ani imion.
-							</p>
-						</div>
-						<div class="card">
-							<p class="card-icon"><i class="fa-solid fa-fingerprint"></i></p>
-							<p class="card-title">Unikalne</p>
-							<p class="card-text">
-								Aby hasła były silne, powinny być inne dla każdego konta — takie
-								rozwiązanie pozwala zminimalizować ryzyko w przypadku ataku
-								hakera.
-							</p>
-						</div>
-						<div class="card">
-							<p class="card-icon"><i class="fa-solid fa-lock"></i></p>
-							<p class="card-title">Tajne</p>
-							<p class="card-text">
-								Nigdy nie udostępniaj nigdzie swoich haseł i nie dopuszczaj do
-								ich wycieku, my również nie zapisujemy wygenerowanych haseł.
-							</p>
-						</div>
 					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+
+	<section class="password-strength-section">
+		<div class="container">
+			<div class="backgroun-repair-kit">
+			<header>
+				<h2 class="section-title">Jakie powinno być silne hasło?</h2>
+				<hr />
+			</header>
+			<div class="cards">
+				<div class="card">
+					<p class="card-icon"><i class="fa-solid fa-feather"></i></p>
+					<p class="card-title">Długie</p>
+					<p class="card-text">
+						Im dłuższe jest hasło, tym większe zapewnia bezpieczeństwo. Silne
+						hasło powinno składać się z co najmniej 10 znaków.
+					</p>
 				</div>
-			</section>
-
-			<section class="questions-section">
-				<div class="container">
-					<header>
-						<h2 class="section-title">Najczęściej zadawane pytania</h2>
-					</header>
-
-					<div class="accordion">
-						<div class="accordion-item">
-							<button class="accordion-btn">
-								Czy korzystanie z generatora haseł UselessTools jest bezpieczne?
-							</button>
-
-							<p class="accordion-text accordion-text-d-none">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit.
-								Perspiciatis, modi debitis repellendus quidem impedit, dolores
-								quia repellat suscipit illum reiciendis accusantium ratione
-								eaque earum quis quaerat maiores nam nobis sint voluptates culpa
-								consectetur temporibus quae hic. Distinctio nobis nostrum
-								itaque!
-							</p>
-						</div>
-						<div class="accordion-item">
-							<button class="accordion-btn">
-								Dlaczego warto używać generatora haseł?
-							</button>
-
-							<p class="accordion-text accordion-text-d-none">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit.
-								Perspiciatis, modi debitis repellendus quidem impedit, dolores
-								quia repellat suscipit illum reiciendis accusantium ratione
-								eaque earum quis quaerat maiores nam nobis sint voluptates culpa
-								consectetur temporibus quae hic. Distinctio nobis nostrum
-								itaque!
-							</p>
-						</div>
-						<div class="accordion-item">
-							<button class="accordion-btn">
-								Czy do każdego konta naprawdę potrzebne jest inne hasło?
-							</button>
-
-							<p class="accordion-text accordion-text-d-none">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit.
-								Perspiciatis, modi debitis repellendus quidem impedit, dolores
-								quia repellat suscipit illum reiciendis accusantium ratione
-								eaque earum quis quaerat maiores nam nobis sint voluptates culpa
-								consectetur temporibus quae hic. Distinctio nobis nostrum
-								itaque!
-							</p>
-						</div>
-						<div class="accordion-item">
-							<button class="accordion-btn">
-								Czy istnieje bezpieczny sposób przechowywania haseł?
-							</button>
-
-							<p class="accordion-text accordion-text-d-none">
-								Lorem ipsum dolor sit amet consectetur adipisicing elit.
-								Perspiciatis, modi debitis repellendus quidem impedit, dolores
-								quia repellat suscipit illum reiciendis accusantium ratione
-								eaque earum quis quaerat maiores nam nobis sint voluptates culpa
-								consectetur temporibus quae hic. Distinctio nobis nostrum
-								itaque!
-							</p>
-						</div>
-					</div>
+				<div class="card">
+					<p class="card-icon"><i class="fa-solid fa-gears"></i></p>
+					<p class="card-title">Złożone</p>
+					<p class="card-text">
+						Silne hasła łączą w sobie duże i małe litery oraz cyfry i symbole,
+						które tworzą trudne do odgadnięcia łańcuchy znaków nieprzypominające
+						słów ani imion.
+					</p>
 				</div>
-			</section>
-		</main>
-		<div id="myMessage" class="message dnone"><button>dsa</button></div>
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-		<script src="{% static 'js/password.js' %}"></script>
-		<script src="{% static 'js/genpage.js' %}"></script>
-	</body>
-</html>
+				<div class="card">
+					<p class="card-icon"><i class="fa-solid fa-fingerprint"></i></p>
+					<p class="card-title">Unikalne</p>
+					<p class="card-text">
+						Aby hasła były silne, powinny być inne dla każdego konta — takie
+						rozwiązanie pozwala zminimalizować ryzyko w przypadku ataku hakera.
+					</p>
+				</div>
+				<div class="card">
+					<p class="card-icon"><i class="fa-solid fa-lock"></i></p>
+					<p class="card-title">Tajne</p>
+					<p class="card-text">
+						Nigdy nie udostępniaj nigdzie swoich haseł i nie dopuszczaj do ich
+						wycieku, my również nie zapisujemy wygenerowanych haseł.
+					</p>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
+
+	<section class="questions-section">
+		<div class="container">
+			<header>
+				<h2 class="section-title">Najczęściej zadawane pytania</h2>
+			</header>
+
+			<div class="accordion">
+				<div class="accordion-item">
+					<button class="accordion-btn">
+						Czy korzystanie z generatora haseł UselessTools jest bezpieczne?
+					</button>
+
+					<p class="accordion-text accordion-text-d-none">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Perspiciatis, modi debitis repellendus quidem impedit, dolores quia
+						repellat suscipit illum reiciendis accusantium ratione eaque earum
+						quis quaerat maiores nam nobis sint voluptates culpa consectetur
+						temporibus quae hic. Distinctio nobis nostrum itaque!
+					</p>
+				</div>
+				<div class="accordion-item">
+					<button class="accordion-btn">
+						Dlaczego warto używać generatora haseł?
+					</button>
+
+					<p class="accordion-text accordion-text-d-none">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Perspiciatis, modi debitis repellendus quidem impedit, dolores quia
+						repellat suscipit illum reiciendis accusantium ratione eaque earum
+						quis quaerat maiores nam nobis sint voluptates culpa consectetur
+						temporibus quae hic. Distinctio nobis nostrum itaque!
+					</p>
+				</div>
+				<div class="accordion-item">
+					<button class="accordion-btn">
+						Czy do każdego konta naprawdę potrzebne jest inne hasło?
+					</button>
+
+					<p class="accordion-text accordion-text-d-none">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Perspiciatis, modi debitis repellendus quidem impedit, dolores quia
+						repellat suscipit illum reiciendis accusantium ratione eaque earum
+						quis quaerat maiores nam nobis sint voluptates culpa consectetur
+						temporibus quae hic. Distinctio nobis nostrum itaque!
+					</p>
+				</div>
+				<div class="accordion-item">
+					<button class="accordion-btn">
+						Czy istnieje bezpieczny sposób przechowywania haseł?
+					</button>
+
+					<p class="accordion-text accordion-text-d-none">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Perspiciatis, modi debitis repellendus quidem impedit, dolores quia
+						repellat suscipit illum reiciendis accusantium ratione eaque earum
+						quis quaerat maiores nam nobis sint voluptates culpa consectetur
+						temporibus quae hic. Distinctio nobis nostrum itaque!
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
+<div id="myMessage" class="message dnone"><button>dsa</button></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'js/password.js' %}"></script>
+<script src="{% static 'js/genpage.js' %}"></script>
+{% endblock %}
