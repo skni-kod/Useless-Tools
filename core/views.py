@@ -6,8 +6,10 @@ from random import choice
 from django.http import JsonResponse
 from django.shortcuts import render, reverse
 from django.views.generic import CreateView
+from django.contrib.auth.views import LoginView
 
-from .forms import CustomUserCreationForm
+
+from .forms import CustomUserCreationForm, CustomAuthenticationForm
 
 
 def home(request):
@@ -43,12 +45,20 @@ def password(request):
         return JsonResponse({"password": generated_PASS})
 
 
-class Signup(CreateView):
+class SignUp(CreateView):
     form_class = CustomUserCreationForm
     template_name = "registration/signup.html"
 
     def get_success_url(self):
         return reverse("signin")
+
+
+class SignIn(LoginView):
+    form_class = CustomAuthenticationForm
+    template_name = "registration/signin.html"
+
+    def get_success_url(self):
+        return reverse("home")
 
 
 def greibach(request):
