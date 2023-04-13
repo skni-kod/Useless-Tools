@@ -1,16 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form method="post">
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/registration.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<main class="registration">
+    <form method="POST" novalidate>
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Zarejestruj</button>
+        {% for field in form %}
+            {% if field.errors %}
+                {% for error in field.errors %}
+                    {{ error }}
+                {% endfor %}
+            {% endif %}
+            {{ field.label_tag }} {{ field }}
+        {% endfor %}
+        <input type="submit" value="Zarejestruj" />
     </form>
-</body>
-</html>
+
+</main>
+
+
+{% endblock %}
