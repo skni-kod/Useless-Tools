@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: useless-tools
+  namespace: useless-tools
+  labels:
+    app: useless-tools
+spec:
+  updateStrategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: useless-tools
+  template:
+    metadata:
+      labels:
+        app: useless-tools
+    spec:
+      containers:
+      - name: useless-tools-nginx
+        image: harbor.skni.edu.pl/library/ut:latest
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 200m
+            memory: 200Mi
+        env:
+        - name: DB_NAME
+          value: useless_tools
+        - name: DB_USER
+          value: useless_tools
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db
+              key: DB_PASSWORD
+        - name: DB_HOST
+          value: 192.168.1.170
+        - name: DB_PORT
+          value: "5432"
+        - name: DEPLOY_TYPE
+          value: prod
+        - name: DJANGO_ALLOWED_HOSTS
+          value: ut.skni.edu.pl
+        - name: SECRET_KEYS
+          valueFrom:
+            secretKeyRef:
+              name: app-key
+              key: SECRET_KEYS
+      imagePullSecrets:
+      - name: regcred
+      restartPolicy: Always

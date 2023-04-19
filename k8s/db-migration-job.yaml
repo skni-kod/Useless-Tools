@@ -1,0 +1,40 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ut-migration
+  namespace: useless-tools
+spec:
+  template:
+    spec:
+      containers:
+      - name: migration
+        image: harbor.skni.edu.pl/library/ut:latest
+        command: ['sh', '-c', 'python manage.py makemigrations && python manage.py migrate']
+        env:
+        - name: DB_NAME
+          value: useless_tools
+        - name: DB_USER
+          value: useless_tools
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db
+              key: DB_PASSWORD
+        - name: DB_HOST
+          value: 192.168.1.170
+        - name: DB_PORT
+          value: "5432"
+        - name: DEPLOY_TYPE
+          value: prod
+        - name: DJANGO_ALLOWED_HOSTS
+          value: ut.skni.edu.pl
+        - name: SECRET_KEYS
+          valueFrom:
+            secretKeyRef:
+              name: app-key
+              key: SECRET_KEYS
+      restartPolicy: Never
+      imagePullSecrets:
+      - name: regcred
+  backoffLimit: 4
+
