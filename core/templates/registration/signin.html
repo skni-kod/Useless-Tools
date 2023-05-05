@@ -35,7 +35,11 @@
 
                     {% for field in form %}
                         <div class="input-block">
-                            <i class="fa-solid fa-user"></i>
+                            {% if field.name == "username"%}
+                                <i class="fa-solid fa-user"></i>
+                            {%else %}
+                                <i class="fa-solid fa-lock"></i>
+                            {%endif%}
                             {{ field.label_tag }}
                             {{ field }}
                             <div class="top"></div>
