@@ -75,6 +75,7 @@ a {
 }
 
 .logo {
+  display: inline-block;
   height: 70px;
   padding: 10px;
   transition: transform 0.3s;
@@ -82,6 +83,7 @@ a {
 }
 .logo img {
   height: 100%;
+  width: 100%;
 }
 
 .logo:hover {
