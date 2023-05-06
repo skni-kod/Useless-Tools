@@ -63,7 +63,11 @@
             </div>
     
             <div class="login">
-                <a href="{% url 'signin' %}"><p>zaloguj <i class="fa-solid fa-right-to-bracket"></i></p></a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}"><p><i class="fa-solid fa-user"></i> {{ user }}</p></a>
+                {% else %}
+                    <a href="{% url 'signin' %}"><p>zaloguj <i class="fa-solid fa-right-to-bracket"></i></p></a>
+                {% endif %} 
             </div>
         </div>
 
