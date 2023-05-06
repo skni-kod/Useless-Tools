@@ -175,6 +175,10 @@
     transform: translateY(0);
   }
 }
+html {
+  overflow-x: hidden;
+}
+
 .wrapper {
   display: flex;
   justify-content: center;
@@ -182,10 +186,15 @@
   height: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  z-index: -100;
 }
 
 .display-block {
   display: block !important;
+}
+
+.error-block {
+  width: 100%;
 }
 
 .registration {
@@ -223,6 +232,7 @@
   display: flex;
   height: 45px;
   width: 100%;
+  z-index: 0;
 }
 .registration .card form .input-block i {
   font-size: 14px;
@@ -238,6 +248,7 @@
   margin-left: 40px;
   font-size: 14px;
   padding: 0 5px;
+  z-index: -1;
   cursor: text;
   transition: transform 0.15s, font-size 0.15s, color 0.15s;
 }
@@ -301,6 +312,11 @@
 }
 .registration .card form .input-block .bottom-active {
   transform: translateX(100%);
+}
+.registration .card form .error {
+  color: red;
+  padding: 10px 0 10px 5px;
+  font-size: 12px;
 }
 .registration .card form button {
   position: relative;
@@ -501,7 +517,7 @@
   .registration .wrapper .card {
     position: static;
     transform: translate(0, 0);
-    z-index: 0;
+    z-index: 1;
   }
   .registration .wrapper .animation {
     position: relative;
@@ -513,7 +529,7 @@
     text-transform: uppercase;
     border-radius: 5px;
     box-shadow: 0px 0px 15px 0px rgb(0, 0, 0);
-    z-index: -1;
+    z-index: 0;
     overflow: hidden;
   }
   .registration .wrapper .animation .sparkle {
@@ -548,8 +564,9 @@
     transform: rotate(50deg);
   }
   .registration .wrapper .animation .wheel {
-    display: block;
     position: absolute;
+    display: block;
+    cursor: pointer;
   }
   .registration .wrapper .animation .wheel-one {
     left: 61.5%;
@@ -644,6 +661,7 @@
   .registration .wrapper .animation .logo-text .text-top .letters-b {
     padding: 0 3px;
     color: #ff5700;
+    cursor: pointer;
   }
   .registration .wrapper .animation .logo-text .text-bottom {
     position: absolute;

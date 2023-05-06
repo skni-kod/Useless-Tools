@@ -1,5 +1,9 @@
 @use "../colors" as *;
 
+html{
+	overflow-x: hidden;
+}
+
 .wrapper {
 	display: flex;
 	justify-content: center;
@@ -7,10 +11,15 @@
 	height: 100%;
 	max-width: 1200px;
 	margin: 0 auto;
+	z-index: -100;
 }
 
 .display-block{
 	display: block !important;
+}
+
+.error-block{
+	width: 100%;
 }
 
 .registration {
@@ -50,6 +59,7 @@
 				display: flex;
 				height: 45px;
 				width: 100%;
+				z-index: 0;
 
 				i {
 					font-size: 14px;
@@ -66,6 +76,7 @@
 					margin-left: 40px;
 					font-size: 14px;
 					padding: 0 5px;
+					z-index: -1;
 					cursor: text;
 					transition: transform 0.15s, font-size 0.15s, color 0.15s;
 				}
@@ -141,6 +152,17 @@
 				.bottom-active {
 					transform: translateX(100%);
 				}
+			}
+
+			.error{
+				// position: absolute;
+				// top: 50%;
+				// // left: 50%;
+				// transform: translate(-50%, -50%);
+				color: red;
+				padding: 10px 0 10px 5px;
+				font-size: 12px;
+				// text-transform: uppercase;
 			}
 
 			button {
@@ -386,7 +408,7 @@
 			.card {
 				position: static;
 				transform: translate(0, 0);
-				z-index: 0;
+				z-index: 1;
 			}
 
 			.animation {
@@ -399,7 +421,7 @@
 				text-transform: uppercase;
 				border-radius: 5px;
 				box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 1);
-				z-index: -1;
+				z-index: 0;
 				overflow: hidden;
 
 				.sparkle{
@@ -439,8 +461,9 @@
 				}
 
 				.wheel {
-					display: block;
 					position: absolute;
+					display: block;
+					cursor: pointer;
 				}
 
 				.wheel-one {
@@ -557,6 +580,7 @@
 						.letters-b {
 							padding: 0 3px;
 							color: $main-theme;
+							cursor: pointer;
 						}
 					}
 

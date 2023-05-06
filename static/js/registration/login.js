@@ -3,20 +3,24 @@ const sparkles = document.querySelectorAll(".sparkle");
 const wheelOne = document.querySelector(".wheel-one");
 const wheelTwo = document.querySelector(".wheel-two");
 const wheelThree = document.querySelector(".wheel-three");
+const wheels = document.querySelectorAll(".wheel");
 const letters = document.querySelectorAll(".letters");
 const letterbT = document.querySelector(".letter-b-T");
 const letterbO = document.querySelector(".letter-b-O");
 const letterbO2 = document.querySelector(".letter-b-O2");
 const letterbL = document.querySelector(".letter-b-L");
 const letterbS = document.querySelector(".letter-b-S");
+const lettersB = document.querySelectorAll(".letters-b");
 const jumpingLetters = document.querySelectorAll(".let");
+const form = document.querySelector("form");
+const error = document.querySelector(".error");
 let isBroken = false;
+let animationInMotion = false;
 
 
 const jumpingAnimation = () => {
     for (let i = 0; i < jumpingLetters.length; i++) {
         setTimeout(() => {
-            console.log(i);
             if(isBroken) return;
             jumpingLetters[i].classList.add("jump");
         }, i * 100);
@@ -36,6 +40,18 @@ const jumpingAnimationReverse = () => {
     jumpingLetters.forEach(letter => {
         letter.classList.remove("jump");
     })
+}
+
+const toolJump = () => {
+    lettersB.forEach(letter => {
+        letter.classList.add("jump");
+    })
+    setTimeout(() => {
+        lettersB.forEach(letter => {
+            letter.classList.remove("jump");
+        })
+    }, 200);
+
 }
 
 const fallingLetters = () => {
@@ -70,6 +86,10 @@ const fallingLetters = () => {
         letterbO.classList.add("falling-O-b");
         letterbO2.classList.add("falling-O-b2");
         letterbL.classList.add("falling-L-b");
+        
+        setTimeout(() => {
+            animationInMotion = false;
+        }, 1500);
     }, 300);
 }
 
@@ -105,11 +125,13 @@ const backLetters = () => {
 }
 
 const backAnimation = () => {
+    if(animationInMotion) return;
     backLetters();
 }
 
 const brokenAnimation = () => {
     isBroken = true;
+    animationInMotion = true;
     jumpingLetters.forEach(letter => {
         letter.classList.remove("jump");
     })
@@ -124,13 +146,10 @@ const inputAnimation = (input) => {
     const label = input.previousElementSibling;
     const icon = label.previousElementSibling;
 
-    brokenAnimation();
-    
     label.classList.remove("white");
     side.classList.remove('white-bgc');
     top.classList.remove('white-bgc');
     bottomTwo.classList.remove('white-bgc');
-
 
     icon.style.borderRight = "none";
     label.classList.add("active-label");
@@ -148,8 +167,6 @@ const clearInputAnimation = (input) => {
     const label = input.previousElementSibling;
     const icon = label.previousElementSibling;
 
-    backAnimation();
-
     if(input.value === "") {
         setTimeout(() => {
             side.classList.add('white-bgc');
@@ -166,7 +183,6 @@ const clearInputAnimation = (input) => {
         bottomTwo.classList.add('white-bgc');
     }
 }   
-
 
 setInterval(() => {
     wheelOne.classList.toggle("reverse-animation");
@@ -194,5 +210,27 @@ inputs.forEach(input => {
     })
 })
 
+lettersB.forEach(letter => {
+    letter.addEventListener("click", () => {
+        brokenAnimation();
+    })
+})
 
-    
+wheels.forEach(wheel => {
+    wheel.addEventListener("click", () => {
+        if(isBroken){
+            backAnimation();
+        } else {
+            toolJump();
+        }
+    })   
+})
+
+if(inputs[1].value !== "") {
+    inputAnimation(inputs[1]);
+    clearInputAnimation(inputs[1]);
+}
+
+if(error.textContent.trim() !== "") {
+    brokenAnimation();
+}
