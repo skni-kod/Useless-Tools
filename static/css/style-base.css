@@ -207,16 +207,18 @@ a {
   align-items: center;
   font-size: 14px;
   text-transform: uppercase;
-  padding: 20px;
   letter-spacing: 1px;
   cursor: pointer;
+}
+.login a {
+  padding: 15px;
 }
 .login a p {
   transition: transform 0.3s, color 0.3s;
 }
 .login a p i {
   font-size: 13px;
-  margin: 0 3px;
+  margin: 0 8px;
 }
 
 .login:hover a p {
@@ -325,6 +327,9 @@ a {
   letter-spacing: 1px;
   line-height: 50px;
 }
+.nav-burger .menu .login-burger a {
+  color: #ff5700;
+}
 .nav-burger .menu .menu-item::before {
   content: "";
   position: absolute;
@@ -372,9 +377,6 @@ a {
   color: #ffffff;
   cursor: pointer;
   text-align: left;
-}
-.nav-burger .menu .menu-item:hover {
-  transform: translateX(13px);
 }
 .nav-burger .menu .menu-item:hover .button-burger {
   color: #ff5700;

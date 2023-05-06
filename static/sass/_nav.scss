@@ -241,17 +241,19 @@ a {
 	align-items: center;
 	font-size: 14px;
 	text-transform: uppercase;
-	padding: 20px;
+	// padding: 20px;
 	letter-spacing: 1px;
 	cursor: pointer;
-
+	
 	a{
+		padding: 15px;
+		// background-color: #fff;
 		p{
 			transition: transform .3s, color .3s;
 			
 			i {
 				font-size: 13px;
-				margin: 0 3px;
+				margin: 0 8px;
 			}
 		}
 	}
@@ -382,6 +384,12 @@ a {
 		letter-spacing: 1px;
 		line-height: 50px;
 
+		.login-burger{
+			a {
+				color: $main-theme;
+			}
+		}
+
 		.menu-item::before {
 			content: "";
 			position: absolute;
@@ -443,7 +451,7 @@ a {
 		}
 
 		.menu-item:hover {
-			transform: translateX(13px);
+			// transform: translateX(13px);
 
 			.button-burger {
 				color: $main-theme;

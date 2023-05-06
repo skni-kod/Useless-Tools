@@ -64,7 +64,7 @@
     
             <div class="login">
                 {% if user.is_authenticated %}
-                    <a href="{% url 'logout' %}"><p><i class="fa-solid fa-user"></i> {{ user }}</p></a>
+                    <a href="{% url 'logout' %}"><p>{{ user }}<i class="fa-solid fa-user"></i></p></a>
                 {% else %}
                     <a href="{% url 'signin' %}"><p>zaloguj <i class="fa-solid fa-right-to-bracket"></i></p></a>
                 {% endif %} 
@@ -82,6 +82,13 @@
 
         <div class="nav-burger">
             <ul class="menu">
+                <li class="menu-item burger-item login-burger">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'logout' %}"><p>{{ user }}</p></a>
+                    {% else %}
+                        <a href="{% url 'signin' %}"><p>zaloguj <i class="fa-solid fa-right-to-bracket"></i></p></a>
+                    {% endif %} 
+                </li>
                 <li class="menu-item burger-item">
                     <div class="button-burger"><p>narzędzia</p></div>
                     <ul class="dropdown">
