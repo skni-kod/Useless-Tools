@@ -9,31 +9,26 @@ class CustomUserCreationForm(UserCreationForm):
     username = UsernameField(
         label="Nazwa użytkownika",
         help_text="",
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "Nazwa użytkownika",
-            }
-        ),
+        widget=forms.TextInput(),
     )
     email = forms.EmailField(
         label="Email",
         help_text="",
-        widget=forms.EmailInput(attrs={"placeholder": "Email"}),
+        widget=forms.EmailInput(),
     )
     password1 = forms.CharField(
         label="Hasło",
         help_text="",
-        widget=forms.PasswordInput(attrs={"placeholder": "Hasło"}),
+        widget=forms.PasswordInput(),
     )
     password2 = forms.CharField(
         label="Powtórz hasło",
         help_text="",
-        widget=forms.PasswordInput(attrs={"placeholder": "Powtórz hasło"}),
+        widget=forms.PasswordInput(),
     )
     birth_date = forms.DateField(
         label="Data urodzenia",
         help_text="",
-        widget=forms.DateInput(attrs={"type": "date", "placeholder": "Data urodzenia"}),
     )
 
     class Meta:
