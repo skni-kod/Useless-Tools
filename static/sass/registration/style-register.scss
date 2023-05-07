@@ -2,3 +2,105 @@
 @use "./animations" as *;
 @use "./forms-components" as *;
 
+
+.registration {
+	.card {
+		height: 550px;
+        // background-color: #fff;
+
+		form {
+            margin-top: 70px;
+            // justify-content: space-between;
+			.error{
+				// position: absolute;
+				// top: 50%;
+				// // left: 50%;
+				// transform: translate(-50%, -50%);
+				color: red;
+				padding: 10px 0 10px 5px;
+				font-size: 12px;
+				// text-transform: uppercase;
+			}
+
+            .buttons{
+                width: 100%;
+                display: flex;
+                // flex-direction: column;
+                justify-content: space-between;
+
+                .btn{
+                    min-width: 120px;
+                    margin-bottom: 0;
+                    // flex-shrink: ;
+                }
+
+                .login-btn {
+                    // position: absolute;
+                    // right: 0;
+                    // bottom: 0;
+                    padding: 10px 10px 10px 0;
+                    font-size: 12px;
+                    transition: color 0.3s;
+    
+                    i {
+                        padding-left: 5px;
+                        transform: rotate(180deg);
+                    }
+                }
+    
+                .login-btn:hover {
+                    color: $main-theme;
+                }
+            }
+		}
+	}
+}
+
+@media (min-width: 576px) {
+	.registration {
+		.card {
+			form {
+                margin-top: 25px;
+			}
+		}
+	}
+}
+
+
+@media (min-width: 1200px) {
+	.registration {
+		.wrapper {
+			.card {
+				position: static;
+				transform: translate(0, 0);
+				z-index: 1;
+			}
+
+            .animation{
+                height: 550px;
+
+                .wheel-one {
+					left: 61.5%;
+					top: 32%;
+					width: 70px;
+				}
+
+				.wheel-two {
+					left: 42%;
+					top: 38%;
+					width: 90px;
+				}
+
+				.wheel-three {
+					left: 18.5%;
+					top: 26%;
+					width: 110px;
+				}
+
+                .logo-text{
+                    top: 70%;
+                }
+            }
+        }
+    }
+}

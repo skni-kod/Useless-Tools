@@ -120,7 +120,7 @@
     transform: translate(0, 0) rotate(0);
   }
   100% {
-    transform: translate(5px, 180px) rotate(20deg);
+    transform: translate(5px, 200px) rotate(20deg);
   }
 }
 @keyframes backTb {
@@ -158,7 +158,7 @@
 }
 @keyframes backSb {
   from {
-    transform: translate(5px, 180px) rotate(20deg);
+    transform: translate(5px, 200px) rotate(20deg);
   }
   to {
     transform: translate(0px, 0px) rotate(0deg);
@@ -177,6 +177,42 @@
 }
 html {
   overflow-x: hidden;
+}
+
+.btn {
+  position: relative;
+  height: 40px;
+  width: 100px;
+  border: 2px solid #ff5700;
+  font-size: 13px;
+  color: #ff5700;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 0;
+  transition: color 0.08s;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  height: 107%;
+  width: 101%;
+  z-index: -1;
+  background-color: #ff5700;
+  transform-origin: right;
+  transition: transform 0.3s;
+  transform: scaleX(0);
+}
+
+.btn:hover {
+  color: #ffffff;
+}
+
+.btn:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
 }
 
 .wrapper {
@@ -318,39 +354,6 @@ html {
   padding: 10px 0 10px 5px;
   font-size: 12px;
 }
-.registration .card form button {
-  position: relative;
-  height: 40px;
-  width: 100px;
-  border: 2px solid #ff5700;
-  font-size: 13px;
-  color: #ff5700;
-  text-transform: uppercase;
-  border-radius: 2px;
-  cursor: pointer;
-  z-index: 0;
-  transition: color 0.08s;
-}
-.registration .card form button::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: -1px;
-  height: 107%;
-  width: 103%;
-  z-index: -1;
-  background-color: #ff5700;
-  transform-origin: right;
-  transition: transform 0.3s;
-  transform: scaleX(0);
-}
-.registration .card form button:hover {
-  color: #ffffff;
-}
-.registration .card form button:hover::before {
-  transform-origin: left;
-  transform: scaleX(1);
-}
 .registration .card form .pass {
   position: absolute;
   left: 0;
@@ -393,7 +396,7 @@ html {
     border-radius: 5px;
     z-index: 0;
   }
-  .registration .card form button {
+  .registration .card form .btn {
     margin-bottom: 20px;
   }
 }
@@ -671,5 +674,71 @@ html {
     width: 100%;
     letter-spacing: 2px;
     font-size: 14px;
+  }
+}
+.registration .card {
+  height: 550px;
+}
+.registration .card form {
+  margin-top: 70px;
+}
+.registration .card form .error {
+  color: red;
+  padding: 10px 0 10px 5px;
+  font-size: 12px;
+}
+.registration .card form .buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.registration .card form .buttons .btn {
+  min-width: 120px;
+  margin-bottom: 0;
+}
+.registration .card form .buttons .login-btn {
+  padding: 10px 10px 10px 0;
+  font-size: 12px;
+  transition: color 0.3s;
+}
+.registration .card form .buttons .login-btn i {
+  padding-left: 5px;
+  transform: rotate(180deg);
+}
+.registration .card form .buttons .login-btn:hover {
+  color: #ff5700;
+}
+
+@media (min-width: 576px) {
+  .registration .card form {
+    margin-top: 25px;
+  }
+}
+@media (min-width: 1200px) {
+  .registration .wrapper .card {
+    position: static;
+    transform: translate(0, 0);
+    z-index: 1;
+  }
+  .registration .wrapper .animation {
+    height: 550px;
+  }
+  .registration .wrapper .animation .wheel-one {
+    left: 61.5%;
+    top: 32%;
+    width: 70px;
+  }
+  .registration .wrapper .animation .wheel-two {
+    left: 42%;
+    top: 38%;
+    width: 90px;
+  }
+  .registration .wrapper .animation .wheel-three {
+    left: 18.5%;
+    top: 26%;
+    width: 110px;
+  }
+  .registration .wrapper .animation .logo-text {
+    top: 70%;
   }
 }/*# sourceMappingURL=style-register.css.map */
