@@ -538,7 +538,5 @@ def cyk(
             return render(request, "core/cyk.html", {"resultCyk": tabela})
 
         except:
-            return render(
-                request, "core/cyk.html", {"resultCyk": ""}
-            )
+            return render(request, "core/cyk.html", {"resultCyk": ""})
     return render(request, "core/cyk.html")
