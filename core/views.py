@@ -464,9 +464,7 @@ def chomsky(request):
     return render(request, "core/chomsky.html")
 
 
-def cyk(
-    request,
-):
+def cyk(request):
     if request.method == "POST":
         try:
             """
@@ -538,5 +536,7 @@ def cyk(
             return render(request, "core/cyk.html", {"resultCyk": tabela})
 
         except:
-            return render(request, "core/cyk.html", {"resultCyk": ""})
+            return render(
+                request, "core/cyk.html", {"resultCyk": ""}
+            )
     return render(request, "core/cyk.html")

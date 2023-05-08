@@ -3,26 +3,111 @@
 
 
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/registration.css' %}">
+
+<link rel="stylesheet" href="{% static 'css/style-login.css' %}">
+
 {% endblock %}
 
 {% block content %}
     <main class ="registration">
-        <form method="post">
-            {% csrf_token %}
+        <div class="area" >
+            <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+        </div >
 
-            {% for field in form %}
-                {{ field.label_tag }}
-                {{ field }}
-            {% endfor %}
-            {% if form.non_field_errors %}
-                {% for error in form.non_field_errors %}
-                {{ error }}
-                {% endfor %}
-            {% endif %}
-            <button type="submit" class="btn btn-primary">Sign in</button>
-        </form>
+        <div class="wrapper">
+            <div class="card">
+                <form method="post">
+                    {% csrf_token %}
 
+                    {% for field in form %}
+                        {% if field.name == "username" %}
+                            <div class="input-block">
+                                <i class="fa-solid fa-user"></i>
+                                {{ field.label_tag }}
+                                {{ field }}
+                                <div class="top"></div>
+                                <div class="side white-bgc"></div>
+                                <div class="bottom one"></div>
+                                <div class="bottom two"></div>
+                            </div>
+                        {% elif field.name == "password" %}
+                            <div class="error-block">
+                                <div class="input-block">
+                                    <i class="fa-solid fa-lock"></i>
+                                    {{ field.label_tag }}
+                                    {{ field }}
+                                    <div class="top"></div>
+                                    <div class="side white-bgc"></div>
+                                    <div class="bottom one"></div>
+                                    <div class="bottom two"></div>
+                                </div>
+                                <p class="error">
+                                    {% if form.non_field_errors %}
+                                        {% for error in form.non_field_errors %}
+                                        {{ error }}
+                                        {% endfor %}
+                                    {% endif %}
+                                </p>        
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+                    
+
+                    <a href="#" class="pass">Nie pamietam hasła</a>
+                    <a href="#" class="register">Zarejestruj się <i class="fa-solid fa-arrow-right"></i></a>
+    
+                    <button type="submit" class="btn btn-primary">zaloguj</button>
+                </form>    
+            </div>
+
+            <div class="animation">
+                <div class="sparkle sparkle-one"></div>
+                <div class="sparkle sparkle-two"></div>
+                <div class="sparkle sparkle-three"></div>
+                <div class="sparkle sparkle-four"></div>
+                <img class="wheel wheel-one smooth-animation" src="{% static 'img/kulko.svg' %}" alt="">
+                <img class="wheel wheel-two reverse-animation smooth-animation" src="{% static 'img/kulko.svg' %}" alt="">
+                <img class="wheel wheel-three smooth-animation" src="{% static 'img/kulko.svg' %}" alt="">
+
+                <div class="logo-text">
+                    <div class="text-top">
+                        <span class="let letter-U letters letters-shadow">u</span>
+                        <span class="let letter-S letters letters-shadow">s</span>
+                        <span class="let letter-E letters letters-shadow">e</span>
+                        <span class="let letter-L letters letters-shadow">l</span>
+                        <span class="let letter-E letters letters-shadow">e</span>
+                        <span class="let letter-S letters letters-shadow">s</span>
+                        <span class="let letter-S letters letters-shadow">s</span>
+                        <span class="let letter-b-T letters-b">t</span>
+                        <span class="let letter-b-O letters-b">o</span>
+                        <span class="let letter-b-O2 letters-b">o</span>
+                        <span class="let letter-b-L letters-b">l</span>
+                        <span class="let letter-b-S letters-b">s</span>
+                    </div>
+                    <div class="text-bottom">
+                        <p>Possibly useful tools</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
+    <script src="{% static 'js/registration/login.js' %}"></script>
 
 {% endblock %}

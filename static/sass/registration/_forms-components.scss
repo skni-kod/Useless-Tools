@@ -1,0 +1,600 @@
+@use "../colors" as *;
+
+html{
+	overflow-x: hidden;
+}
+
+.wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	z-index: -100;
+}
+
+.display-block{
+	display: block !important;
+}
+
+.error-block{
+	width: 100%;
+}
+
+.registration {
+	height: 100vh;
+	width: 100vw;
+
+	.wheel {
+		display: none;
+	}
+
+	.logo-text{
+		display: none;
+	}
+
+	.card {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		height: 400px;
+		width: 100vw;
+		z-index: 100;
+
+		form {
+			position: relative;
+			display: flex;
+			height: 100%;
+			width: 75%;
+			padding: 3px 3px 3px 2px;
+			justify-content: space-evenly;
+			align-items: center;
+			flex-direction: column;
+			overflow-x: hidden;
+
+			.input-block {
+				position: relative;
+				display: flex;
+				height: 45px;
+				width: 100%;
+				z-index: 0;
+
+				i {
+					font-size: 14px;
+					margin: auto 0px auto 10px;
+					padding: 2px 10px 2px 0;
+					border-right: 1px solid $white;
+				}
+
+				label {
+					position: absolute;
+					left: 0;
+					top: 50%;
+					transform: translateY(-50%);
+					margin-left: 40px;
+					font-size: 14px;
+					padding: 0 5px;
+					z-index: -1;
+					cursor: text;
+					transition: transform 0.15s, font-size 0.15s, color 0.15s;
+				}
+
+				.active-label {
+					transform: translate(-12px, -260%);
+					font-size: 10px;
+					color: $main-theme;
+				}
+
+				input {
+					width: 100%;
+					font-size: 16px;
+					background-color: transparent;
+					border: none;
+					caret-color: $white;
+					color: white;
+				}
+
+				input:focus {
+					background-color: transparent;
+					outline: none;
+					border: none;
+				}
+
+				.white-bgc {
+					background-color: #fff !important;
+				}
+
+				.white {
+					color: #fff;
+				}
+
+				.top {
+					position: absolute;
+					left: -2px;
+					top: -2px;
+					width: 0px;
+					height: 1px;
+					transform-origin: top;
+					transition: width 0.4s, background-color 0.2s;
+					background-color: $main-theme;
+				}
+
+				.side {
+					position: absolute;
+					left: -2px;
+					top: -2px;
+					width: 1px;
+					height: calc(100% + 4px);
+					background-color: $main-theme;
+					transition: background-color 0.1s;
+				}
+
+				.bottom {
+					position: absolute;
+					left: -2px;
+					bottom: -2px;
+					height: 1px;
+					width: 110%;
+					transition: transform 0.3s, background-color 0.2s;
+				}
+
+				.one {
+					background-color: #fff;
+				}
+
+				.two {
+					left: calc(-110% - 2px);
+					background-color: $main-theme;
+				}
+
+				.bottom-active {
+					transform: translateX(100%);
+				}
+			}
+
+			.error{
+				// position: absolute;
+				// top: 50%;
+				// // left: 50%;
+				// transform: translate(-50%, -50%);
+				color: red;
+				padding: 10px 0 10px 5px;
+				font-size: 12px;
+				// text-transform: uppercase;
+			}
+
+			button {
+				position: relative;
+				height: 40px;
+				width: 100px;
+				border: 2px solid $main-theme;
+				font-size: 13px;
+				color: $main-theme;
+				text-transform: uppercase;
+				border-radius: 2px;
+				cursor: pointer;
+				z-index: 0;
+				transition: color 0.08s;
+			}
+
+			button::before {
+				content: "";
+				position: absolute;
+				top: -1px;
+				left: -1px;
+				height: 107%;
+				width: 103%;
+				z-index: -1;
+				background-color: $main-theme;
+				transform-origin: right;
+				transition: transform 0.3s;
+				transform: scaleX(0);
+			}
+
+			button:hover {
+				color: $white;
+			}
+
+			button:hover::before {
+				transform-origin: left;
+				transform: scaleX(1);
+			}
+
+			.pass {
+				position: absolute;
+				left: 0;
+				bottom: 0px;
+				padding: 10px;
+				font-size: 12px;
+				transition: color 0.3s;
+			}
+
+			.pass:hover {
+				color: $main-theme;
+			}
+
+			.register {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				padding: 10px;
+				font-size: 12px;
+				transition: color 0.3s;
+
+				i {
+					padding: 2px;
+				}
+			}
+
+			.register:hover {
+				color: $main-theme;
+			}
+		}
+	}
+}
+
+
+
+@media (max-width: 335px) {
+	.registration {
+		.card {
+			form {
+				.register {
+					bottom: 25px;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 576px) {
+	.registration {
+		.card {
+			height: 500px;
+			width: 400px;
+			padding: 10px 0 20px 0;
+			margin-top: 35px;
+			background-color: $bgc;
+			box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 1);
+			border-radius: 5px;
+			z-index: 0;
+
+			form {
+				button {
+					margin-bottom: 20px;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.registration {
+		.area {
+			width: 100%;
+			.circles {
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				z-index: -1;
+
+				li {
+					position: absolute;
+					display: block;
+					list-style: none;
+					width: 20px;
+					height: 20px;
+					background: $main-theme;
+					animation: animate 60s linear infinite;
+					bottom: -150px;
+					opacity: 0;
+				}
+
+				li:nth-child(1) {
+					left: 25%;
+					bottom: 50%;
+					width: 60px;
+					height: 60px;
+					animation-delay: 0s;
+				}
+
+				li:nth-child(2) {
+					left: 10%;
+					bottom: 30%;
+					width: 20px;
+					height: 20px;
+					animation-delay: 2s;
+					animation-duration: 35s;
+				}
+
+				li:nth-child(3) {
+					left: 70%;
+					bottom: 70%;
+					width: 20px;
+					height: 20px;
+					animation-delay: 34s;
+				}
+
+				li:nth-child(4) {
+					left: 40%;
+					bottom: 60%;
+					width: 60px;
+					height: 60px;
+					animation-delay: 0s;
+					animation-duration: 28s;
+				}
+
+				li:nth-child(5) {
+					left: 65%;
+					bottom: 20%;
+					width: 20px;
+					height: 20px;
+					animation-delay: 0s;
+				}
+
+				li:nth-child(8) {
+					left: 50%;
+					width: 25px;
+					height: 25px;
+					animation-delay: 15s;
+					animation-duration: 45s;
+				}
+
+				li:nth-child(9) {
+					left: 20%;
+					width: 15px;
+					height: 15px;
+					animation-delay: 2s;
+					animation-duration: 35s;
+				}
+
+				li:nth-child(11) {
+					left: 80%;
+					bottom: 70%;
+					width: 50px;
+					height: 50px;
+					animation-delay: 3s;
+					animation-duration: 49s;
+				}
+
+				li:nth-child(12) {
+					left: 65%;
+					bottom: 50%;
+					width: 30px;
+					height: 30px;
+					animation-delay: 0s;
+					animation-duration: 42s;
+				}
+
+				li:nth-child(13) {
+					left: 25%;
+					bottom: 75%;
+					width: 50px;
+					height: 50px;
+					animation-delay: 6s;
+					animation-duration: 31s;
+				}
+
+				li:nth-child(14) {
+					left: 15%;
+					bottom: 40%;
+					width: 20px;
+					height: 20px;
+					animation-delay: 0s;
+					animation-duration: 59s;
+				}
+
+				li:nth-child(15) {
+					left: 10%;
+					bottom: 30%;
+					width: 45px;
+					height: 45px;
+					animation-delay: 12s;
+					animation-duration: 55s;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+	.registration {
+		.wrapper {
+			.card {
+				position: static;
+				transform: translate(0, 0);
+				z-index: 1;
+			}
+
+			.animation {
+				position: relative;
+				height: 500px;
+				width: 400px;
+				padding: 10px 0 20px 0;
+				margin-top: 35px;
+				background-color: $bgc;
+				text-transform: uppercase;
+				border-radius: 5px;
+				box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 1);
+				z-index: 0;
+				overflow: hidden;
+
+				.sparkle{
+					position: absolute;
+					top: 72%;
+					left: 20%;
+					background-color: gold;
+					border-radius: 50px;
+					transition: 3s;
+					opacity: 0;
+					display: none;
+
+					&-one{
+						width: 1px;
+						height: 12px;
+						animation: sparkleOne .8s forwards linear infinite;
+					}
+
+					&-two{
+						width: 1px;
+						height: 10px;
+						animation: sparkleTwo .8s .2s forwards linear infinite;
+					}
+					
+					&-three{
+						width: 1px;
+						height: 8px;
+						animation: sparkleThree .8s .4s forwards linear infinite;
+					}
+
+					&-four{
+						width: 1px;
+						height: 6px;
+						animation: sparkleFour .8s .6s forwards linear infinite;
+						transform: rotate(50deg);
+					}
+				}
+
+				.wheel {
+					position: absolute;
+					display: block;
+					cursor: pointer;
+				}
+
+				.wheel-one {
+					left: 61.5%;
+					top: 27%;
+					width: 70px;
+				}
+
+				.wheel-two {
+					left: 42%;
+					top: 34%;
+					width: 90px;
+				}
+
+				.wheel-three {
+					left: 18.5%;
+					top: 21%;
+					width: 110px;
+				}
+
+				.smooth-animation {
+					animation: rotateWheel 5s ease-in-out infinite;
+				}
+				
+				.reverse-animation {
+					animation-direction: reverse !important;
+				}
+
+				.falling-tools{
+					animation: fallingTools .3s ease-in forwards;
+				}
+
+				.falling-T-b{
+					animation: fallingTb .4s ease-in forwards;
+				}
+
+				.falling-O-b{
+					animation: fallingOb 1s ease-in forwards;
+				}
+
+				.falling-O-b2{
+					animation: fallingOb2 1s ease-in forwards;
+				}
+
+				.falling-L-b{
+					animation: fallingLb 1.5s ease-in forwards;
+				}
+
+				.falling-S-b{
+					animation: fallingSb .9s ease-in forwards;
+				}
+
+				.back-Tb{
+					animation: backTb 1s ease-in forwards;
+				}
+
+				.back-Ob{
+					animation: backOb 1s ease-in forwards;
+				}
+				
+				.back-Ob2{
+					animation: backOb2 1s ease-in forwards;
+				}
+				
+				.back-Lb{
+					animation: backLb 1s ease-in forwards;
+				}
+				
+				.back-Sb{
+					animation: backSb 1s ease-in forwards;
+				}
+				
+				.logo-text {
+					display: block;
+					position: absolute;
+					top: 73%;
+					left: 50%;
+					transform: translateX(-50%);
+					width: 100%;
+					bottom: 120px;
+					color: $white;
+					text-align: center;
+					font-family: "Bahnschrift", sans-serif;
+					
+					.text-top {
+						position: absolute;
+						top: -25px;
+						left: 50%;
+						transform: translateX(-50%);
+						font-size: 24px;
+						display: flex;
+
+						.letters{
+							padding: 0 3px;
+						}
+
+						.letters-shadow{
+							text-shadow: 0 0px 2px $white;
+						}
+
+						.jump{
+							animation: jump .2s ease-in-out 1;
+						}
+
+						.letter-b-T {
+							margin-left: 10px;
+							transform-origin: 50% 110%;
+						}
+
+						.letter-b-L{
+							transform-origin: 50% 110%;
+						}
+						
+						.letters-b {
+							padding: 0 3px;
+							color: $main-theme;
+							cursor: pointer;
+						}
+					}
+
+					.text-bottom {
+						position: absolute;
+						top: 7px;
+						left: 50%;
+						transform: translateX(-50%);
+						width: 100%;
+						letter-spacing: 2px;
+						font-size: 14px;
+					}
+				}
+			}
+		}
+	}
+}
