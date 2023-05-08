@@ -280,8 +280,7 @@
   background-color: #222;
 }
 .tools .tool .tool-img:hover .text-hidden {
-  -webkit-clip-path: circle(100% at 50% 50%);
-          clip-path: circle(100% at 50% 50%);
+  clip-path: circle(100% at 50% 50%);
 }
 
 @keyframes animate {
@@ -414,3 +413,4 @@
     font-size: 26px;
   }
 }/*# sourceMappingURL=style-home.css.map */
+
