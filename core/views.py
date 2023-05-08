@@ -534,11 +534,11 @@ def cyk(
                                         ):
                                             if symbole_pocz[y] not in tabela[i][x]:
                                                 tabela[i][x].append(symbole_pocz[y])
-
+            print(tabela)
             return render(request, "core/cyk.html", {"resultCyk": tabela})
 
         except:
             return render(
-                request, "core/cyk.html", {"resultCyk": "Wprowadzono niepoprawnie dane"}
+                request, "core/cyk.html", {"resultCyk": ""}
             )
     return render(request, "core/cyk.html")

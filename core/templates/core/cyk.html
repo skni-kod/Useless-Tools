@@ -1,70 +1,72 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .MaciekPL{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        #greibach-form input{
-            margin: 1px;
-        }
-        #wynikGreibach{
-            margin: 10px;
-            white-space: pre-line; /* wez dodaj to do css potem. Wazne to jest bo jak przychodza dane przez jsona to korzysta z tych \n*/
+{% extends 'core/base.html' %} {% load static %} {% block title %} CYK {%endblock %} {% block head%}
+<link rel="stylesheet" href="{% static 'css/style-cyk.css' %}" . />
+{% endblock %} {%block content%}
+<main class="grammar">
+	<div class="area">
+		<ul class="circles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div class="container">
+		<section class="grammar-form-section">
+			<div class="form-card">
+				<header class="form-header">
+					<h1 class="grammar-title">Algorytm CYK</h1>
+					<h2 class="how-it-works-title">Jak to działa?</h2>
+					<ul class="how-it-works-text">
+						<li>W pierwszym oknie wpisz reguły produkcji w postaci Chomskiego,</li>
+						<li>
+							Następnie wpisz słowo, które chcesz sprawidzić
+						</li>
+						<li>Kliknij "Konwertuj" i zobacz co się stanie</li>
+						<li>Przy kopiowaniu reguł ze schowka mogą wystąpić problemy</li>
+					</ul>
+				</header>
+					<form class="grammar-form" id="cyk-form" action="{% url 'cyk' %}" method="post" name="cyk">
+						{% csrf_token %}
+						<div class="label-text-container">
+							<label class="text-area-label" for="rules-CYK">Wprowadź reguły</label>
+							<textarea id="rules-CYK" class="text-area rules" value="" name="rules" rows="4" cols="10" placeholder="𝑆>𝐶𝐵,𝐶𝐴,𝐷S,𝑏;&#10;𝐴>𝐴𝐷,𝑎;&#10;𝐵>𝐶𝐵,𝑎;&#10;𝐶>𝑎;&#10;𝐷>𝑏;"></textarea>
+						</div>
+						<div class="label-text-container">
+							<label class="text-area-label" for="word-CYK">Wprowadź słowo</label>
+							<input class="text-area terminals" id="word-CYK" type="text" name="word" value="" placeholder="baabb" />
+						</div>
+						<!-- <input  id="submit-btn" type="submit" value="Konwertuj"> -->
+						<button class="submit-btn" id="submit-btn" value="Konwertuj">
+							Wyprowadź
+						</button>
+					</form>
+					<div class="cyk-table-show-op-pawel">
+					<table class="cyk-table" id="cyk-table">
+						{% for row in resultCyk %}
+						<tr class="cyk-table-row"> 
+							{% for col in row %}
+							<td class="cyk-table-td">{% for i in col %} {{i}} {% endfor %}</td>
+							{% endfor %}
+						</tr>
+						{% endfor %}
+					</table>
+				
+				</div>
+			</div>
+		</section>
+	</div>
+</main>
+<script src="{% static 'js/cyk.js' %}"></script>
 
-        }
-        .dajdwazlote{
-            width: 110%;
-        }
-        tr{
-            display: table-row;
-            vertical-align: inherit;
-            border-color: inherit;
-        }
-        td {
-            font-size: 10px;
-            border: 1px solid black;
-            width: 40px;
-            height: 40px;
-            text-align: center;
-            box-sizing: border-box;
-        }
-    </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
-
-
-</head>
-<body>
-  <form id ="cyk-form" action="{% url 'cyk' %}" method="post" name="cyk">
-      {% csrf_token %}
-      <label for="reguly">Wprowadź reguły</label>
-      <textarea class ="dajdwazlote" value ="" name="rules" rows="4" cols="10"></textarea>
-      <input type="text" name="word" value ="">
-      <input id="submit-btn" type="submit" value="Konwertuj">
-  </form>
-  <table id="cyk-table">
-      {% for row in resultCyk %}
-          <tr>
-          {% for col in row %}
-              <td>
-              {% for i in col %}
-                  {{i}}
-              {% endfor %}
-              </td>
-          {% endfor %}
-          </tr>
-      {% endfor %}
-  </table>
-  <script src="{% static 'js/cyk.js' %}"></script>
-</body>
-
-
-</html>
+{% endblock %}
