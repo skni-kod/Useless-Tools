@@ -31,6 +31,17 @@
 
         <div class="wrapper">
             <div class="card">
+                <div id="datePicker" class="data-card">
+                    <p class="info">Wprowadź datę urodzenia przytrzymując Ziemię oraz obracając ją wokół Słońca.</p>
+                    <p class="info orange-text">Wymagane jest 18 lat.</p>
+                    <p class="show-date"></p>
+                    <svg viewBox="0 0 350 166" >
+                    <ellipse id="ellipse" cx="175" cy="83" rx="150" ry="73"/>  
+                    <image id="earth" height="40" width="40" href="{% static 'img/earth.png' %}"></image>
+                    <image id="sun" x="105" y="45" height="70" width="70" href="{% static 'img/sun.png' %}"></image>
+                    </svg> 
+                    <p class="confirm">Zatwierdź<i class="fa-solid fa-check"></i></p>
+                </div>
                 <form method="post" novalidate>
                     {% csrf_token %}
 
@@ -183,5 +194,6 @@
 
 </main>
 <script src="{% static 'js/registration/login.js' %}"></script>
+<script src="{% static 'js/registration/data-picker.js' %}"></script>
 
 {% endblock %}

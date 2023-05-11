@@ -18,6 +18,15 @@ let isBroken = false;
 let animationInMotion = false;
 
 
+const checkInputs = () => {
+    inputs.forEach((input, index) => {
+        if (input.value !== "" && index !== 0) {
+          inputAnimation(input);
+          clearInputAnimation(input);
+        }
+      });
+}
+
 const jumpingAnimation = () => {
     for (let i = 0; i < jumpingLetters.length; i++) {
         setTimeout(() => {
@@ -226,10 +235,9 @@ wheels.forEach(wheel => {
     })   
 })
 
-if(inputs[1].value !== "") {
-    inputAnimation(inputs[1]);
-    clearInputAnimation(inputs[1]);
-}
+checkInputs() 
+  
+
 
 if(error.textContent.trim() !== "") {
     brokenAnimation();

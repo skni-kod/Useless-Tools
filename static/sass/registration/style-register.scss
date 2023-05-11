@@ -5,8 +5,88 @@
 
 .registration {
 	.card {
+		position: relative;
 		height: 550px;
-        // background-color: #fff;
+		overflow: hidden;
+
+		.data-active{
+			transform: translateX(0) !important;
+			// background-color: #fff;
+		}
+
+
+		#datePicker {
+			position: absolute;
+			height: 100vh;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			transform: translateX(-110%);
+			z-index: 10;
+			background-color: $bgc;
+			border-radius: 5px;
+			box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 1);
+			transition: transform .7s ease-in-out;
+			color: $white;
+
+			.info{
+				font-size: 13px;
+				text-align: center;
+				width: 80%;
+			}
+
+			.orange-text{
+				margin-top: 10px;
+			}
+
+			.show-date{
+				display: inline-block;
+				margin: 20px 0 10px 0;
+				font-size: 16px;
+				text-align: center;
+				min-width: 120px;
+				padding-bottom: 8px;
+				border-bottom: 1px solid $main-theme;
+			}
+			
+
+
+			#earth{
+				cursor: grab;
+			}
+	
+			svg {
+				height: 100%;
+				max-height: 220px;
+				width: 100%;
+				// padding: 40px;
+
+				ellipse {
+					fill-opacity: 0;
+					stroke: $white;
+					stroke-width: 0.5;
+					stroke-dasharray: 7;
+				}
+			}
+
+			.confirm{
+				font-size: 16px;
+				padding: 20px;
+				cursor: pointer;
+				transition: color .3s;
+
+				i{
+					margin-left: 8px;
+				}
+			}
+
+			.confirm:hover{
+				color: $main-theme;
+			}
+		}
+		
 
 		form {
             margin-top: 70px;
@@ -16,7 +96,7 @@
 				// top: 50%;
 				// // left: 50%;
 				// transform: translate(-50%, -50%);
-				color: red;
+				// color:;
 				padding: 10px 0 10px 5px;
 				font-size: 12px;
 				// text-transform: uppercase;
@@ -52,6 +132,19 @@
                     color: $main-theme;
                 }
             }
+
+		}
+	}
+}
+
+@media (min-width: 400px) {
+	.registration {
+		.card {
+			#datePicker{
+				svg{
+					min-height: 300px;
+				}
+			}
 		}
 	}
 }
@@ -59,6 +152,10 @@
 @media (min-width: 576px) {
 	.registration {
 		.card {
+			#datePicker{
+				height: 550px;
+			}
+
 			form {
                 margin-top: 25px;
 			}

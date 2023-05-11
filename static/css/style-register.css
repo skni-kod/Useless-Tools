@@ -350,7 +350,7 @@ html {
   transform: translateX(100%);
 }
 .registration .card form .error {
-  color: red;
+  color: #ff5700;
   padding: 10px 0 10px 5px;
   font-size: 12px;
 }
@@ -389,7 +389,6 @@ html {
   .registration .card {
     height: 500px;
     width: 400px;
-    padding: 10px 0 20px 0;
     margin-top: 35px;
     background-color: #222;
     box-shadow: 0px 0px 15px 0px rgb(0, 0, 0);
@@ -677,13 +676,76 @@ html {
   }
 }
 .registration .card {
+  position: relative;
   height: 550px;
+  overflow: hidden;
+}
+.registration .card .data-active {
+  transform: translateX(0) !important;
+}
+.registration .card #datePicker {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(-110%);
+  z-index: 10;
+  background-color: #222;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px 0px rgb(0, 0, 0);
+  transition: transform 0.7s ease-in-out;
+  color: #ffffff;
+}
+.registration .card #datePicker .info {
+  font-size: 13px;
+  text-align: center;
+  width: 80%;
+}
+.registration .card #datePicker .orange-text {
+  margin-top: 10px;
+}
+.registration .card #datePicker .show-date {
+  display: inline-block;
+  margin: 20px 0 10px 0;
+  font-size: 16px;
+  text-align: center;
+  min-width: 120px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ff5700;
+}
+.registration .card #datePicker #earth {
+  cursor: grab;
+}
+.registration .card #datePicker svg {
+  height: 100%;
+  max-height: 220px;
+  width: 100%;
+}
+.registration .card #datePicker svg ellipse {
+  fill-opacity: 0;
+  stroke: #ffffff;
+  stroke-width: 0.5;
+  stroke-dasharray: 7;
+}
+.registration .card #datePicker .confirm {
+  font-size: 16px;
+  padding: 20px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.registration .card #datePicker .confirm i {
+  margin-left: 8px;
+}
+.registration .card #datePicker .confirm:hover {
+  color: #ff5700;
 }
 .registration .card form {
   margin-top: 70px;
 }
 .registration .card form .error {
-  color: red;
   padding: 10px 0 10px 5px;
   font-size: 12px;
 }
@@ -709,7 +771,15 @@ html {
   color: #ff5700;
 }
 
+@media (min-width: 400px) {
+  .registration .card #datePicker svg {
+    min-height: 300px;
+  }
+}
 @media (min-width: 576px) {
+  .registration .card #datePicker {
+    height: 550px;
+  }
   .registration .card form {
     margin-top: 25px;
   }
