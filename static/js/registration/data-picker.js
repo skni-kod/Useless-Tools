@@ -59,6 +59,7 @@ const mousemove = e => {
 
   earth.setAttribute("x", horizontalRadius + x - earthSize/2 + horizontalMargin)
   earth.setAttribute("y", verticalRadius - y - earthSize/2 + verticalMargin)
+  dateButton.setAttribute('readonly', 'true')
 
   let oldDate = date
 
@@ -78,7 +79,7 @@ const mousemove = e => {
   if(date.getTime() > today.getTime()){
     showDate.textContent = "Jesteś z przyszłości?" 
   }else{
-    showDate.textContent = addZero(date.getDate()) + "/" + addZero(date.getMonth() + 1) + "/" + date.getFullYear()
+    showDate.textContent = addZero(date.getDate()) + "-" + addZero(date.getMonth() + 1) + "-" + date.getFullYear()
     dateButton.value = showDate.textContent
   }
 }
@@ -98,7 +99,7 @@ let y = verticalRadius*Math.sin(angle)
 earth.setAttribute("x",horizontalRadius + x - earthSize/2 + horizontalMargin)
 earth.setAttribute("y",verticalRadius - y - earthSize/2 + verticalMargin)
 
-showDate.textContent = addZero(date.getDate()) + "/" + addZero(date.getMonth()+1) + "/" + date.getFullYear()
+showDate.textContent = addZero(date.getDate()) + "-" + addZero(date.getMonth()+1) + "-" + date.getFullYear()
 
 earth.addEventListener("mousedown", mousedown)
 earth.addEventListener("touchstart", mousedown)

@@ -1,3 +1,11 @@
 @use "../colors" as *;
 @use "./animations" as *;
 @use "./forms-components" as *;
+
+@media (min-width: 576px) {
+	.registration {
+		.card {
+			padding: 10px 0 20px 0;
+		}
+	}
+}

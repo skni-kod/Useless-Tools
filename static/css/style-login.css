@@ -674,4 +674,9 @@ html {
     letter-spacing: 2px;
     font-size: 14px;
   }
+}
+@media (min-width: 576px) {
+  .registration .card {
+    padding: 10px 0 20px 0;
+  }
 }/*# sourceMappingURL=style-login.css.map */
