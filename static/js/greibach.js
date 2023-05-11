@@ -5,7 +5,7 @@
         var formData = $(this).serialize();
   
         $.ajax({
-          url: '/greibach-convert',
+          url: '/greibach',
           type: 'POST',
           data: formData,
           success: function(response) {

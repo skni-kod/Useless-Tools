@@ -1,0 +1,67 @@
+@use './colors' as *;
+@import 'style-grammar';
+
+table{
+   margin: 0 auto;
+   
+}
+
+
+
+td {
+    min-width: 50px;
+    min-height: 50px;
+    width: 50px;
+    height: 50px;
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid $white;
+    border-radius: 5px;
+    box-shadow: 0 0 1px 0 black;   
+}
+
+// .cyk-table-show-op-pawel{
+//     position: relative;
+//     margin: 0 auto;
+//     overflow: auto;
+//     width: fit-content;
+//     max-height: 700px;
+// }
+
+// .cyk-table-show-op-pawel::after,.cyk-table-show-op-pawel::before{
+ //    content: '';
+//     position: absolute;
+//     left: 0;
+//     top: 0;
+//     background-color: $main-theme;
+// }
+
+// .cyk-table-show-op-pawel::before{
+//     width: 1px;
+//     height: 30px;
+//     animation: animateY 5s infinite ;
+// }
+
+// .cyk-table-show-op-pawel::after{
+//     width: 30px;
+//     height: 1px;
+//     animation: animateX 5s infinite;
+// }
+
+// @keyframes animateX {
+//     0%{
+//         left: 0;
+//     }
+//     50%{
+//         left: calc(100% - 31px);
+//     }
+// }
+
+// @keyframes animateY {
+//     0%{
+//         top: 0;
+//     }
+//     50%{
+//         top: calc(100% - 32px);
+//     }
+// }

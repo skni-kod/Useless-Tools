@@ -3,7 +3,8 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from django.urls import path
 
-from .views import SignIn, SignUp, chomsky, generator, greibach, home, password
+from .views import (SignIn, SignUp, chomsky, cyk, generator, greibach, home,
+                    password)
 
 urlpatterns = [
     path("", home, name="home"),
@@ -49,6 +50,7 @@ urlpatterns = [
     path("greibach-convert", greibach, name="greibach-convert"),
     path("chomsky", chomsky, name="chomsky"),
     path("chomsky-convert", chomsky, name="chomsky-convert"),
+    path("cyk", cyk, name="cyk"),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
