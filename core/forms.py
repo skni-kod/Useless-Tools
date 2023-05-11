@@ -27,7 +27,7 @@ class CustomUserCreationForm(UserCreationForm):
         widget=forms.PasswordInput(),
     )
     birth_date = forms.DateField(
-        input_formats=['%d-%m-%Y'],
+        input_formats=["%d-%m-%Y"],
         label="Data urodzenia",
         help_text="",
     )
