@@ -1,4 +1,5 @@
 from datetime import date, timedelta
+
 from django import forms
 from django.contrib.auth.forms import (AuthenticationForm, UserCreationForm,
                                        UsernameField)
@@ -29,7 +30,7 @@ class CustomUserCreationForm(UserCreationForm):
     )
     birth_date = forms.DateField(
         input_formats=["%d-%m-%Y"],
-    label="Data urodzenia",
+        label="Data urodzenia",
         help_text="",
     )
 
@@ -39,8 +40,6 @@ class CustomUserCreationForm(UserCreationForm):
         if age < 18:
             raise forms.ValidationError("Nie masz 18 lat")
         return birth_date
-
-
 
     class Meta:
         model = User
