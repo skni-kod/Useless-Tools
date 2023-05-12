@@ -152,3 +152,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "signin"
 LOGIN_URL = "signin"
+
+CSRF_TRUSTED_ORIGINS = ['https://ut.skni.edu.pl']
