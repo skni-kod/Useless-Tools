@@ -31,7 +31,6 @@ SECRET_KEY = os.environ.get("SECRET_KEYS")
 DEBUG = os.environ.get("DEBUG") == "True"
 
 
-
 DEPLOY_TYPE = os.environ.get("DEPLOY_TYPE", "dev")
 
 ALLOWED_HOSTS = [
