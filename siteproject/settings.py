@@ -32,7 +32,7 @@ DEBUG = os.environ.get("DEBUG") == "True"
 
 DEPLOY_TYPE = os.environ.get("DEPLOY_TYPE", "dev")
 
-ALLOWED_HOSTS = [host.strip() for host in os.getenv('ALLOWED_HOSTS', '').split(',')]
+ALLOWED_HOSTS = [host.strip() for host in os.getenv("ALLOWED_HOSTS", "").split(",")]
 
 # Application definition
 
