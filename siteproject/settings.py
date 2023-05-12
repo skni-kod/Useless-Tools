@@ -153,4 +153,4 @@ LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "signin"
 LOGIN_URL = "signin"
 
-CSRF_TRUSTED_ORIGINS = ['https://ut.skni.edu.pl']
+CSRF_TRUSTED_ORIGINS = ["https://ut.skni.edu.pl"]
