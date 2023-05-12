@@ -21,5 +21,4 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 COPY . /app
 RUN python manage.py collectstatic --noinput 
 EXPOSE 80
-CMD nginx -g 'daemon off;' & gunicorn siteproject.wsgi:application --bind 0.0.0.0:8000
-
+CMD gunicorn siteproject.wsgi:application --bind localhost:8000 && nginx -g 'daemon off;'
