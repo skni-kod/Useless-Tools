@@ -75,18 +75,19 @@ a {
 }
 
 .logo {
-  display: inline-block;
+  display: block;
   height: 70px;
   padding: 10px;
-  transition: transform 0.3s;
   cursor: pointer;
+  border: none;
 }
 .logo img {
   height: 100%;
   width: 100%;
+  transition: transform 0.3s;
+  transform-origin: left;
 }
-
-.logo:hover {
+.logo img:hover {
   transform: scale(0.95);
 }
 
@@ -216,7 +217,7 @@ a {
   padding: 15px;
 }
 .login a p {
-  transition: transform 0.3s, color 0.3s;
+  transition: color 0.3s;
 }
 .login a p i {
   font-size: 13px;
@@ -224,7 +225,6 @@ a {
 }
 
 .login:hover a p {
-  transform: scale(0.95);
   color: #ff5700;
 }
 

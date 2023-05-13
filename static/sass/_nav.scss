@@ -86,20 +86,22 @@ a {
 }
 
 .logo {
-	display: inline-block;
+	display: block;
 	height: 70px;
 	padding: 10px;
-	transition: transform 0.3s;
 	cursor: pointer;
-
+	border: none;
+	
 	img {
 		height: 100%;
 		width: 100%;
+		transition: transform 0.3s;
+		transform-origin: left;
 	}
-}
 
-.logo:hover {
-	transform: scale(0.95);
+	img:hover{
+		transform: scale(0.95);
+	}
 }
 
 .main-nav {
@@ -251,7 +253,7 @@ a {
 		padding: 15px;
 		// background-color: #fff;
 		p{
-			transition: transform .3s, color .3s;
+			transition: color .3s;
 			
 			i {
 				font-size: 13px;
@@ -264,7 +266,6 @@ a {
 .login:hover {
 	a {
 		p {
-			transform: scale(0.95);
 			color: $main-theme;
 		}
 	}
