@@ -13,7 +13,7 @@ const letterbS = document.querySelector(".letter-b-S");
 const lettersB = document.querySelectorAll(".letters-b");
 const jumpingLetters = document.querySelectorAll(".let");
 const form = document.querySelector("form");
-const error = document.querySelector(".error");
+const errors = document.querySelectorAll(".error");
 let isBroken = false;
 let animationInMotion = false;
 
@@ -89,7 +89,6 @@ const fallingLetters = () => {
         letterbO.classList.remove("falling-tools");
         letterbO2.classList.remove("falling-tools");
         letterbL.classList.remove("falling-tools");
-
         
         letterbT.classList.add("falling-T-b");
         letterbO.classList.add("falling-O-b");
@@ -193,52 +192,56 @@ const clearInputAnimation = (input) => {
     }
 }   
 
-setInterval(() => {
-    wheelOne.classList.toggle("reverse-animation");
-    wheelTwo.classList.toggle("reverse-animation");
-    wheelThree.classList.toggle("reverse-animation");
-}, 10000);
-
-setTimeout(() => {
-    jumpingAnimation();
+const main = () => {
     setInterval(() => {
-        if(!isBroken && wheelOne.classList.contains("reverse-animation")) {
-            jumpingAnimationReverse();
-        } else if(!isBroken && !wheelOne.classList.contains("reverse-animation")) {
-            jumpingAnimation();
+        wheelOne.classList.toggle("reverse-animation");
+        wheelTwo.classList.toggle("reverse-animation");
+        wheelThree.classList.toggle("reverse-animation");
+    }, 10000);
+    
+    setTimeout(() => {
+        jumpingAnimation();
+        setInterval(() => {
+            if(!isBroken && wheelOne.classList.contains("reverse-animation")) {
+                jumpingAnimationReverse();
+            } else if(!isBroken && !wheelOne.classList.contains("reverse-animation")) {
+                jumpingAnimation();
+            }
+        }, 5000);
+    }, 2500);
+    
+    inputs.forEach(input => {
+        input.addEventListener("focus", () => {
+            inputAnimation(input);
+        })
+        input.addEventListener("blur", () => {
+            clearInputAnimation(input);
+        })
+    })
+    
+    lettersB.forEach(letter => {
+        letter.addEventListener("click", () => {
+            brokenAnimation();
+        })
+    })
+    
+    wheels.forEach(wheel => {
+        wheel.addEventListener("click", () => {
+            if(isBroken){
+                backAnimation();
+            } else {
+                toolJump();
+            }
+        })   
+    })
+    
+    checkInputs() 
+    
+    errors.forEach(error => {
+        if(error.textContent.trim() !== "") {
+            brokenAnimation();  
         }
-    }, 5000);
-}, 2500);
-
-inputs.forEach(input => {
-    input.addEventListener("focus", () => {
-        inputAnimation(input);
     })
-    input.addEventListener("blur", () => {
-        clearInputAnimation(input);
-    })
-})
-
-lettersB.forEach(letter => {
-    letter.addEventListener("click", () => {
-        brokenAnimation();
-    })
-})
-
-wheels.forEach(wheel => {
-    wheel.addEventListener("click", () => {
-        if(isBroken){
-            backAnimation();
-        } else {
-            toolJump();
-        }
-    })   
-})
-
-checkInputs() 
-  
-
-
-if(error.textContent.trim() !== "") {
-    brokenAnimation();
 }
+
+document.addEventListener("DOMContentLoaded", main);

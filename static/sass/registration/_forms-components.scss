@@ -12,7 +12,6 @@ html{
 	font-size: 13px;
 	color: $main-theme;
 	text-transform: uppercase;
-	// border-radius: 2px;
 	cursor: pointer;
 	z-index: 0;
 	transition: color 0.08s;
@@ -192,14 +191,9 @@ html{
 			}
 
 			.error{
-				// position: absolute;
-				// top: 50%;
-				// // left: 50%;
-				// transform: translate(-50%, -50%);
 				color: $main-theme;
 				padding: 10px 0 10px 5px;
 				font-size: 12px;
-				// text-transform: uppercase;
 			}
 
 			.pass {
@@ -254,7 +248,6 @@ html{
 		.card {
 			height: 500px;
 			width: 400px;
-			// padding: 10px 0 20px 0;
 			margin-top: 35px;
 			background-color: $bgc;
 			box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 1);
