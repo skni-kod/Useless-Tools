@@ -8,6 +8,17 @@ from .models import User
 
 
 class CustomUserCreationForm(UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["birth_date"].widget.attrs["class"] = "form-control"
+
+
+
+
+
+
+
+
     username = UsernameField(
         label="Nazwa użytkownika",
         help_text="",
@@ -72,9 +83,10 @@ class CustomAuthenticationForm(AuthenticationForm):
 
     class Meta:
         model = User
-        fields = ("username", "password")
+        fields = ("username", "password", "date_of_birth")
         widgets = {
             "username": forms.TextInput(attrs={"class": "form-control"}),
+            "date_of_birth": forms.DateInput(attrs={"readonly": "true"}),
         }
         help_texts = {
             "username": None,
