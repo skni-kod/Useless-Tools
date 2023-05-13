@@ -12,13 +12,6 @@ class CustomUserCreationForm(UserCreationForm):
         super().__init__(*args, **kwargs)
         self.fields["birth_date"].widget.attrs["class"] = "form-control"
 
-
-
-
-
-
-
-
     username = UsernameField(
         label="Nazwa użytkownika",
         help_text="",
