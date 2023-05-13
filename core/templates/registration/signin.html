@@ -68,8 +68,6 @@
                         {% endif %}
                     {% endfor %}
 
-                    
-
                     <a href="{% url 'reset_password' %}" class="pass">Nie pamietam hasła</a>
                     <a href="{% url 'signup' %}" class="register">Zarejestruj się <i class="fa-solid fa-arrow-right"></i></a>
     
@@ -108,6 +106,6 @@
             </div>
         </div>
     </main>
-    <script src="{% static 'js/registration/login.js' %}"></script>
+    <script src="{% static 'js/registration/registration.js' %}"></script>
 
 {% endblock %}

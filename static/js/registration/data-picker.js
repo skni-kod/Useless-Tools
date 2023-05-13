@@ -14,10 +14,6 @@ const verticalRadius = 73
 const horizontalMargin = 25
 const verticalMargin = 10
 
-const dupa = () => {
-  console.log("dupa")
-}
-
 const activeData = () =>{
   card.classList.toggle("data-active");
 }
@@ -59,7 +55,6 @@ const mousemove = e => {
 
   earth.setAttribute("x", horizontalRadius + x - earthSize/2 + horizontalMargin)
   earth.setAttribute("y", verticalRadius - y - earthSize/2 + verticalMargin)
-  dateButton.setAttribute('readonly', 'true')
 
   let oldDate = date
 
@@ -84,52 +79,38 @@ const mousemove = e => {
   }
 }
 
-let today = new Date()
-let year = today.getFullYear()
-let start = new Date(today.getFullYear(), 0, 0)
-let diff = today - start
-const oneDay = 1000 * 60 * 60 * 24
-let dayNumber = Math.floor(diff / oneDay)
-let date = dateFromDay(dayNumber)
+const dataPicker = () => {
+    let today = new Date()
+    let year = today.getFullYear()
+    let start = new Date(today.getFullYear(), 0, 0)
+    let diff = today - start
+    const oneDay = 1000 * 60 * 60 * 24
+    let dayNumber = Math.floor(diff / oneDay)
+    let date = dateFromDay(dayNumber)
 
-let angle = 2*Math.asin(((dayNumber-1)/(182.5 + (isLeapyear()?0.5:0)))-1)
-let x = horizontalRadius*Math.cos(angle)
-let y = verticalRadius*Math.sin(angle)
+    let angle = 2*Math.asin(((dayNumber-1)/(182.5 + (isLeapyear()?0.5:0)))-1)
+    let x = horizontalRadius*Math.cos(angle)
+    let y = verticalRadius*Math.sin(angle)
 
-earth.setAttribute("x",horizontalRadius + x - earthSize/2 + horizontalMargin)
-earth.setAttribute("y",verticalRadius - y - earthSize/2 + verticalMargin)
+    earth.setAttribute("x",horizontalRadius + x - earthSize/2 + horizontalMargin)
+    earth.setAttribute("y",verticalRadius - y - earthSize/2 + verticalMargin)
 
-showDate.textContent = addZero(date.getDate()) + "-" + addZero(date.getMonth()+1) + "-" + date.getFullYear()
+    showDate.textContent = addZero(date.getDate()) + "-" + addZero(date.getMonth()+1) + "-" + date.getFullYear()
 
-earth.addEventListener("mousedown", mousedown)
-earth.addEventListener("touchstart", mousedown)
+    earth.addEventListener("mousedown", mousedown)
+    earth.addEventListener("touchstart", mousedown)
 
-document.addEventListener("mousemove", mousemove)
-document.addEventListener("touchmove", mousemove)
+    document.addEventListener("mousemove", mousemove)
+    document.addEventListener("touchmove", mousemove)
 
-document.addEventListener("mouseup", mouseup)
-document.addEventListener("touchend", mouseup)
+    document.addEventListener("mouseup", mouseup)
+    document.addEventListener("touchend", mouseup)
 
-dateButton.addEventListener("click", activeData)
-dateConfirm.addEventListener("click", () => {
-  activeData()
-  checkInputs()
-})
+    dateButton.addEventListener("click", activeData)
+    dateConfirm.addEventListener("click", () => {
+      activeData()
+      checkInputs()
+    })
+}
 
-
-// let dateButtonRect = dateButton.getBoundingClientRect()
-// datePicker.style.top = dateButtonRect.height + "px"
-// datePicker.style.right = 0
-// dateButton.style.height = dateButtonRect.height + "px"
-
-
-
-
-
-
-
-
-
-
-
-
+document.addEventListener("DOMContentLoaded", dataPicker)
