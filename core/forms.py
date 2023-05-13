@@ -8,7 +8,6 @@ from .models import User
 
 
 class CustomUserCreationForm(UserCreationForm):
-
     username = UsernameField(
         label="Nazwa użytkownika",
         help_text="",
