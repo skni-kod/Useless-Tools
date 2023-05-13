@@ -8,10 +8,6 @@ from .models import User
 
 
 class CustomUserCreationForm(UserCreationForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields["birth_date"].widget.attrs["class"] = "form-control"
-
     username = UsernameField(
         label="Nazwa użytkownika",
         help_text="",
@@ -36,6 +32,7 @@ class CustomUserCreationForm(UserCreationForm):
         input_formats=["%d-%m-%Y"],
         label="Data urodzenia",
         help_text="",
+        widget=forms.DateInput(attrs={"readonly": "true"}),
     )
 
     def clean_birth_date(self):
@@ -79,7 +76,6 @@ class CustomAuthenticationForm(AuthenticationForm):
         fields = ("username", "password", "date_of_birth")
         widgets = {
             "username": forms.TextInput(attrs={"class": "form-control"}),
-            "date_of_birth": forms.DateInput(attrs={"readonly": "true"}),
         }
         help_texts = {
             "username": None,
