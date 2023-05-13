@@ -38,7 +38,7 @@ class CustomUserCreationForm(UserCreationForm):
         birth_date = self.cleaned_data.get("birth_date")
         age = (date.today() - birth_date) // timedelta(days=365.25)
         if age < 18:
-            raise forms.ValidationError("Nie masz 18 lat")
+            raise forms.ValidationError("Nie masz 18 lat.")
         return birth_date
 
     class Meta:
