@@ -91,7 +91,7 @@ pipeline{
         	    		    mv k8s/* .
                             kubectl --kubeconfig=$CONFIG delete job --ignore-not-found=true -n useless-tools ut-migration
         	    		    kubectl --kubeconfig=$CONFIG apply -f db-migration-job.yaml
-        	    		    kubectl --kubeconfig=$CONFIG apply -f app-daemonset.yaml
+        	    		    kubectl --kubeconfig=$CONFIG apply -f app-deployment.yaml
         	    		    kubectl --kubeconfig=$CONFIG apply -f app-service.yaml
         	    		    kubectl --kubeconfig=$CONFIG apply -f ingress.yaml
                   		"""

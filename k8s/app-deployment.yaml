@@ -1,13 +1,17 @@
 apiVersion: apps/v1
-kind: DaemonSet
+kind: Deployment
 metadata:
   name: useless-tools
   namespace: useless-tools
   labels:
     app: useless-tools
 spec:
-  updateStrategy:
+  replicas: 3
+  strategy:
     type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
   selector:
     matchLabels:
       app: useless-tools
@@ -54,3 +58,4 @@ spec:
       imagePullSecrets:
       - name: regcred
       restartPolicy: Always
+
