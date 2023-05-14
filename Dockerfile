@@ -17,7 +17,7 @@ WORKDIR /app
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY requirements.txt .
 RUN --mount=type=cache,target=/root/.cache/pip \
-    pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+    pip install --upgrade pip && pip install -r requirements.txt
 COPY . /app
 RUN python manage.py collectstatic --noinput 
 EXPOSE 80
