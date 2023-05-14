@@ -72,7 +72,7 @@ pipeline{
                 label 'host'
             }
             steps {
-		sh 'sed -i "s|harbor.skni.edu.pl/library/ut:latest|harbor.skni.edu.pl/library/ut:${BUILD_ID}|g" k8s/app-daemonset.yaml'
+		sh 'sed -i "s|harbor.skni.edu.pl/library/ut:latest|harbor.skni.edu.pl/library/ut:${BUILD_ID}|g" k8s/app-deployment.yaml'
         	sh 'sed -i "s|harbor.skni.edu.pl/library/ut:latest|harbor.skni.edu.pl/library/ut:${BUILD_ID}|g" k8s/db-migration-job.yaml'
                 stash name: 'kubernetes', includes: 'k8s/**'
             }
