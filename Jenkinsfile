@@ -16,11 +16,6 @@ pipeline{
                 PROJECT_NAME = "Useless-tools"
             }
             steps{
-                withCredentials([file(credentialsId: '.env-ut', variable: 'ENV_BACK')]) {
-                    sh """
-                    rm -rf .env
-                    cp $ENV_BACK .env"""
-                }
                 withSonarQubeEnv('Sonarqube') {
                 sh """$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=$ORGANIZATION \
                 -Dsonar.projectKey=$PROJECT_NAME \
