@@ -72,7 +72,9 @@
   margin-bottom: 35px;
   color: #ffffff;
   font-size: 16px;
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   background-color: #222;
   border: 1px solid #ffffff;
   border-radius: 5px;
@@ -103,7 +105,9 @@
   letter-spacing: 1px;
   color: #ff5700;
   text-transform: uppercase;
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   transition: 0.3s;
   border: 2px solid #ff5700;
   border-radius: 5px;
@@ -339,4 +343,4 @@ td {
   border: 1px solid #ffffff;
   border-radius: 5px;
   box-shadow: 0 0 1px 0 black;
-}
+}/*# sourceMappingURL=style-cyk.css.map */

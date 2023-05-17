@@ -150,7 +150,7 @@
 	}
 
 	100%{
-		transform: translate(5px, 180px) rotate(20deg);
+		transform: translate(5px, 200px) rotate(20deg);
 	}
 }
 
@@ -193,7 +193,7 @@
 
 @keyframes backSb {
 	from{
-		transform: translate(5px, 180px) rotate(20deg);
+		transform: translate(5px, 200px) rotate(20deg);
 	}
 	to{
 		transform: translate(0px, 0px) rotate(0deg);

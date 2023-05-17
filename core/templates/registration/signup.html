@@ -2,26 +2,189 @@
 {% load static %}
 
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/registration.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style-register.css' %}">
 {% endblock %}
 
 {% block content %}
 
-<main class="registration">
-    <form method="POST" novalidate>
-        {% csrf_token %}
-        {% for field in form %}
-            {% if field.errors %}
-                {% for error in field.errors %}
-                    {{ error }}
-                {% endfor %}
-            {% endif %}
-            {{ field.label_tag }} {{ field }}
-        {% endfor %}
-        <input type="submit" value="Zarejestruj" />
-    </form>
 
+<main class ="registration">
+    <div class="area" >
+        <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+        </ul>
+    </div >
+
+    <div class="wrapper">
+        <div class="card">
+            <div id="datePicker" class="data-card">
+                <p class="info">Wprowadź datę urodzenia przytrzymując Ziemię oraz obracając ją wokół Słońca.</p>
+                <p class="info orange-text">Wymagane jest 18 lat.</p>
+                <p class="show-date"></p>
+                <svg viewBox="0 0 350 166" >
+                <ellipse id="ellipse" cx="175" cy="83" rx="150" ry="73"/>  
+                <image id="earth" height="40" width="40" href="{% static 'img/earth.png' %}"></image>
+                <image id="sun" x="105" y="45" height="70" width="70" href="{% static 'img/sun.png' %}"></image>
+                </svg> 
+                <p class="confirm">Zatwierdź<i class="fa-solid fa-check"></i></p>
+            </div>
+            <form method="post" novalidate>
+                {% csrf_token %}
+
+                
+                {% for field in form %}
+                    {% if field.name == "username" %}
+                        <div class="error-block">
+                            <div class="input-block">
+                                <i class="fa-solid fa-user"></i>
+                                {{ field.label_tag }}
+                                {{ field }}
+                                <div class="top"></div>
+                                <div class="side white-bgc"></div>
+                                <div class="bottom one"></div>
+                                <div class="bottom two"></div> 
+                            </div>
+                            <p class="error">
+                                {% if field.errors %}
+                                    {% for error in field.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                {% endif %}
+                            </p>        
+                        </div>
+                    {% elif field.name == "email" %}
+                        <div class="error-block">
+                            <div class="input-block">
+                                <i class="fa-regular fa-envelope"></i>
+                                {{ field.label_tag }}
+                                {{ field }}
+                                <div class="top"></div>
+                                <div class="side white-bgc"></div>
+                                <div class="bottom one"></div>
+                                <div class="bottom two"></div> 
+                            </div>
+                            <p class="error">
+                                {% if field.errors %}
+                                    {% for error in field.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                {% endif %}
+                            </p>        
+                        </div>
+                    {% elif field.name == "password1" %}
+                        <div class="error-block">
+                            <div class="input-block">
+                                <i class="fa-solid fa-lock"></i>
+                                {{ field.label_tag }}
+                                {{ field }}
+                                <div class="top"></div>
+                                <div class="side white-bgc"></div>
+                                <div class="bottom one"></div>
+                                <div class="bottom two"></div> 
+                            </div>
+                            <p class="error">
+                                {% if field.errors %}
+                                    {% for error in field.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                {% endif %}
+                            </p>        
+                        </div>
+                    {% elif field.name == "password2" %}
+                        <div class="error-block">
+                            <div class="input-block">
+                                <i class="fa-solid fa-lock"></i>
+                                {{ field.label_tag }}
+                                {{ field }}
+                                <div class="top"></div>
+                                <div class="side white-bgc"></div>
+                                <div class="bottom one"></div>
+                                <div class="bottom two"></div> 
+                            </div>
+                            <p class="error">
+                                {% if field.errors %}
+                                    {% for error in field.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                {% endif %}
+                            </p>        
+                        </div>
+                    {% elif field.name == "birth_date" %}
+                        <div class="error-block">
+                            <div class="input-block">
+                                <i class="fa-regular fa-calendar"></i>
+                                {{ field.label_tag }}
+                                {{ field }}
+                                <div class="top"></div>
+                                <div class="side white-bgc"></div>
+                                <div class="bottom one"></div>
+                                <div class="bottom two"></div> 
+                            </div>
+                            <p class="error">
+                                {% if field.errors %}
+                                    {% for error in field.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                {% endif %}
+                            </p>        
+                        </div>
+                    {% endif %} 
+                {% endfor %}
+
+                <div class="buttons">
+                    <a href="{% url 'signin' %}" class="login-btn"><i class="fa-solid fa-arrow-right"></i> Jednak mam konto</a>
+                    <button type="submit" class="btn btn-primary">Zarejestruj</button>
+                </div>
+            </form>    
+        </div>
+
+        <div class="animation">
+            <div class="sparkle sparkle-one"></div>
+            <div class="sparkle sparkle-two"></div>
+            <div class="sparkle sparkle-three"></div>
+            <div class="sparkle sparkle-four"></div>
+            <img class="wheel wheel-one smooth-animation" src="{% static 'img/kulko.svg' %}" alt="">
+            <img class="wheel wheel-two reverse-animation smooth-animation" src="{% static 'img/kulko.svg' %}" alt="">
+            <img class="wheel wheel-three smooth-animation" src="{% static 'img/kulko.svg' %}" alt="">
+
+            <div class="logo-text">
+                <div class="text-top">
+                    <span class="let letter-U letters letters-shadow">u</span>
+                    <span class="let letter-S letters letters-shadow">s</span>
+                    <span class="let letter-E letters letters-shadow">e</span>
+                    <span class="let letter-L letters letters-shadow">l</span>
+                    <span class="let letter-E letters letters-shadow">e</span>
+                    <span class="let letter-S letters letters-shadow">s</span>
+                    <span class="let letter-S letters letters-shadow">s</span>
+                    <span class="let letter-b-T letters-b">t</span>
+                    <span class="let letter-b-O letters-b">o</span>
+                    <span class="let letter-b-O2 letters-b">o</span>
+                    <span class="let letter-b-L letters-b">l</span>
+                    <span class="let letter-b-S letters-b">s</span>
+                </div>
+                <div class="text-bottom">
+                    <p>Possibly useful tools</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 
+<script src="{% static 'js/registration/registration.js' %}"></script>
+<script src="{% static 'js/registration/data-picker.js' %}"></script>
 
 {% endblock %}

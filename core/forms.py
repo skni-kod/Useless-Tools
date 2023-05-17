@@ -1,3 +1,5 @@
+from datetime import date, timedelta
+
 from django import forms
 from django.contrib.auth.forms import (AuthenticationForm, UserCreationForm,
                                        UsernameField)
@@ -9,32 +11,36 @@ class CustomUserCreationForm(UserCreationForm):
     username = UsernameField(
         label="Nazwa użytkownika",
         help_text="",
-        widget=forms.TextInput(
-            attrs={
-                "placeholder": "Nazwa użytkownika",
-            }
-        ),
+        widget=forms.TextInput(),
     )
     email = forms.EmailField(
         label="Email",
         help_text="",
-        widget=forms.EmailInput(attrs={"placeholder": "Email"}),
+        widget=forms.EmailInput(),
     )
     password1 = forms.CharField(
         label="Hasło",
         help_text="",
-        widget=forms.PasswordInput(attrs={"placeholder": "Hasło"}),
+        widget=forms.PasswordInput(),
     )
     password2 = forms.CharField(
         label="Powtórz hasło",
         help_text="",
-        widget=forms.PasswordInput(attrs={"placeholder": "Powtórz hasło"}),
+        widget=forms.PasswordInput(),
     )
     birth_date = forms.DateField(
+        input_formats=["%d-%m-%Y"],
         label="Data urodzenia",
         help_text="",
-        widget=forms.DateInput(attrs={"type": "date", "placeholder": "Data urodzenia"}),
+        widget=forms.DateInput(attrs={"readonly": "true"}),
     )
+
+    def clean_birth_date(self):
+        birth_date = self.cleaned_data.get("birth_date")
+        age = (date.today() - birth_date) // timedelta(days=365.25)
+        if age < 18:
+            raise forms.ValidationError("Nie masz 18 lat.")
+        return birth_date
 
     class Meta:
         model = User
@@ -67,7 +73,7 @@ class CustomAuthenticationForm(AuthenticationForm):
 
     class Meta:
         model = User
-        fields = ("username", "password")
+        fields = ("username", "password", "date_of_birth")
         widgets = {
             "username": forms.TextInput(attrs={"class": "form-control"}),
         }
