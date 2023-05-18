@@ -53,7 +53,7 @@ pipeline{
             steps{
                 container('kaniko'){
                     sh "/kaniko/executor --context=dir://workspace/source --dockerfile=workspace/source/Dockerfile --destination=$IMAGE:$BUILD_ID"
-                }y
+                }
             }
         }
 //	    stage('Update k8s config') {
