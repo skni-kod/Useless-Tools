@@ -7,6 +7,9 @@ pipeline{
     }
     stages{
         stage('Stash'){
+            agent{
+                label 'host'
+            }
             steps{
                 stash name: 'source', includes: '**'
             }
