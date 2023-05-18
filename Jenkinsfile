@@ -68,24 +68,26 @@ pipeline{
 //        }
         stage('Deploy'){
             agent {
-                kubernetes true
+                label 'kubeclt'
 	        }
             steps{
-                dir('k8s'){
-                    withCredentials([file(credentialsId: 'k8s-ca', variable: 'MY_CA'), string(credentialsId: 'k8s-token', variable: 'MY_TOKEN')]) { 
-                    sh 'sed -i "s|harbor.skni.edu.pl/library/ut:imagetag|harbor.skni.edu.pl/library/ut:${BUILD_ID}|g" app-deployment.yaml'
-                    sh 'sed -i "s|harbor.skni.edu.pl/library/ut:imagetag|harbor.skni.edu.pl/library/ut:${BUILD_ID}|g" db-migration-job.yaml'
-                    sh """
-                        kubectl config set-cluster mycluster --server=https://mycluster.com --certificate-authority=${MY_CA}
-                        kubectl config set-credentials myuser --token=${MY_TOKEN}
-                        kubectl config set-context mycontext --cluster=mycluster --user=myuser
-                        kubectl config use-context mycontext
-                        kubectl  delete job --ignore-not-found=true -n useless-tools ut-migration
-            	    	kubectl  apply -f db-migration-job.yaml
-            	    	kubectl  apply -f app-deployment.yaml
-            	    	kubectl  apply -f app-service.yaml
-        	         	kubectl  apply -f ingress.yaml
-                    """
+                container('kubectl'){
+                    dir('k8s'){
+                        withCredentials([file(credentialsId: 'k8s-ca', variable: 'MY_CA'), string(credentialsId: 'k8s-token', variable: 'MY_TOKEN')]) { 
+                        sh 'sed -i "s|harbor.skni.edu.pl/library/ut:imagetag|harbor.skni.edu.pl/library/ut:${BUILD_ID}|g" app-deployment.yaml'
+                        sh 'sed -i "s|harbor.skni.edu.pl/library/ut:imagetag|harbor.skni.edu.pl/library/ut:${BUILD_ID}|g" db-migration-job.yaml'
+                        sh """
+                            kubectl config set-cluster mycluster --server=https://mycluster.com --certificate-authority=${MY_CA}
+                            kubectl config set-credentials myuser --token=${MY_TOKEN}
+                            kubectl config set-context mycontext --cluster=mycluster --user=myuser
+                            kubectl config use-context mycontext
+                            kubectl  delete job --ignore-not-found=true -n useless-tools ut-migration
+                	    	kubectl  apply -f db-migration-job.yaml
+                	    	kubectl  apply -f app-deployment.yaml
+                	    	kubectl  apply -f app-service.yaml
+            	         	kubectl  apply -f ingress.yaml
+                        """
+                        }
                     }
                 }
             }
