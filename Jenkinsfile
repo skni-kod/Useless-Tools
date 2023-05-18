@@ -46,33 +46,16 @@ pipeline{
                 }
             }
         }
-//        stage('Build Back'){
-//            agent{
-//                label 'host'
-//            }
-//            steps{
-//                    sh """
-//                    docker build -t $IMAGE:$BUILD_ID .
-//                    """
-//            }
-//        }
-//        stage('Push to registry - back'){
-//            agent{
-//                label 'host'
-//            }
-//            steps{
-//                withCredentials([usernamePassword(credentialsId: 'harbor', passwordVariable: 'passwd', usernameVariable: 'username')]) {
-//                    sh """
-//                    docker login -u $username -p $passwd  ${env.REGISTRY}
-//                       docker push $IMAGE:$BUILD_ID
-//                       docker tag $IMAGE:$BUILD_ID $IMAGE:latest
-//                       docker push $IMAGE:latest
-//                       docker image rm $IMAGE:latest
-//                       docker image rm $IMAGE:$BUILD_ID
-//                    """
-//                }
-//            }
-//        }
+        stage('Build Back'){
+            agent{
+                label 'kaniko'
+            }
+            steps{
+                container('kaniko'){
+                    sh "/kaniko/executor --context=dir:./ --dockerfile=./Dockerfile --destination=$IMAGE:$BUILD_ID"
+                }
+            }
+        }
 //	    stage('Update k8s config') {
 //            agent{
 //                label 'host'
