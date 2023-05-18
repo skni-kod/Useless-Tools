@@ -77,7 +77,7 @@ pipeline{
                         sh 'sed -i "s|harbor.skni.edu.pl/library/ut:imagetag|harbor.skni.edu.pl/library/ut:${BUILD_ID}|g" app-deployment.yaml'
                         sh 'sed -i "s|harbor.skni.edu.pl/library/ut:imagetag|harbor.skni.edu.pl/library/ut:${BUILD_ID}|g" db-migration-job.yaml'
                         sh """
-                            kubectl config set-cluster mycluster --server=https://mycluster.com --certificate-authority=${MY_CA}
+                            kubectl config set-cluster mycluster --server=https://kubernetes.default --certificate-authority=${MY_CA}
                             kubectl config set-credentials myuser --token=${MY_TOKEN}
                             kubectl config set-context mycontext --cluster=mycluster --user=myuser
                             kubectl config use-context mycontext
