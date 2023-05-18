@@ -21,7 +21,7 @@ pipeline{
                         sh """sonar-scanner -Dsonar.organization=$ORGANIZATION \
                             -Dsonar.projectKey=$PROJECT_NAME \
                             -Dsonar.host.url=$SONAR_SERVER \
-                            -Dsonar.login=your-$TOKEN \
+                            -Dsonar.login=$TOKEN \
                             -Dsonar.sources=. \
                             -Dsonar.sourceEncoding=UTF-8 \
                             -Dsonar.language=python \
