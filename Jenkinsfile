@@ -68,7 +68,7 @@ pipeline{
 //        }
         stage('Deploy'){
             agent {
-                label 'kubeclt'
+                label 'kubectl'
 	        }
             steps{
                 container('kubectl'){
