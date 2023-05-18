@@ -52,6 +52,7 @@ pipeline{
             }
             steps{
                 container('kaniko'){
+                    sh '/busybox/sleep infinite'
                     sh "/kaniko/executor --context=dir:\$(pwd) --dockerfile=\$(pwd)/Dockerfile --destination=$IMAGE:$BUILD_ID"
                 }
             }
