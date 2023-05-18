@@ -7,10 +7,13 @@ pipeline{
     }
     stages{
         stage('Stash'){
-            agent{
-                label 'host'
+            agent {
+                kubernetes {
+                    cloud 'kubernetes'
+                }
             }
             steps{
+                git branch: 'k8s-v2', url: 'https://github.com/skni-kod/Useless-Tools'
                 stash name: 'source', includes: '**'
             }
         }
