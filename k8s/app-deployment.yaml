@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: useless-tools-nginx
-        image: harbor.skni.edu.pl/library/ut:latest
+        image: harbor.skni.edu.pl/library/ut:imagetag
         ports:
         - containerPort: 80
         resources:

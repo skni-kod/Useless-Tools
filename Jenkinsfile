@@ -66,28 +66,24 @@ pipeline{
 //                stash name: 'kubernetes', includes: 'k8s/**'
 //            }
 //        }
-//        stage('Deploy'){
-//            agent {
-//	        docker {
-//	            image 'bitnami/kubectl:latest'
-//	            args "--entrypoint=''"
-//	        }
-//	    }
-//            steps{
-//		        unstash 'kubernetes'
-//                withCredentials([file(credentialsId: 'k8s-kubeconfig', variable: 'CONFIG')]) {
-//                        sh """
-//        	    		    mv k8s/* .
-//                            kubectl --kubeconfig=$CONFIG delete job --ignore-not-found=true -n useless-tools ut-migration
-//        	    		    kubectl --kubeconfig=$CONFIG apply -f db-migration-job.yaml
-//        	    		    kubectl --kubeconfig=$CONFIG apply -f app-deployment.yaml
-//        	    		    kubectl --kubeconfig=$CONFIG apply -f app-service.yaml
-//        	    		    kubectl --kubeconfig=$CONFIG apply -f ingress.yaml
-//                  		"""
-//                }
-//            }
-//        }
-//    }
+        stage('Deploy'){
+            agent {
+                kubernetes true
+	        }
+            steps{
+                dir('k8s'){
+                    sh 'sed -i "s|harbor.skni.edu.pl/library/ut:imagetag|harbor.skni.edu.pl/library/ut:${BUILD_ID}|g" k8s/app-deployment.yaml'
+                    sh 'sed -i "s|harbor.skni.edu.pl/library/ut:imagetag|harbor.skni.edu.pl/library/ut:${BUILD_ID}|g" k8s/db-migration-job.yaml'
+                    sh """
+                        kubectl  delete job --ignore-not-found=true -n useless-tools ut-migration
+            	    	kubectl apply -f db-migration-job.yaml
+            	    	kubectl  apply -f app-deployment.yaml
+            	    	kubectl  apply -f app-service.yaml
+        	         	kubectl  apply -f ingress.yaml
+                    """
+                }
+            }
+        }
 //    post {
 //        always {
 //            node('host') {

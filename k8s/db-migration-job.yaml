@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
       - name: migration
-        image: harbor.skni.edu.pl/library/ut:latest
+        image: harbor.skni.edu.pl/library/ut:imagetag
         command: ['sh', '-c', 'python manage.py makemigrations && python manage.py migrate']
         env:
         - name: DB_NAME
