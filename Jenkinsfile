@@ -6,46 +6,46 @@ pipeline{
         IMAGE = 'harbor.skni.edu.pl/library/ut'
     }
     stages{
-        stage('Sonar'){
-            agent{
-                label 'sonar'
-            }
-            environment {
-                ORGANIZATION = "SKNI-KOD"
-                PROJECT_NAME = "Useless-tools"
-                SONAR_SERVER = "https://sonar.skni.edu.pl"
-            }
-            steps{
-                container('sonarqube') {
-                    withCredentials([string(credentialsId: 'sonar', variable: 'TOKEN')]) {
-                        sh """sonar-scanner -Dsonar.organization=$ORGANIZATION \
-                            -Dsonar.projectKey=$PROJECT_NAME \
-                            -Dsonar.host.url=$SONAR_SERVER \
-                            -Dsonar.login=$TOKEN \
-                            -Dsonar.sources=. \
-                            -Dsonar.sourceEncoding=UTF-8 \
-                            -Dsonar.language=python \
-                            -Dsonar.python.version=3.10
-                        """
-                    }
-                }
-            }
-        }
-        stage('Scan source') {
-	        agent{
-                label 'trivy'
-            }
-            steps {
-                container('trivy'){
-                    // Scan all vuln levels
-                    sh 'mkdir -p reports'
-                    sh 'trivy filesystem --ignore-unfixed --vuln-type os,library --format json -o reports/python.json .'
-                    // Scan again and fail on CRITICAL vulns
-                    sh 'trivy filesystem --ignore-unfixed --vuln-type os,library --exit-code 1 --severity CRITICAL .'
-		            archiveArtifacts 'reports/python.json'
-                }
-            }
-        }
+//        stage('Sonar'){
+//            agent{
+//                label 'sonar'
+//            }
+//            environment {
+//                ORGANIZATION = "SKNI-KOD"
+//                PROJECT_NAME = "Useless-tools"
+//                SONAR_SERVER = "https://sonar.skni.edu.pl"
+//            }
+//            steps{
+//                container('sonarqube') {
+//                    withCredentials([string(credentialsId: 'sonar', variable: 'TOKEN')]) {
+//                        sh """sonar-scanner -Dsonar.organization=$ORGANIZATION \
+//                            -Dsonar.projectKey=$PROJECT_NAME \
+//                            -Dsonar.host.url=$SONAR_SERVER \
+//                            -Dsonar.login=$TOKEN \
+//                            -Dsonar.sources=. \
+//                            -Dsonar.sourceEncoding=UTF-8 \
+//                            -Dsonar.language=python \
+//                            -Dsonar.python.version=3.10
+//                        """
+//                    }
+//                }
+//            }
+//        }
+//        stage('Scan source') {
+//	        agent{
+//                label 'trivy'
+//            }
+//            steps {
+//                container('trivy'){
+//                    // Scan all vuln levels
+//                    sh 'mkdir -p reports'
+//                    sh 'trivy filesystem --ignore-unfixed --vuln-type os,library --format json -o reports/python.json .'
+//                    // Scan again and fail on CRITICAL vulns
+//                    sh 'trivy filesystem --ignore-unfixed --vuln-type os,library --exit-code 1 --severity CRITICAL .'
+//		            archiveArtifacts 'reports/python.json'
+//                }
+//            }
+//        }
         stage('Build Back'){
             agent{
                 label 'kaniko'
