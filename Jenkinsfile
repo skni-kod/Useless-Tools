@@ -6,17 +6,6 @@ pipeline{
         IMAGE = 'harbor.skni.edu.pl/library/ut'
     }
     stages{
-        stage('Stash'){
-            agent {
-                kubernetes {
-                    cloud 'kubernetes'
-                }
-            }
-            steps{
-                git branch: 'k8s-v2', url: 'https://github.com/skni-kod/Useless-Tools'
-                stash name: 'source', includes: '**'
-            }
-        }
         stage('Sonar'){
             agent{
                 label 'sonar'
@@ -27,7 +16,6 @@ pipeline{
                 SONAR_SERVER = "https://sonar.skni.edu.pl"
             }
             steps{
-                unstash 'source'
                 container('sonarqube') {
                     withCredentials([string(credentialsId: 'sonar', variable: 'TOKEN')]) {
                         sh """sonar-scanner -Dsonar.organization=$ORGANIZATION \
