@@ -86,6 +86,7 @@ pipeline{
                 container('ant'){
                     unstash 'report-app'
                     unstash 'report-image'
+                    sh 'mkdir reports'
                     sh 'ant -f /build.xml'
                     archiveArtifacts 'reports/html/*'
                 }
