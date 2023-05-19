@@ -3,9 +3,9 @@ kind: Job
 metadata:
   name: ut-migration-{{ .Release.Revision }}
   namespace: useless-tools
-    annotations:
-      "helm.sh/hook": post-install,post-upgrade
-      "helm.sh/hook-delete-policy": hook-succeeded
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook-delete-policy": hook-succeeded
 spec:
   template:
     spec:
