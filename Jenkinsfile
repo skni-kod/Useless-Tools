@@ -68,7 +68,7 @@ pipeline{
                         sh 'mkdir -p reports'
                         sh "trivy image --format json -o reports/python-image.json --username $USER --password $PASSWD $IMAGE:$BUILD_ID"
                         // Scan again and fail on CRITICAL vulns
-                        sh "trivy image --exit-code 1 --severity CRITICAL --username $USER --password $PASSWD  $IMAGE:$BUILD_ID"
+                        sh "trivy image --exit-code 1 --severity CRITICAL -o reports/python-image.json --username $USER --password $PASSWD  $IMAGE:$BUILD_ID"
 		                archiveArtifacts 'reports/python-image.json'
                     }
                 }
