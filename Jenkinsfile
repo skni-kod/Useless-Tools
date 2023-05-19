@@ -62,6 +62,7 @@ pipeline{
 	        }
             steps{
                 container('kubectl'){
+			sh 'echo dupa'
                     dir('k8s'){
                         withCredentials([file(credentialsId: 'k8s-ca', variable: 'MY_CA'), string(credentialsId: 'k8s-token', variable: 'MY_TOKEN')]) { 
                         sh """
