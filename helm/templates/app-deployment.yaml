@@ -6,12 +6,12 @@ metadata:
   labels:
     app: useless-tools
 spec:
-  replicas: 3
+  replicas: {{ .Values.replicaCount }}
   strategy:
-    type: RollingUpdate
+    type: {{ .Values.strategy.type }}
     rollingUpdate:
-      maxUnavailable: 0
-      maxSurge: 1
+      maxUnavailable: {{ .Values.strategy.rollingUpdate.maxUnavailable }}
+      maxSurge: {{ .Values.strategy.rollingUpdate.maxSurge }}
   selector:
     matchLabels:
       app: useless-tools
@@ -21,8 +21,8 @@ spec:
         app: useless-tools
     spec:
       containers:
-      - name: useless-tools-nginx
-        image: harbor.skni.edu.pl/library/ut:imagetag
+      - name: useless-tools
+        image: {{ .Values.image.name }}:{{ .Values.image.tag }}
         ports:
         - containerPort: 80
         resources:

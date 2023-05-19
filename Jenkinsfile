@@ -58,26 +58,18 @@ pipeline{
         }
         stage('Deploy'){
             agent {
-                label 'kubectl'
+                label 'helm'
 	        }
             steps{
-		container(name: 'kubectl', shell: '/bin/sh') {
-                    dir('k8s'){
-                        withCredentials([file(credentialsId: 'k8s-ca', variable: 'MY_CA'), string(credentialsId: 'k8s-token', variable: 'MY_TOKEN')]) { 
-                        sh """
-                            sed -i "s|harbor.skni.edu.pl/library/ut:imagetag|harbor.skni.edu.pl/library/ut:${BUILD_ID}|g" app-deployment.yaml
-                            sed -i "s|harbor.skni.edu.pl/library/ut:imagetag|harbor.skni.edu.pl/library/ut:${BUILD_ID}|g" db-migration-job.yaml
-                            kubectl config set-cluster mycluster --server=https://kubernetes.default --certificate-authority=${MY_CA}
-                            kubectl config set-credentials jenkins-robot --token=${MY_TOKEN}
-                            kubectl config set-context mycontext --cluster=mycluster --user=jenkins-robot
-                            kubectl config use-context mycontext
-                            kubectl  delete job --ignore-not-found=true -n useless-tools ut-migration
-                	    	kubectl  apply -f db-migration-job.yaml
-                	    	kubectl  apply -f app-deployment.yaml
-                	    	kubectl  apply -f app-service.yaml
-            	         	kubectl  apply -f ingress.yaml
-                        """
-                        }
+        		container(name: 'helm', shell: '/bin/sh') {
+                    withCredentials([file(credentialsId: 'k8s-ca', variable: 'MY_CA'), string(credentialsId: 'k8s-token', variable: 'MY_TOKEN')]) { 
+                    sh """
+                        kubectl config set-cluster mycluster --server=https://kubernetes.default --certificate-authority=${MY_CA}
+                        kubectl config set-credentials jenkins-robot --token=${MY_TOKEN}
+                        kubectl config set-context mycontext --cluster=mycluster --user=jenkins-robot
+                        kubectl config use-context mycontext
+                        helm upgrade --install --namespace useless-tools --set image.tag=${BUILD_ID} useless-tools ./helm
+                    """
                     }
                 }
             }
