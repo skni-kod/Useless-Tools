@@ -1,14 +1,17 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: ut-migration
+  name: ut-migration-{{ .Release.Revision }}
   namespace: useless-tools
+  annotations:
+    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook-delete-policy": hook-succeeded
 spec:
   template:
     spec:
       containers:
       - name: migration
-        image: harbor.skni.edu.pl/library/ut:imagetag
+        image: {{ .Values.image.name }}:{{ .Values.image.tag }}
         command: ['sh', '-c', 'python manage.py makemigrations && python manage.py migrate']
         env:
         - name: DB_NAME
