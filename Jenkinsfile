@@ -38,11 +38,8 @@ pipeline{
             }
             steps {
                 container('trivy'){
-                    script {
-                        // This script downloads a file using Groovy
-                        def url = new URL('https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/junit.tpl')
-                        def file = new File('junit.tpl')
-                        file.bytes = url.bytes
+                    withCredentials([string(credentialsId: 'junit.tpl', variable: 'TEMPLATE')]) {
+                        sh "echo $TEMPLATE > junit.tpl"
                     }
                     // Scan all vuln levels
                     sh 'trivy filesystem --ignore-unfixed --vuln-type os,library --format template --template "junit.tpl" -o report-app.xml .'
@@ -69,11 +66,8 @@ pipeline{
             steps {
                 container('trivy'){
                     withCredentials([usernamePassword(credentialsId: 'harbor', passwordVariable: 'PASSWD', usernameVariable: 'USER')]) {
-                        script {
-                            // This script downloads a file using Groovy
-                            def url = new URL('https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/junit.tpl')
-                            def file = new File('junit.tpl')
-                            file.bytes = url.bytes
+                        withCredentials([string(credentialsId: 'junit.tpl', variable: 'TEMPLATE')]) {
+                            sh "echo $TEMPLATE > junit.tpl"
                         }
                         // Scan all vuln levels
                         sh 'trivy image --format template --template "junit.tpl" -o report-image.xml --username $USER --password $PASSWD $IMAGE:$BUILD_ID'
