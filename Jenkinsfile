@@ -39,11 +39,10 @@ pipeline{
             steps {
                 container('trivy'){
                     // Scan all vuln levels
-                    sh 'mkdir -p reports'
-                    sh 'trivy filesystem --ignore-unfixed --vuln-type os,library --format json -o reports/python.json .'
+                    sh "trivy filesystem --ignore-unfixed --vuln-type os,library --format template --template '@contrib/junit.tpl' -o report-app.xml ."
                     // Scan again and fail on CRITICAL vulns
                     sh 'trivy filesystem --ignore-unfixed --vuln-type os,library --exit-code 1 --severity CRITICAL .'
-		            archiveArtifacts 'reports/python.json'
+		            stash includes: 'report-app.xml', name: 'report-app'
                 }
             }
         }
@@ -65,12 +64,22 @@ pipeline{
                 container('trivy'){
                     withCredentials([usernamePassword(credentialsId: 'harbor', passwordVariable: 'PASSWD', usernameVariable: 'USER')]) {
                         // Scan all vuln levels
-                        sh 'mkdir -p reports'
-                        sh "trivy image --format json -o reports/python-image.json --username $USER --password $PASSWD $IMAGE:$BUILD_ID"
+                        sh "trivy image --format template --template '@contrib/junit.tpl' -o report-image.xml --username $USER --password $PASSWD $IMAGE:$BUILD_ID"
                         // Scan again and fail on CRITICAL vulns
-                        sh "trivy image --exit-code 1 --severity CRITICAL -o reports/python-image.json --username $USER --password $PASSWD  $IMAGE:$BUILD_ID"
-		                archiveArtifacts 'reports/python-image.json'
+                        sh "trivy image --exit-code 1 --severity CRITICAL --username $USER --password $PASSWD  $IMAGE:$BUILD_ID"
+		                stash includes: 'report-image.xml', name: 'report-image'
                     }
+                }
+            }
+        }
+        stage('Generate reports'){
+            agent{
+                label 'ant'
+            }
+            steps{
+                container('ant'){
+                    sh 'ant -f /build.xml'
+                    archiveArtifacts 'reports/html/*'
                 }
             }
         }
