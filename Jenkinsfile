@@ -78,6 +78,8 @@ pipeline{
             }
             steps{
                 container('ant'){
+                    unstash 'report-app'
+                    unstash 'report-image'
                     sh 'ant -f /build.xml'
                     archiveArtifacts 'reports/html/*'
                 }
