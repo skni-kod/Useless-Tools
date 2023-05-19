@@ -46,24 +46,14 @@ pipeline{
 //                }
 //            }
 //        }
-        stage('Build Back'){
-            agent{
-                label 'kaniko'
-            }
-            steps{
-                container('kaniko'){
-                    sh "/kaniko/executor --context=\$(pwd) --dockerfile=\$(pwd)/Dockerfile --destination=$IMAGE:$BUILD_ID"
-                }
-            }
-        }
-//	    stage('Update k8s config') {
+//        stage('Build'){
 //            agent{
-//                label 'host'
+//                label 'kaniko'
 //            }
-//            steps {
-//		sh 'sed -i "s|harbor.skni.edu.pl/library/ut:latest|harbor.skni.edu.pl/library/ut:${BUILD_ID}|g" k8s/app-deployment.yaml'
-//        	sh 'sed -i "s|harbor.skni.edu.pl/library/ut:latest|harbor.skni.edu.pl/library/ut:${BUILD_ID}|g" k8s/db-migration-job.yaml'
-//                stash name: 'kubernetes', includes: 'k8s/**'
+//            steps{
+//                container('kaniko'){
+//                    sh "/kaniko/executor --context=\$(pwd) --dockerfile=\$(pwd)/Dockerfile --destination=$IMAGE:$BUILD_ID"
+//                }
 //            }
 //        }
         stage('Deploy'){
@@ -82,11 +72,12 @@ pipeline{
                             kubectl config set-context mycontext --cluster=mycluster --user=jenkins-robot
                             kubectl config use-context mycontext
                             kubectl  delete job --ignore-not-found=true -n useless-tools ut-migration
-                	    	kubectl  apply -f db-migration-job.yaml
-                	    	kubectl  apply -f app-deployment.yaml
-                	    	kubectl  apply -f app-service.yaml
-            	         	kubectl  apply -f ingress.yaml
-                        """
+				"""
+//                	    	kubectl  apply -f db-migration-job.yaml
+//                	    	kubectl  apply -f app-deployment.yaml
+//                	    	kubectl  apply -f app-service.yaml
+//            	         	kubectl  apply -f ingress.yaml
+//                        """
                         }
                     }
                 }
