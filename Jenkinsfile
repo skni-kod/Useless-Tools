@@ -6,32 +6,32 @@ pipeline{
         IMAGE = 'harbor.skni.edu.pl/library/ut'
     }
     stages{
-//        stage('Sonar'){
-//            agent{
-//                label 'sonar'
-//            }
-//            environment {
-//                ORGANIZATION = "SKNI-KOD"
-//                PROJECT_NAME = "Useless-tools"
-//                SONAR_SERVER = "https://sonar.skni.edu.pl"
-//            }
-//            steps{
-//                container('sonarqube') {
-//                    withCredentials([string(credentialsId: 'sonar', variable: 'TOKEN')]) {
-//                        sh """sonar-scanner -Dsonar.organization=$ORGANIZATION \
-//                            -Dsonar.projectKey=$PROJECT_NAME \
-//                            -Dsonar.host.url=$SONAR_SERVER \
-//                            -Dsonar.login=$TOKEN \
-//                            -Dsonar.sources=. \
-//                            -Dsonar.exclusions=./helm/**/* \
-//                            -Dsonar.sourceEncoding=UTF-8 \
-//                            -Dsonar.language=python \
-//                            -Dsonar.python.version=3.10
-//                        """
-//                    }
-//                }
-//            }
-//        }
+        stage('Sonar'){
+            agent{
+                label 'sonar'
+            }
+            environment {
+                ORGANIZATION = "SKNI-KOD"
+                PROJECT_NAME = "Useless-tools"
+                SONAR_SERVER = "https://sonar.skni.edu.pl"
+            }
+            steps{
+                container('sonarqube') {
+                    withCredentials([string(credentialsId: 'sonar', variable: 'TOKEN')]) {
+                        sh """sonar-scanner -Dsonar.organization=$ORGANIZATION \
+                            -Dsonar.projectKey=$PROJECT_NAME \
+                            -Dsonar.host.url=$SONAR_SERVER \
+                            -Dsonar.login=$TOKEN \
+                            -Dsonar.sources=. \
+                            -Dsonar.exclusions=./helm/**/* \
+                            -Dsonar.sourceEncoding=UTF-8 \
+                            -Dsonar.language=python \
+                            -Dsonar.python.version=3.10
+                        """
+                    }
+                }
+            }
+        }
         stage('Scan source') {
 	        agent{
                 label 'trivy'
