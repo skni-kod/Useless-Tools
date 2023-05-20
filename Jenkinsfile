@@ -38,11 +38,11 @@ pipeline{
             }
             steps {
                 container('trivy'){
-                    withCredentials([file(credentialsId: 'htmp.tpl', variable: 'TEMPLATE')]) {
-                        sh "cp $TEMPLATE htmp.tpl"
+                    withCredentials([file(credentialsId: 'html.tpl', variable: 'TEMPLATE')]) {
+                        sh "cp $TEMPLATE html.tpl"
                     }
                     // Scan all vuln levels
-                    sh 'trivy filesystem --ignore-unfixed --vuln-type os,library --format template --template "htmp.tpl" -o report-app.html .'
+                    sh 'trivy filesystem --ignore-unfixed --vuln-type os,library --format template --template "html.tpl" -o report-app.html .'
                     // Scan again and fail on CRITICAL vulns
                     sh 'trivy filesystem --ignore-unfixed --vuln-type os,library --exit-code 1 --severity CRITICAL .'
 		            archiveArtifacts 'report-app.html'
@@ -66,11 +66,11 @@ pipeline{
             steps {
                 container('trivy'){
                     withCredentials([usernamePassword(credentialsId: 'harbor', passwordVariable: 'PASSWD', usernameVariable: 'USER')]) {
-                        withCredentials([file(credentialsId: 'htmp.tpl', variable: 'TEMPLATE')]) {
-                            sh "cp $TEMPLATE htmp.tpl"
+                        withCredentials([file(credentialsId: 'html.tpl', variable: 'TEMPLATE')]) {
+                            sh "cp $TEMPLATE html.tpl"
                         }
                         // Scan all vuln levels
-                        sh 'trivy image --format template --template "htmp.tpl" -o report-image.html --username $USER --password $PASSWD $IMAGE:$BUILD_ID'
+                        sh 'trivy image --format template --template "html.tpl" -o report-image.html --username $USER --password $PASSWD $IMAGE:$BUILD_ID'
                         // Scan again and fail on CRITICAL vulns
                         sh "trivy image --exit-code 1 --severity CRITICAL --username $USER --password $PASSWD  $IMAGE:$BUILD_ID"
 		                archiveArtifacts 'report-image.html'
