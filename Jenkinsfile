@@ -42,7 +42,7 @@ pipeline{
                         sh "cp $TEMPLATE html.tpl"
                     }
                     // Scan all vuln levels
-                    sh 'trivy filesystem --ignore-unfixed --vuln-type os,library --format template --template "html.tpl" -o report-app.html .'
+                    sh 'trivy filesystem --ignore-unfixed --vuln-type os,library --format template --template @./html.tpl -o report-app.html .'
                     // Scan again and fail on CRITICAL vulns
                     sh 'trivy filesystem --ignore-unfixed --vuln-type os,library --exit-code 1 --severity CRITICAL .'
 		            archiveArtifacts 'report-app.html'
@@ -70,7 +70,7 @@ pipeline{
                             sh "cp $TEMPLATE html.tpl"
                         }
                         // Scan all vuln levels
-                        sh 'trivy image --format template --template "html.tpl" -o report-image.html --username $USER --password $PASSWD $IMAGE:$BUILD_ID'
+                        sh 'trivy image --format template --template @./html.tpl -o report-image.html --username $USER --password $PASSWD $IMAGE:$BUILD_ID'
                         // Scan again and fail on CRITICAL vulns
                         sh "trivy image --exit-code 1 --severity CRITICAL --username $USER --password $PASSWD  $IMAGE:$BUILD_ID"
 		                archiveArtifacts 'report-image.html'
