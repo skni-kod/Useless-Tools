@@ -92,7 +92,7 @@ pipeline{
                         kubectl config set-credentials jenkins-robot --token=${MY_TOKEN}
                         kubectl config set-context mycontext --cluster=mycluster --user=jenkins-robot
                         kubectl config use-context mycontext
-                        helm upgrade --install --namespace $NAMESPACE --set image.tag=${BUILD_ID} $RELEASE ./helm
+                        helm upgrade --install --namespace $NAMESPACE --set image.tag=${BUILD_ID} $RELEASE_NAME ./helm
                     """
                     }
                 }

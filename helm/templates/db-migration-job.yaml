@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: ut-migration-{{ .Release.Revision }}
+  name: {{ .Values.name }}-{{ .Release.Revision }}
   namespace: {{ .Release.namespace }}
   annotations:
     "helm.sh/hook": post-install,post-upgrade
