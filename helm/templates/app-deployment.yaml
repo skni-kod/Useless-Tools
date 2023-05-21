@@ -26,6 +26,8 @@ spec:
         envFrom:
         - secretRef:
             name: {{ .Values.secretRef }}
+        - configMapRef:
+            name: {{ .Values.configMapRef }}
         ports:
         - containerPort: {{ .Values.containerPort }}
         resources:
