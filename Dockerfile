@@ -1,4 +1,4 @@
-FROM nginx:stable-alpine
+FROM harbor.skni.edu.pl/proxy/nginx:stable-alpine
 RUN apk add --no-cache \
     python3 \
     py3-pip \
@@ -21,4 +21,4 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 COPY . /app
 RUN python manage.py collectstatic --noinput 
 EXPOSE 80
-CMD gunicorn siteproject.wsgi:application --bind 127.0.0.1:8000 & nginx -g 'daemon off;'
+CMD sh entrypoint.sh

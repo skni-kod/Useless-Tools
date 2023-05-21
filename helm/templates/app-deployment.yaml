@@ -1,61 +1,41 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: useless-tools
-  namespace: useless-tools
+  name: {{ .Values.name }}
+  namespace: {{ .Release.Namespace }}
   labels:
-    app: useless-tools
+    app: {{ .Values.labels.app }}
 spec:
   replicas: {{ .Values.replicaCount }}
   strategy:
-    type: {{ .Values.strategy.type }}
+    type: RollingUpdate
     rollingUpdate:
       maxUnavailable: {{ .Values.strategy.rollingUpdate.maxUnavailable }}
       maxSurge: {{ .Values.strategy.rollingUpdate.maxSurge }}
   selector:
     matchLabels:
-      app: useless-tools
+      app: {{ .Values.labels.app }}
   template:
     metadata:
       labels:
-        app: useless-tools
+        app: {{ .Values.labels.app }}
     spec:
       containers:
-      - name: useless-tools
+      - name: {{ .Values.name }}
         image: {{ .Values.image.name }}:{{ .Values.image.tag }}
+        envFrom:
+        - secretRef:
+            name: {{ .Values.secretRef }}
         ports:
-        - containerPort: 80
+        - containerPort: {{ .Values.containerPort }}
         resources:
           requests:
-            cpu: 100m
-            memory: 100Mi
+            cpu: {{ .Values.resources.requests.cpu }}
+            memory: {{ .Values.resources.requests.memory }}
           limits:
-            cpu: 200m
-            memory: 200Mi
-        env:
-        - name: DB_NAME
-          value: useless_tools
-        - name: DB_USER
-          value: useless_tools
-        - name: DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: db
-              key: DB_PASSWORD
-        - name: DB_HOST
-          value: 192.168.1.170
-        - name: DB_PORT
-          value: "5432"
-        - name: DEPLOY_TYPE
-          value: prod
-        - name: DJANGO_ALLOWED_HOSTS
-          value: ut.skni.edu.pl
-        - name: SECRET_KEYS
-          valueFrom:
-            secretKeyRef:
-              name: app-key
-              key: SECRET_KEYS
+            cpu: {{ .Values.resources.limits.cpu }}
+            memory: {{ .Values.resources.limits.memory }}
       imagePullSecrets:
-      - name: regcred
+      - name: {{ .Values.imagePullSecret }}
       restartPolicy: Always
 

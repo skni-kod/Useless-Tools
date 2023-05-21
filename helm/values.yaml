@@ -2,9 +2,29 @@
 image:
   name: harbor.skni.edu.pl/library/ut
   tag: latest
-replicaCount: 3
+replicaCount: 1
 strategy:
   type: RollingUpdate
   rollingUpdate:
     maxUnavailable: 0
     maxSurge: 1
+name: useless-tools
+labels:
+  app: useless-tools
+secretRef: useless-secret
+configMapRef: useless-config
+containerPort: 80
+resources:
+  requests:
+    cpu: 100m
+    memory: 100Mi
+  limits:
+    cpu: 200m
+    memory: 200Mi
+imagePullSecret: regcred
+ingress:
+  class: nginx
+  host: ut.skni.edu.pl
+  path: /
+job:
+  backoffLimit: 4
