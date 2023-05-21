@@ -4,6 +4,8 @@ pipeline{
         REGISTRY = 'harbor.skni.edu.pl/'
         DOCKER_REGISTRY_CREDENTIALS_ID = 'harbor'
         IMAGE = 'harbor.skni.edu.pl/library/ut'
+        RELEASE_NAME = 'useless-tools'
+        NAMESPACE = 'useless-tools'
     }
     stages{
         stage('Sonar'){
@@ -23,7 +25,7 @@ pipeline{
                             -Dsonar.host.url=$SONAR_SERVER \
                             -Dsonar.login=$TOKEN \
                             -Dsonar.sources=. \
-                            -Dsonar.exclusions=./helm/**/* \
+                            -Dsonar.exclusions=**/helm/**/* \
                             -Dsonar.sourceEncoding=UTF-8 \
                             -Dsonar.language=python \
                             -Dsonar.python.version=3.10
@@ -90,7 +92,7 @@ pipeline{
                         kubectl config set-credentials jenkins-robot --token=${MY_TOKEN}
                         kubectl config set-context mycontext --cluster=mycluster --user=jenkins-robot
                         kubectl config use-context mycontext
-                        helm upgrade --install --namespace useless-tools --set image.tag=${BUILD_ID} useless-tools ./helm
+                        helm upgrade --install --namespace $NAMESPACE --set image.tag=${BUILD_ID} $RELEASE_NAME ./helm
                     """
                     }
                 }

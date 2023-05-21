@@ -1,8 +1,8 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: ut-migration-{{ .Release.Revision }}
-  namespace: useless-tools
+  name: {{ .Values.name }}-{{ .Release.Revision }}
+  namespace: {{ .Release.namespace }}
   annotations:
     "helm.sh/hook": post-install,post-upgrade
     "helm.sh/hook-delete-policy": hook-succeeded
@@ -13,31 +13,13 @@ spec:
       - name: migration
         image: {{ .Values.image.name }}:{{ .Values.image.tag }}
         command: ['sh', '-c', 'python manage.py makemigrations && python manage.py migrate']
-        env:
-        - name: DB_NAME
-          value: useless_tools
-        - name: DB_USER
-          value: useless_tools
-        - name: DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: db
-              key: DB_PASSWORD
-        - name: DB_HOST
-          value: 192.168.1.170
-        - name: DB_PORT
-          value: "5432"
-        - name: DEPLOY_TYPE
-          value: prod
-        - name: DJANGO_ALLOWED_HOSTS
-          value: ut.skni.edu.pl
-        - name: SECRET_KEYS
-          valueFrom:
-            secretKeyRef:
-              name: app-key
-              key: SECRET_KEYS
+        envFrom:
+        - secretRef:
+            name: {{ .Values.secretRef }}
+        - configMapRef:
+            name: {{ .Values.configMapRef }}
       restartPolicy: Never
       imagePullSecrets:
-      - name: regcred
-  backoffLimit: 4
+      - name: {{ .Values.imagePullSecret }}
+  backoffLimit: {{ .Values.job.backoffLimit }}
 
