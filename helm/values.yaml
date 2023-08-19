@@ -1,6 +1,6 @@
 ---
 image:
-  name: harbor.skni.edu.pl/library/ut
+  name: nexus.skni.edu.pl:1181/ut
   tag: latest
 replicaCount: 1
 strategy:
@@ -21,7 +21,7 @@ resources:
   limits:
     cpu: 200m
     memory: 200Mi
-imagePullSecret: regcred
+imagePullSecret: nexus
 ingress:
   class: nginx
   host: ut.skni.edu.pl
