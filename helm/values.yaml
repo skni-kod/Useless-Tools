@@ -1,6 +1,6 @@
 ---
 image:
-  name: nexus.skni.edu.pl:1181/ut
+  name: nexus.skni.edu.pl:1180/ut
   tag: latest
 replicaCount: 1
 strategy:
