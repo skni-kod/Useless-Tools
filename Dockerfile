@@ -1,4 +1,4 @@
-FROM harbor.skni.edu.pl/proxy/nginx:stable-alpine
+FROM nexus.skni.edu.pl:1181/nginx:stable-alpine
 RUN apk add --no-cache \
     python3 \
     py3-pip \
