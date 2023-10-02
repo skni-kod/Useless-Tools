@@ -1,0 +1,213 @@
+@keyframes rotateWheel {
+	0% {
+		transform: rotate(0);
+	}
+
+	100% {
+		transform: rotate(180deg);
+	}
+}
+
+@keyframes sparkleOne{
+	0%{
+		transform: translate(0px, 0px) rotate(-10deg);
+		opacity: 0;
+	}
+
+	50%{
+		opacity: 1;
+	}
+	
+	100%{
+		transform: translate(10px, 60px);
+		opacity: 0;
+	}
+}
+
+@keyframes sparkleTwo {
+	0%{
+		transform: translate(0, 0) rotate(40deg);
+		opacity: 0;
+	}
+
+	10%{
+		opacity: 1;
+	}
+
+	100%{
+		transform:  translate(-50px, 60px) rotate(40deg);
+		opacity: 0;
+	}
+}
+
+@keyframes sparkleThree {
+	0%{
+		transform: translate(0, 0) rotate(20deg);
+		opacity: 0;
+	}
+
+	10%{
+		opacity: 1;
+	}
+
+	80%{
+		transform: translate(-30px, 80px) rotate(20deg);
+		opacity: 0;
+	}
+
+	100%{
+		opacity: 0;
+	}
+}
+
+@keyframes sparkleFour {
+	0%{
+		opacity: 0;
+		transform: translate(0,0) rotate(50deg);
+	}
+
+	10%{
+		opacity: 1;
+	}
+
+	80%{
+		transform: translate(-35px, 30px) rotate(50deg);
+		opacity: 0;
+	}
+
+	100%{
+		opacity: 0;
+	}
+}
+
+@keyframes fallingTools {
+	from{
+		transform: translateY(0px);
+	}
+
+	to{
+		transform: translateY(12px);
+	}
+}
+
+@keyframes fallingTb {
+	0%{
+		transform: translateY(12px);
+		rotate: 0;
+	}
+
+	100%{
+		transform: translateY(12px);
+		rotate: -65deg;
+	}
+}
+
+@keyframes fallingOb {
+	0%{
+		transform: translate(0, 12px) rotate(0);
+	}
+	
+	70%{
+		transform: translate(-15px, 12px) rotate(-45deg);
+	}
+	
+	100%{
+		transform: translate(-12px, 15px) rotate(-25deg);
+	}
+}
+
+@keyframes fallingOb2 {
+	0%{
+		transform: translate(0, 12px) rotate(0);
+	}
+
+	60%{
+		transform: translate(-14px, 13px) rotate(-100deg);
+	}
+
+	100%{
+		transform: translate(-12px, 13px) rotate(-90deg);
+	}
+}
+
+@keyframes fallingLb {
+	0%{
+		transform: translate(0, 12px) rotate(0);
+	}
+
+	60%{
+		transform: translate(0, 13px) rotate(30deg);
+	}
+
+	100%{
+		transform: translate(10px, 200px) rotate(100deg);
+	}
+}
+
+@keyframes fallingSb {
+	0%{
+		transform: translate(0, 0) rotate(0);
+	}
+
+	100%{
+		transform: translate(5px, 200px) rotate(20deg);
+	}
+}
+
+@keyframes backTb {
+	from{
+		transform: translateY(12px);
+		rotate: -65deg;
+	}
+	to{
+		transform: translateY(0px);
+	}
+}
+
+@keyframes backOb {
+	from{
+		transform: translate(-12px, 15px) rotate(-25deg);
+	}
+	to{
+		transform: translate(0px, 0px) rotate(0deg);
+	}
+}
+
+@keyframes backOb2 {
+	from{
+		transform: translate(-12px, 13px) rotate(-90deg);
+	}
+	to{
+		transform: translate(0px, 0px) rotate(0deg);
+	}
+}
+
+@keyframes backLb {
+	from{
+		transform: translate(10px, 200px) rotate(100deg);
+	}
+	to{
+		transform: translate(0px, 0px) rotate(0deg);
+	}
+}
+
+@keyframes backSb {
+	from{
+		transform: translate(5px, 200px) rotate(20deg);
+	}
+	to{
+		transform: translate(0px, 0px) rotate(0deg);
+	}
+}
+
+@keyframes jump {
+	0%{
+		transform: translateY(0);
+	}
+	50%{
+		transform: translateY(-20%);
+	}
+	100%{
+		transform: translateY(0);
+	}
+}
